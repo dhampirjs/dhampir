@@ -1,0 +1,25 @@
+{
+    "name": "@pulsar/inception",
+    "description": "Web Application generation utils",
+    "main": "index",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/mborysenko/pulsar.git"
+    },
+    "contributors": [
+        {
+            "email": "borysenko.maksym@gmail.com",
+            "name": "Maksym Borysenko",
+            "url": "http://mborysenko.github.io/"
+        }
+    ],
+    "version": "0.0.1",
+    "author": "Maksym Borysenko",
+    "dependencies": {
+        "@pulsar/app-templates": "^1.0.0",
+        "path": "^0.12.7"
+    },
+    "engines": {
+        "node": ">=10.15.3"
+    }
+}

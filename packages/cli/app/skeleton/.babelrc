@@ -1,0 +1,17 @@
+{
+    "presets": [
+        "@babel/preset-react",
+        [
+            "@babel/env",
+            {
+                "useBuiltIns": "entry",
+                "shippedProposals": true,
+                "spec": true,
+                "debug": false
+            }
+        ]
+    ],
+    "plugins": [
+        "react-hot-loader/babel"
+    ]
+}

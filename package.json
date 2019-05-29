@@ -1,0 +1,20 @@
+{
+    "name": "@pulsar/ads",
+    "description": "WEB Application Development System (ADS)",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/mborysenko/pulsar.git"
+    },
+    "contributors": [
+        {
+            "email": "borysenko.maksym@gmail.com",
+            "name": "Maksym Borysenko",
+            "url": "http://mborysenko.github.io/"
+        }
+    ],
+    "version": "1.0.0",
+    "author": "Maksym Borysenko",
+    "dependencies": {
+        "@pulsar/cli": "^1.0.0"
+    }
+}

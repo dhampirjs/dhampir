@@ -1,0 +1,13 @@
+{
+    "presets": [
+        [
+            "@babel/env",
+            {
+                "useBuiltIns": "entry",
+                "shippedProposals": true,
+                "spec": true,
+                "debug": false
+            }
+        ]
+    ]
+}
