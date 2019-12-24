@@ -1,0 +1,31 @@
+{
+    "name": "@pulsar/inception",
+    "description": "Project generation utils",
+    "main": "index.js",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/mborysenko/pulsar.git"
+    },
+    "contributors": [
+        {
+            "email": "borysenko.maksym@gmail.com",
+            "name": "Maksym Borysenko",
+            "url": "http://mborysenko.github.io/"
+        }
+    ],
+    "version": "0.0.1",
+    "author": "Maksym Borysenko",
+    "dependencies": {
+    },
+    "devDependencies": {
+        "path": "^0.12.7",
+        "@babel/core": "^7.5.5",
+        "@babel/preset-env": "^7.5.5",
+        "@babel/preset-react": "^7.0.0",
+        "@babel/register": "^7.5.5",
+        "@babel/node": "^7.5.5"
+    },
+    "engines": {
+        "node": ">=10.15.3"
+    }
+}
