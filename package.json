@@ -1,0 +1,26 @@
+{
+    "name": "@pulsar/ads",
+    "description": "WEB Application Development System (ADS)",
+    "workspaces": [
+        "packages/cli",
+        "packages/inception"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/mborysenko/pulsar.git"
+    },
+    "contributors": [
+        {
+            "email": "borysenko.maksym@gmail.com",
+            "name": "Maksym Borysenko",
+            "url": "http://mborysenko.github.io/"
+        }
+    ],
+    "private": true,
+    "version": "0.0.1",
+    "author": "Maksym Borysenko",
+    "dependencies": {
+        "node-core-lib": "^0.11.11"
+    },
+    "devDependencies": {}
+}

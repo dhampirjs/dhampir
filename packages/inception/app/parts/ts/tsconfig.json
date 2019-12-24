@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "outDir": "./dist/",
+        "sourceMap": true,
+        "noImplicitAny": true,
+        "module": "es6",
+        "target": "es6",
+        "jsx": "react",
+        "moduleResolution": "node",
+        "typeRoots": [
+            "node_modules/@types",
+            "node_modules/@pulsar"
+        ]
+    },
+    "exclude": [
+        "node_modules",
+        "dist"
+    ]
+}

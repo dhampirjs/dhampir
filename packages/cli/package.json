@@ -1,0 +1,45 @@
+{
+    "name": "@pulsar/cli",
+    "description": "Pulsar CLI is a tool that helps user to start new project with least number of movements.",
+    "bin": {
+        "pul": "bin/index.js"
+    },
+    "private": true,
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/mborysenko/pulsar.git"
+    },
+    "contributors": [
+        {
+            "email": "borysenko.maksym@gmail.com",
+            "name": "Maksym Borysenko",
+            "url": "http://mborysenko.github.io/"
+        }
+    ],
+    "version": "0.0.1",
+    "author": "Maksym Borysenko",
+    "dependencies": {
+        "core-js": "3",
+        "cross-spawn": "7.0.1",
+        "path": "0.12.7",
+        "rambda": "4.1.0",
+    },
+    "devDependencies": {
+        "typescript": "^3.7.3",
+        "@pulsar/inception": "^0.0.1",
+        "@types/cross-spawn": "^6.0.1",
+        "@types/node": "^12.12.21",
+        "@babel/cli": "^7.7.4",
+        "@babel/core": "^7.7.4",
+        "@babel/plugin-proposal-class-properties": "~7.0.0-beta.49",
+        "@babel/plugin-proposal-decorators": "~7.0.0-beta.49",
+        "@babel/plugin-proposal-function-bind": "~7.0.0-beta.49",
+        "@babel/plugin-proposal-object-rest-spread": "~7.0.0-beta.49",
+        "@babel/preset-env": "^7.7.4"
+    },
+    "scripts": {
+        "build": "tsc -b",
+        "build:watch": "tsc -b --watch",
+        "run": "yarn run build && node bin/index.js test --no-param"
+    }
+}
