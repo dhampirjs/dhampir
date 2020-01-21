@@ -1,6 +1,7 @@
 {
     "dependencies": {
-        "typescript": "^3.7.2"
     },
-    "devDependencies": {}
+    "devDependencies": {
+        "typescript": "^3.7.4"
+    }
 }
