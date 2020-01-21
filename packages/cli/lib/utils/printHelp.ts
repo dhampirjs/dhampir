@@ -1,5 +1,5 @@
-import { actionList } from "../constants/actions";
+import { ACTION_LIST } from "../constants/actions";
 
 export default function printHelp(): void {
-    console.log(`Available actions are "${actionList.join(", ")}".`)
+    console.log(`Available actions are "${ACTION_LIST.join(", ")}".`)
 }
