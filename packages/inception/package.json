@@ -18,14 +18,17 @@
     "dependencies": {
     },
     "devDependencies": {
-        "path": "^0.12.7",
-        "@babel/core": "^7.5.5",
-        "@babel/preset-env": "^7.5.5",
-        "@babel/preset-react": "^7.0.0",
-        "@babel/register": "^7.5.5",
-        "@babel/node": "^7.5.5"
+        "@types/chalk": "^2.2.0",
+        "@types/cross-spawn": "^6.0.1",
+        "@types/yargs": "^13.0.4",
+        "typescript": "^3.7.3"
     },
     "engines": {
         "node": ">=10.15.3"
+    },
+    "scripts": {
+        "build": "tsc -b",
+        "build:watch": "tsc -b --watch",
+        "run": "yarn run build && node bin/index.js test --no-param"
     }
 }

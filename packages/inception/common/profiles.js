@@ -1,1 +1,0 @@
-const PROFILES = Object.create({});

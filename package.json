@@ -20,7 +20,6 @@
     "version": "0.0.1",
     "author": "Maksym Borysenko",
     "dependencies": {
-        "node-core-lib": "^0.11.11"
     },
     "devDependencies": {}
 }
