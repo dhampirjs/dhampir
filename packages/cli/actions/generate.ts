@@ -15,37 +15,25 @@ import { bang, DEFAULT_BANG_OPTIONS } from '../../inception/lib/inception';
 import { verifyYarnWorkspaces } from '../lib/utils/packaging/verifyYarnWorkspaces';
 import { PACKAGE_FILENAME } from '../lib/utils/packaging/api';
 import { isYarnUsed } from '../lib/utils/packaging/isYarnUsed';
+import { reduce, head, project as create, prop, compose, assoc } from 'ramda';
+import { ALIAS, BRIEF, NAME, OPTIONS, OUTPUT_FOLDER, TYPE } from '../lib/constants/options';
 
 process.on('unhandledRejection', (reason: {} | null | undefined, promise: Promise<any>) => {
     throw new Error(reason as string);
 });
 
+const getName = prop(NAME);
+const createOptions = compose(
+    head,
+    create([ALIAS, BRIEF, TYPE])
+);
+const createConfig = reduce<any, any>(
+    (acc, item) => assoc(getName(item), createOptions([item]), acc),
+    {},
+);
+
 const args = yargs
-    .option('project', {
-        alias: "n",
-        describe: 'Enter project name. Is used to create folder where package will live.',
-        type: "string",
-    })
-    .option('profile', {
-        alias: 'p',
-        describe: 'Profile that is used to define list of the libraries to use.',
-        type: "string",
-    })
-    .option('yarn', {
-        alias: 'y',
-        describe: 'TODO: define what way it can be used.',
-        type: "boolean",
-    })
-    .option('out', {
-        alias: 'o',
-        describe: 'Specify output folder. Default is current folder or the one from workspaces section in the package.json that lays in the current folder.',
-        type: "string",
-    })
-    .option('install', {
-        alias: 'i',
-        describe: 'Defines if dependencies should be installed during project generation.',
-        type: "boolean",
-    })
+    .options(createConfig(OPTIONS))
     .argv;
 
 const {
@@ -63,28 +51,27 @@ const workingFolder = process.cwd();
 
 const useYarn = isYarnUsed(workingFolder);
 
-const appDescriptor = path.join(workingFolder, PACKAGE_FILENAME);
-const [usesYarnWs, ws] = verifyYarnWorkspaces(fs.existsSync(appDescriptor) ? require(appDescriptor).workspaces : undefined);
+const packageDescriptor = path.join(workingFolder, PACKAGE_FILENAME);
+const [usesYarnWS, ws] = verifyYarnWorkspaces(fs.existsSync(packageDescriptor) ? require(packageDescriptor).workspaces : undefined);
 
 let targetFolder: fs.PathLike;
 let workspace: string = '';
 
 if (out) {
-    targetFolder = out;
+    targetFolder = path.normalize(out as string);
 } else {
-
-    if (usesYarnWs) {
+    if (usesYarnWS) {
         if (ws) {
-            workspace = [ws as string, project as string].join("/");
+            workspace = path.join(ws as string, project as string);
             targetFolder = workspace;
         } else {
-            console.log(chalk.white("You are using Yarn Workspaces but we could not determine what target folder to use."));
-            console.log(chalk.white("There are more then one workspace."));
-            console.log(chalk.white("Please use --out or -o option to define exact output folder for your package."));
+            console.log(chalk.white('You are using Yarn Workspaces but we could not determine what target folder to use.'));
+            console.log(chalk.white('There are more then one workspace.'));
+            console.log(chalk.white(`Please use --${OUTPUT_FOLDER[NAME]} or -${OUTPUT_FOLDER[ALIAS]} option to define exact output folder of your package.`));
             process.exit(1);
         }
     } else {
-        targetFolder = project;
+        targetFolder = project as string;
     }
 }
 
@@ -92,17 +79,17 @@ try {
     bang(Object.assign({}, DEFAULT_BANG_OPTIONS, {
         yarn: {
             useYarn,
-            ws: usesYarnWs ? workspace : undefined,
+            ws: usesYarnWS ? workspace : undefined,
             add: ws !== undefined,
         },
-        profile,
+        profile: profile,
         targetFolder: path.normalize(path.isAbsolute(targetFolder) ? targetFolder : path.join(workingFolder, targetFolder)),
         projectName: project,
-        installDependencies: true, //TODO: make it option and controlled through CLI option
+        installDependencies: true, //TODO: make it optional and controlled through CLI option
     }));
 } catch (e) {
-    console.log(chalk.blue(`Creating new package has failed.`));
-    console.log(chalk.red(`Error: ${e.message}`));
+    console.log(chalk.redBright(`Creating new package has failed.`));
+    console.log(chalk.redBright(`Error: ${e.message}`));
     process.exit(1);
 }
 

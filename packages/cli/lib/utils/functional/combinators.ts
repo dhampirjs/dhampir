@@ -43,7 +43,7 @@ const S = <T extends Function, U extends Function, V>(first: T) => {
             return first(v)(second(v));
         };
     };
-}
+};
 
 export {
     Identity, K, C, B, T, D, S,

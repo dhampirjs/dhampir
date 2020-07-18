@@ -24,7 +24,7 @@ export const DEFAULT_BANG_OPTIONS: BangOptions = {
     yarn: {
         useYarn: true,
     },
-}
+};
 
 export function bang(options: BangOptions) {
     const {
@@ -36,11 +36,11 @@ export function bang(options: BangOptions) {
     } = options;
 
     if (!PROFILES.includes(profile)) {
-        throw new Error(`there is no such profile! Available profiles are "${PROFILES.join(", ")}".`);
+        throw new Error(chalk.red(`There is no such profile! Available profiles are "${PROFILES.join(", ")}".`));
     }
 
     if (fs.existsSync(targetFolder)) {
-        throw new Error(chalk.red(`directory with name "${chalk.white(projectName)}" exists in the target folder. Please, choose another name.`));
+        throw new Error(chalk.red(`Directory with name "${chalk.white(projectName)}" exists in the target folder. Please, choose another name.`));
     }
 
     try {

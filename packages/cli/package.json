@@ -24,7 +24,7 @@
         "core-js": "3",
         "cross-spawn": "7.0.1",
         "path": "0.12.7",
-        "ramda": "0.26.1",
+        "ramda": "0.27.0",
         "yargs": "^15.0.2"
     },
     "devDependencies": {
@@ -38,7 +38,7 @@
         "@types/chalk": "^2.2.0",
         "@types/cross-spawn": "^6.0.1",
         "@types/yargs": "^13.0.4",
-        "@types/ramda": "^0.26.39",
+        "@types/ramda": "^0.26.41",
         "typescript": "^3.7.3"
     },
     "scripts": {

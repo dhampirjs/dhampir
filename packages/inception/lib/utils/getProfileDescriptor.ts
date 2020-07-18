@@ -9,7 +9,7 @@ interface ProjectDescriptorProps {
 }
 
 function describeProject(opts: ProjectDescriptorProps): ProjectDescriptor {
-    return {
+    return { //TODO: implement profile resolution
         installDependencies: () => true,
     } as ProjectDescriptor;
 }
