@@ -19,7 +19,6 @@
     "private": true,
     "version": "0.0.1",
     "author": "Maksym Borysenko",
-    "dependencies": {
-    },
+    "dependencies": {},
     "devDependencies": {}
 }
