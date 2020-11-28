@@ -1,5 +1,5 @@
 {
-    "name": "@pulsar/inception",
+    "name": "@barbaroi/inception",
     "description": "Project generation utils",
     "main": "index.js",
     "repository": {
@@ -13,7 +13,7 @@
             "url": "http://mborysenko.github.io/"
         }
     ],
-    "version": "0.0.1",
+    "version": "1.0.0-1",
     "author": "Maksym Borysenko",
     "dependencies": {
     },
