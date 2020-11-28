@@ -1,10 +1,10 @@
 {
-    "name": "@pulsar/cli",
+    "name": "@barbaroi/cli",
     "description": "Pulsar CLI is a tool that helps user to start new project with least number of movements.",
     "bin": {
         "pul": "bin/index.js"
     },
-    "private": true,
+    "private": false,
     "repository": {
         "type": "git",
         "url": "https://github.com/mborysenko/pulsar.git"
@@ -16,7 +16,7 @@
             "url": "http://mborysenko.github.io/"
         }
     ],
-    "version": "0.0.1",
+    "version": "1.0.0-1",
     "author": "Maksym Borysenko",
     "dependencies": {
         "@pulsar/inception": "^0.0.1",
