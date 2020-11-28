@@ -9,7 +9,7 @@ export interface YarnProps {
     add?: boolean
 }
 
-export interface BangOptions {
+export interface SpawnProperties {
     profile: PROFILE,
     targetFolder: fs.PathLike,
     installDependencies: boolean,
@@ -17,7 +17,7 @@ export interface BangOptions {
     yarn?: YarnProps,
 }
 
-export const DEFAULT_BANG_OPTIONS: BangOptions = {
+export const DEFAULT_SPAWN_PROPERTIES: SpawnProperties = {
     profile: DEFAULT_PROFILE,
     installDependencies: false,
     targetFolder: '',
@@ -26,7 +26,7 @@ export const DEFAULT_BANG_OPTIONS: BangOptions = {
     },
 };
 
-export function bang(options: BangOptions) {
+export function spawnProject(options: SpawnProperties) {
     const {
         projectName,
         profile,
@@ -57,8 +57,8 @@ export function bang(options: BangOptions) {
         profile
     });
 
+
     if (installDependencies) {
         descriptor.installDependencies();
     }
-
 };
