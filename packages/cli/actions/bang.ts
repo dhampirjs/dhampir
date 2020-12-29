@@ -9,11 +9,9 @@
 
 import * as yargs from 'yargs';
 import * as chalk from 'chalk';
-import * as path from 'path';
-import * as fs from 'fs';
 import { createConfig } from '../lib/utils/parameters';
 import { BangActionOptions, OPTIONS, REPO_NAME, TARGET_FOLDER } from '../lib/actions/bang';
-import { bang, BangOptions } from '../../inception/lib';
+import { bang, BangOptions, DEFAULT_BANG_OPTIONS_KEYS } from '../../inception/lib';
 import { ALIAS, NAME } from '../lib/constants';
 import { pickBy } from 'ramda';
 
@@ -24,33 +22,32 @@ process.on('unhandledRejection', (reason: {} | null | undefined, promise: Promis
 const args = yargs
     .options(createConfig(OPTIONS))
     .argv as BangActionOptions;
-console.log(args)
-const filtered = pickBy<BangActionOptions, BangOptions>((val, key) => { return (key !== '_' && key !== '$0') && val !== undefined}, args);
+const filtered = pickBy<BangActionOptions, BangOptions>((val, key) => DEFAULT_BANG_OPTIONS_KEYS.includes(key) && val !== undefined, args);
 
 const { targetFolder, name } = filtered;
 
 if (!targetFolder) {
-    console.log(chalk.red(`Target folder must be defined.`));
+    console.error(chalk.red(`Target folder must be defined.`));
     console.log(chalk.white(`Please use --${TARGET_FOLDER[NAME]} or -${TARGET_FOLDER[ALIAS]} option to define target folder of your repository.`));
     process.exit(1);
 }
 
 if (!name) {
-    console.log(chalk.red(`Name must be defined.`));
+    console.error(chalk.red(`Name must be defined.`));
     console.log(chalk.white(`Please use --${REPO_NAME[NAME]} or -${REPO_NAME[ALIAS]} option to define name of the repository.`));
     process.exit(1);
 }
 
-const repoFolder = path.resolve(targetFolder);
+try {
+    bang(filtered);
+}
+catch (e) {
+    console.log(chalk.redBright(`Creating new repository has failed.`));
+    console.log(chalk.redBright(`Error: ${e.message}`));
 
-// Calculate destination folder
-// If target folder is absolute path then we use as is otherwise we use working folder
-
-if (fs.existsSync(repoFolder)) {
-    throw new Error(chalk.red(`Directory with name "${chalk.white(repoFolder)}" exists in the target folder. Please, choose another name.`));
+    process.exit(1)
 }
 
-bang(filtered);
 // Calculate PM and run appropriate one in cli to initialize package
 // In case of usage Yarn identify if Yarn workspaces must be used
 

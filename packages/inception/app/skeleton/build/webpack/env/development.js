@@ -17,7 +17,7 @@ export default function devConfig(options) {
     let middlewareEntry = "webpack-hot-middleware/client?http://" + server.host + ":" + server.port;
 
     return {
-        devtool: "cheap-source-map",
+        devtool: "source-map",
         entry: {
             app: [
                 "react-hot-loader/patch",
