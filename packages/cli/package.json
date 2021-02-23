@@ -1,25 +1,25 @@
 {
     "name": "@dhampir/cli",
-    "description": "Pulsar CLI is a tool that helps user to start new project with least number of movements.",
+    "description": "Pulsar CLI is a tool that helps user to start new project with the least moves.",
     "bin": {
         "pul": "bin/index.js"
     },
     "private": true,
     "repository": {
         "type": "git",
-        "url": "https://github.com/mborysenko/pulsar.git"
+        "url": "https://github.com/mborysenko/dhampir.git"
     },
     "contributors": [
         {
             "email": "borysenko.maksym@gmail.com",
             "name": "Maksym Borysenko",
-            "url": "http://mborysenko.github.io/"
+            "url": "http://dhampir.dev/"
         }
     ],
-    "version": "0.0.1",
+    "version": "1.0.0",
     "author": "Maksym Borysenko",
     "dependencies": {
-        "@dhampir/inception": "^0.0.1",
+        "@dhampir/inception": "1.0.0",
         "chalk": "4.1.0",
         "core-js": "3.9.0",
         "cross-spawn": "7.0.3",
