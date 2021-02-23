@@ -10,17 +10,14 @@
         {
             "email": "borysenko.maksym@gmail.com",
             "name": "Maksym Borysenko",
-            "url": "http://mborysenko.github.io/"
+            "url": "http://dhampir.dev/"
         }
     ],
-    "version": "0.0.1",
+    "version": "1.0.0",
     "author": "Maksym Borysenko",
     "dependencies": {
     },
     "devDependencies": {
-        "@types/chalk": "2.2.0",
-        "@types/cross-spawn": "6.0.2",
-        "@types/yargs": "16.0.0",
         "typescript": "4.1.5"
     },
     "engines": {
