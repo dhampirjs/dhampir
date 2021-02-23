@@ -1,0 +1,40 @@
+.app-nav {
+    margin-left: -18em;
+
+    &.open {
+        margin-left: 0;
+    }
+    display: flex;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 18em;
+    background-color: aliceblue;
+
+    &-exit {
+        opacity: 0;
+    }
+    &-exit-active {
+        opacity: 1;
+    }
+    &-enter {
+        opacity: 0.1;
+    }
+    &-enter-active {
+        opacity: 1;
+    }
+
+    .caller {
+        position: absolute;
+        padding: 0.5em;
+        left: 100%;
+    }
+
+    .app-menu {
+        .item {
+            text-decoration: underline;
+            color: brown;
+        }
+    }
+}
