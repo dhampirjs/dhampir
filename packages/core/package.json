@@ -14,12 +14,9 @@
     ],
     "scripts": {
         "clean": "cross-env NODE_ENV=production gulp clean",
-        "build": "cross-env NODE_ENV=production gulp",
-        "build:dist": "cross-env NODE_ENV=production gulp dist",
-        "build:dev": "cross-env NODE_ENV=development gulp",
-        "start": "cross-env NODE_ENV=production gulp start",
-        "start:dev": "cross-env NODE_ENV=development gulp start",
-        "jest": "cross-env NODE_ENV=development gulp jest"
+        "build:dist": "cross-env NODE_ENV=production gulp",
+        "build:watch": "cross-env NODE_ENV=production gulp build:watch",
+        "test": "cross-env NODE_ENV=development gulp test"
     },
     "license": "MIT",
     "typings": "dist/es6/index.d.ts",
@@ -74,6 +71,7 @@
         "@typescript-eslint/parser": "4.15.1",
         "babel-loader": "8.2.2",
         "braces": "3.0.2",
+        "child_process": "^1.0.2",
         "circular-dependency-plugin": "5.2.2",
         "classnames": "2.2.6",
         "compression-webpack-plugin": "7.1.2",
