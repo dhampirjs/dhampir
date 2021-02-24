@@ -11,6 +11,12 @@ export const configuration = {
     jest: {
         configFile: join(resolve(__dirname), 'jest/jest.config.ts'),
     },
+    filesToCopy: [
+        'src/**/*.less',
+    ],
+    filesToClean: [
+        'src/**/*.d.ts',
+    ],
     server: {
         host: 'localhost',
         port: 9090
