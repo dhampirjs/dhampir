@@ -1,5 +1,7 @@
 import {spawn} from 'child_process';
 import {resolve} from 'path';
+import flog from 'fancy-log';
+import split from 'split';
 
 export default function (
     {
@@ -26,5 +28,10 @@ export default function (
         );
 
         tsc.on('close', cb);
+
+        tsc.stdout.pipe(split())
+            .on('data', (data) => {
+                flog(data.toString());
+            })
     }
 };
