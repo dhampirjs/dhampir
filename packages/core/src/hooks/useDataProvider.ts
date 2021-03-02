@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
-import { ExtensionContext } from '../context';
+import { ExtensionContext } from '../extensions/context';
 import { createStore } from '../utils';
-import { ApplicationRootState } from '../store';
+import { ApplicationRootState } from '../storage/redux/store';
 import { Store } from 'redux';
 
 export const useDataProvider = <T extends ApplicationRootState>() => {

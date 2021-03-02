@@ -5,7 +5,7 @@ import {
     AppNavigationItem,
     useApplicationsByScope,
     useApplicationsById
-} from '../../../application';
+} from '../index';
 
 export interface ApplicationManagerProps {
     scope?: ApplicationScope;

@@ -1,7 +1,7 @@
-import { StorageConnectorConfig } from '../hooks/useStorageConnector';
-import { StorageType } from '../connectors/API';
-import { ReduxConnector } from '../connectors/dom/ReduxConnector';
-import { ReactQueryConnector } from '../connectors/dom/ReactQueryConnector';
+import { StorageConnectorConfig } from '../hooks';
+import { StorageType } from './API';
+import { ReduxConnector } from './redux';
+import { ReactQueryConnector } from './react-query';
 export type ConnectorsRegistry = {
     [connectorId: string]: StorageConnectorConfig
 };
@@ -18,7 +18,7 @@ export const connectorsRegistry: ConnectorsRegistry = {
 };
 
 export const registerConnector = <P, S extends string>(type: S, connector: StorageConnectorConfig<P>): void => {
-    const exists = connectorsRegistry[type];
+    const exists = !!connectorsRegistry[type];
 
     if (exists) {
         console.warn(`Storage connector with type ${type} already exist. Skipping registration.`);

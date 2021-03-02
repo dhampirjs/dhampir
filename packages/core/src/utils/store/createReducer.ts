@@ -1,5 +1,5 @@
 import { combineReducers, Reducer, ReducersMapObject } from 'redux';
-import { StoreRegistry } from '../../store';
+import { StoreRegistry } from '../../storage/redux/store';
 
 export function createReducer(registry: StoreRegistry): Reducer {
     const ids = Object.keys(registry);

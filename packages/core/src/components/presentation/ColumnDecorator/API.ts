@@ -1,4 +1,4 @@
-import { BoxProps } from '../Box';
+import { BoxProps } from '../../layout/Box';
 
 export enum DecoratorPosition {
     LEFT,

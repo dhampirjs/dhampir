@@ -1,4 +1,4 @@
-import { ExtensionContext, ExtensionContextType } from '../context';
+import { ExtensionContext, ExtensionContextType } from '../extensions/context';
 import { useCallback, useState, Provider, useContext } from 'react';
 
 export type ExtensionContextData = () => {

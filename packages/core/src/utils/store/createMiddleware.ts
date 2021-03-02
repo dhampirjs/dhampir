@@ -1,5 +1,5 @@
 import { Middleware } from 'redux';
-import { StoreRegistry } from '../../store';
+import { StoreRegistry } from '../../storage/redux/store';
 
 export function createMiddleware(registry: StoreRegistry): Middleware[] {
     const ids = Object.keys(registry);

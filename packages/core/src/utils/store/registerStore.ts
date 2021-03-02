@@ -1,4 +1,4 @@
-import { storeRegistry, StoreRegistryEntry } from '../../store';
+import { storeRegistry, StoreRegistryEntry } from '../../storage/redux/store';
 
 export const registerStore = (extensionId: string, entry: StoreRegistryEntry) => {
     if (!extensionId) {

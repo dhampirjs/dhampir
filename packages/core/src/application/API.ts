@@ -1,5 +1,5 @@
 import React from 'react';
-import { RootApplicationProps } from '../components';
+import { RootApplicationProps } from './dom';
 
 export enum ApplicationScope {
     STANDALONE,

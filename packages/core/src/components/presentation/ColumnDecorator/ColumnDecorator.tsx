@@ -3,7 +3,7 @@ import { ColumnDecoratorProps, DecoratorPosition } from './API';
 import { forwardRef } from 'react';
 import styled, { css } from 'styled-components';
 
-import { Box } from '../Box';
+import { Box } from '../../layout';
 
 const ColumnDecorator = styled(
     forwardRef<HTMLDivElement, ColumnDecoratorProps & React.HTMLAttributes<HTMLDivElement>>((props, ref) => {
