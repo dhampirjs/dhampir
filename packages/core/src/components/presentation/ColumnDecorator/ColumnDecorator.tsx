@@ -1,32 +1,50 @@
 import * as React from 'react';
-import { ColumnDecoratorProps, DecoratorPosition } from './API';
+import { ColumnDecoratorProps, BorderSide } from './API';
 import { forwardRef } from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 import { Box } from '../../layout';
+import { ColorScope, ColorScopeContainer } from '../../../appearance';
+import { reduce } from 'ramda';
+
+export type CalculateBorderFnProps = Partial<ColumnDecoratorProps>;
+
+const calculateBorder: (props: CalculateBorderFnProps) => string = (
+    {
+        borderPosition = [],
+        width = 1,
+        units = 'px'
+    }) => {
+
+    if(borderPosition.includes(BorderSide.ALL_OVER)) {
+        return `${width}${units}`;
+    }
+
+    const createCssValue = reduce<BorderSide, string[]>((acc, elem) => {
+        acc[elem] = `${width}${units}`;
+        return acc;
+    }, ['0', '0', '0', '0']);
+
+    const valueSet = createCssValue(borderPosition);
+    return `${valueSet.join(' ')}`;
+};
 
 const ColumnDecorator = styled(
-    forwardRef<HTMLDivElement, ColumnDecoratorProps & React.HTMLAttributes<HTMLDivElement>>((props, ref) => {
-    return <Box {...props} ref={ref}/>
-}))`
+    forwardRef<HTMLDivElement, ColumnDecoratorProps & React.HTMLAttributes<HTMLDivElement>>((
+        {
+            borderPosition,
+            width,
+            units,
+            ...rest // these are passed deeper
+        }, ref) => {
+        return <Box {...rest} ref={ref}/>
+    }))`
     display: flex;
     flex: 1 1 auto;
     min-width: 240px;
-    ${({ position }) => position === DecoratorPosition.LEFT && css`
-        border-right: 1px solid #dfdfdf;
-    `}
-    ${({ position }) => position === DecoratorPosition.RIGHT && css`
-        border-left: 1px solid #dfdfdf;
-    `}
-    ${({ position }) => position === DecoratorPosition.TOP && css`
-        border-top: 1px solid #dfdfdf;
-    `}
-    ${({ position }) => position === DecoratorPosition.BOTTOM && css`
-        border-bottom: 1px solid #dfdfdf;
-    `}
-    ${({ position }) => position === DecoratorPosition.ALL && css`
-        border: 1px solid #dfdfdf;
-    `}
+    border-color: ${({ theme }) => theme?.[ColorScope.CONTAINER]?.[ColorScopeContainer.BORDER] || 'none'};
+    border-style: solid;
+    border-width: ${({ borderPosition }) => calculateBorder({ borderPosition: borderPosition! })};
     align-items: stretch;
     justify-content: space-between;
 `;

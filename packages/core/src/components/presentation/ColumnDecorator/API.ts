@@ -1,13 +1,17 @@
-import { BoxProps } from '../../layout/Box';
+import { BoxProps } from '../../layout';
+import { PresentationComponentProps } from '../../../appearance/API';
 
-export enum DecoratorPosition {
-    LEFT,
-    RIGHT,
+export enum BorderSide {
+
     TOP,
+    RIGHT,
     BOTTOM,
-    ALL,
+    LEFT,
+    ALL_OVER,
 }
 
-export interface ColumnDecoratorProps extends BoxProps {
-    position?: DecoratorPosition
+export interface ColumnDecoratorProps extends BoxProps, PresentationComponentProps {
+    borderPosition?: BorderSide[],
+    width?: number,
+    units?: string,
 }

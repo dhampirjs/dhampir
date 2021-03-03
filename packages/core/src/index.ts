@@ -7,3 +7,4 @@ export * from './hooks';
 export * from './routing';
 export * from './storage/redux/store';
 export * from './utils';
+export * from './appearance';
