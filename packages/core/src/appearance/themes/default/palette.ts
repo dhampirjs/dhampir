@@ -8,15 +8,38 @@ export const PALETTE = {
     COBALT_BLUE: '#1446a0',
 
     // Auxiliary colors
-    MANTIS: '#7ac74f',
     CG_BLUE: '#227c9d',
     RED_MUNSELL: '#fa003f',
+    FLAME: '#e4572e',
+    GERANIUM_LAKE: '#d63230',
+    VIVID_BURGUNDY: '#af1b3f',
+    ROSEWOOD: '#5e0b15',
     BRIGHT_YELLOW_CRYOLA: '#fbb13c',
+    MARIE_GOLD: '#f1a208',
     FOGRA_29: '#001427',
+    GUN_METAL: '#223843',
+    EAGLE_GREEN: '#0f5257',
     GRAY: '#636363',
+    BABY_POWDER: '#eef0eb',
     LIGHT_GRAY: '#ccdbdc',
+
+    LIGHT_FRENCH_BEIGE: '#c6ae82',
+
+    BANANA_MANIA: '#ffeaae',
+    GOLD_CRAYOLA: '#f9c784',
+    MANGO_TANGO: '#ff8c42',
 
     POWDER_BLUE: '#9ad1d4',
     MIDDLE_BLUE: '#80ced7',
     PRUSSIAN_BLUE: '#003249',
+
+    TEA_GREEN: '#d4eac8',
+    TEA_GREEN_DARK: '#bde4a8',
+    ETON_BLUE: '#9cc69b',
+    GRANNY_SMITH_APPLE: '#8cd790',
+    JUNE_BUD: '#B1CF5F',
+    MANTIS: '#7ac74f',
+    DARK_SPRING_GREEN: '#04724d',
+    BOTTLE_GREEN: '#12664f',
+    FOREST_GREEN_TRADITIONAL: '#1b512d',
 }
