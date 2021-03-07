@@ -20,7 +20,8 @@ export const isAreaVisible = (area: RoutingArea, currentPath: string): boolean =
                 return true;
             }
 
-            if(currentPath.startsWith(path!)) {
+            const [fixedPath]  = (path as string).split('/:');
+            if(currentPath.startsWith(fixedPath!)) {
                 const left = takeLastOf(parts);
                 const right = takeLastOf(path!.split('/'));
                 if(left[0] !== right[0]) {
