@@ -14,6 +14,7 @@ export enum RoutingArea {
 
 export interface RouteNavigationOptions {
     label?: string;
+    params?: any;
 }
 
 export interface NavigationNode extends RouteNavigationOptions {

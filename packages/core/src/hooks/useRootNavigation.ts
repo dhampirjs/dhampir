@@ -15,6 +15,7 @@ export const useRootNavigation = (expand: boolean = false) => {
                 const calculatedPath = Array.isArray(path) ? path[0] : path;
                 acc.push({
                     label: navigation?.label,
+                    params: navigation?.params,
                     path: calculatedPath ? calculatedPath!.replace(RegExp(`\\${PATH_SEPARATOR}+`, 'gi'), PATH_SEPARATOR) : '',
                 });
             }
