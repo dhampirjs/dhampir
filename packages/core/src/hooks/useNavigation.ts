@@ -11,10 +11,11 @@ export const useNavigation = (path: string | string[] = '', expand: boolean = fa
     const routes = useRoutesForPath(path, expand);
 
     useEffect(() => {
-        setNodes(routes.map((route) => {
+        setNodes(routes.map(({ path: routePath, navigation}) => {
             return {
-                label: route.navigation?.label,
-                path: [path, route.path!].join(PATH_SEPARATOR).replace(RegExp(`\\${PATH_SEPARATOR}+`, 'gi'), PATH_SEPARATOR),
+                label: navigation?.label,
+                path: [path, routePath!].join(PATH_SEPARATOR).replace(RegExp(`\\${PATH_SEPARATOR}+`, 'gi'), PATH_SEPARATOR),
+                params: navigation?.params,
             }
         }));
     }, [version, setNodes, routes]);
