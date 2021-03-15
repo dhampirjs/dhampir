@@ -1,7 +1,7 @@
 {
     "name": "@dhampir/core",
     "repository": "https://github.com/mborysenko/dhampir.git",
-    "version": "1.0.0-beta5",
+    "version": "1.0.0-beta6",
     "description": "Project contains framework that allows you to start writing web apps with using Typescript, React, Redux, Rect Router v5, webpack(HMR), express and gulp",
     "main": "dist/commonjs/index.js",
     "module": "dist/es6/index.js",
