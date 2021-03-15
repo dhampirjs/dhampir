@@ -13,12 +13,10 @@ export const useDefaultTheme: () => Theme = () => {
         const themeFromRegistry = getDefaultTheme();
 
         const defaultTheme = getThemeById(THEME_DEFAULT_ID);
+        // Falling back to general theme colors if some of the latter is missing
         themeFromRegistry.colors = Object.assign({}, defaultTheme.colors, theme.colors);
         setTheme(themeFromRegistry);
     }, [changeCount]);
-
-    // If theme is not complete, needed colors will be taken from default one
-
 
     return theme;
 }

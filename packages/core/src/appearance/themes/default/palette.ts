@@ -19,9 +19,9 @@ export const PALETTE = {
     FOGRA_29: '#001427',
     GUN_METAL: '#223843',
     EAGLE_GREEN: '#0f5257',
-    GRAY: '#636363',
+    GRAY: '#dbdbdb',
     BABY_POWDER: '#eef0eb',
-    LIGHT_GRAY: '#ccdbdc',
+    LIGHT_GRAY: '#f8f8f8',
 
     LIGHT_FRENCH_BEIGE: '#c6ae82',
 
