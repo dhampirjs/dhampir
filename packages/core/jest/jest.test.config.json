@@ -1,0 +1,49 @@
+{
+    "runner": "jest-runner",
+    "displayName": "test:unit",
+    "rootDir": "../",
+    "verbose": true,
+    "notify": true,
+    "bail": false,
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+        "<rootDir>/src/app.tsx",
+        "<rootDir>/src/reducers/**/*.{ts,tsx}",
+        "<rootDir>/src/components/**/*.{ts,tsx}",
+        "<rootDir>/src/actions/*.{ts,tsx}"
+    ],
+    "coveragePathIgnorePatterns": [
+        "/node_modules/",
+        "/build/",
+        "/coverage/",
+        "/dist/",
+        "<rootDir>/src/index.tsx",
+        "<rootDir>/src/index.dev.tsx",
+        "<rootDir>/src/components/index.js",
+        "<rootDir>/src/actions/index.js",
+        "<rootDir>/src/reducers/index.js"
+    ],
+    "coverageThreshold": {
+        "global": {
+            "branches": 1,
+            "functions": 1,
+            "lines": 1,
+            "statements": 1
+        }
+    },
+    "modulePaths": [
+        "<rootDir>/src",
+        "<rootDir>/node_modules"
+    ],
+    "moduleFileExtensions": [ "js", "json", "less", "ts", "tsx" ],
+    "setupFiles": ["<rootDir>/jest/scripts/setupFiles.js"],
+    "setupTestFrameworkScriptFile":
+        "<rootDir>/jest/scripts/setupEnzymeEnvironment.js",
+    "snapshotSerializers": ["enzyme-to-json/serializer"],
+    "moduleNameMapper": {
+        "\\.(less|m.less)$": "identity-obj-proxy",
+        "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
+            "<rootDir>/__mocks__/fileMock.js"
+    },
+    "testURL": "http://www.test.com"
+}
