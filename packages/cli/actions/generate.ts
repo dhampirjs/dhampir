@@ -11,26 +11,20 @@ import * as yargs from 'yargs';
 import * as chalk from 'chalk';
 import * as path from 'path';
 import * as fs from 'fs';
-import { bang, DEFAULT_BANG_OPTIONS } from '../../inception/lib/inception';
 import { verifyYarnWorkspaces } from '../lib/utils/packaging/verifyYarnWorkspaces';
 import { PACKAGE_FILENAME } from '../lib/utils/packaging/api';
 import { isYarnUsed } from '../lib/utils/packaging/isYarnUsed';
-import { reduce, head, project as create, prop, compose, assoc } from 'ramda';
-import { ALIAS, BRIEF, NAME, OPTIONS, OUTPUT_FOLDER, TYPE } from '../lib/constants/options';
+import {
+    OPTIONS,
+    OUTPUT_FOLDER,
+} from '../lib/actions/generate/OPTIONS';
+import { ALIAS, NAME } from '../lib/constants';
+import { createConfig } from '../lib/utils/parameters';
+import { DEFAULT_SPAWN_PROPERTIES, spawnProject } from '../../inception/lib';
 
 process.on('unhandledRejection', (reason: {} | null | undefined, promise: Promise<any>) => {
     throw new Error(reason as string);
 });
-
-const getName = prop(NAME);
-const createOptions = compose(
-    head,
-    create([ALIAS, BRIEF, TYPE])
-);
-const createConfig = reduce<any, any>(
-    (acc, item) => assoc(getName(item), createOptions([item]), acc),
-    {},
-);
 
 const args = yargs
     .options(createConfig(OPTIONS))
@@ -52,6 +46,7 @@ const workingFolder = process.cwd();
 const useYarn = isYarnUsed(workingFolder);
 
 const packageDescriptor = path.join(workingFolder, PACKAGE_FILENAME);
+
 const [usesYarnWS, ws] = verifyYarnWorkspaces(fs.existsSync(packageDescriptor) ? require(packageDescriptor).workspaces : undefined);
 
 let targetFolder: fs.PathLike;
@@ -76,13 +71,13 @@ if (out) {
 }
 
 try {
-    bang(Object.assign({}, DEFAULT_BANG_OPTIONS, {
+    spawnProject(Object.assign({}, DEFAULT_SPAWN_PROPERTIES, {
         yarn: {
             useYarn,
             ws: usesYarnWS ? workspace : undefined,
             add: ws !== undefined,
         },
-        profile: profile,
+        profile,
         targetFolder: path.normalize(path.isAbsolute(targetFolder) ? targetFolder : path.join(workingFolder, targetFolder)),
         projectName: project,
         installDependencies: true, //TODO: make it optional and controlled through CLI option
