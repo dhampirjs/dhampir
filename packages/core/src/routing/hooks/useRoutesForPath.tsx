@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useContext, useMemo } from "react";
-import { ExtensionContext } from '../../context';
+import { ExtensionContext } from '../../extensions/context';
 import { EnhancedAreaRoute, getDescendantRoutes } from '../../routing';
 
 const useRoutesForPath: (path: string | string[], expand: boolean) => EnhancedAreaRoute[] = (path, expand) => {

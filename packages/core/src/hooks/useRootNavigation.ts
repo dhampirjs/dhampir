@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { ExtensionContext } from '../context';
+import { ExtensionContext } from '../extensions/context';
 import { getRootRoutes, NavigationNode, PATH_SEPARATOR } from '../routing';
 
 export const useRootNavigation = (expand: boolean = false) => {

@@ -62,3 +62,6 @@ typings/
 
 # Typescript definitions
 *.d.ts
+/packages/**/dist/
+dist/
+/.idea/

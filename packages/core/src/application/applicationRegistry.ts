@@ -1,6 +1,6 @@
 import { ApplicationRegistry, ApplicationRegistryEntry, ApplicationScope, ROOT_APPLICATION_ID } from './API';
-import { RootApplication } from '../components/RootApplication';
-import { StorageType } from '../connectors/API';
+import { RootApplication } from './dom/RootApplication';
+import { StorageType } from '../storage/API';
 
 export const applicationRegistry: ApplicationRegistry<any> = {
     [ROOT_APPLICATION_ID]: {

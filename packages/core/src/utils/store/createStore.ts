@@ -1,5 +1,5 @@
 import { createReducer } from './createReducer';
-import { storeRegistry } from '../../store';
+import { storeRegistry } from '../../storage/redux/store';
 import { createMiddleware } from './createMiddleware';
 import { configureStore } from './configureStore';
 import { runCallbackScope } from '../callbacks';

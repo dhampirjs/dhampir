@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { ExtensionContext } from '../../context';
+import { ExtensionContext } from '../../extensions/context';
 import { ApplicationRegistry, applicationRegistry, ApplicationScope } from '../';
 
 const getScopeApps = (scope: ApplicationScope): ApplicationRegistry<any> => {
