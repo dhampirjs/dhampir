@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { LayoutListDirection, LayoutListProps } from './API';
+import { ScreenProps } from './API';
 import styled, { css } from 'styled-components';
 import { Box } from '../Box';
 import { forwardRef, Ref } from 'react';
+import { Direction } from '../../API';
 
-const LayoutList = styled(
-    forwardRef<HTMLDivElement, LayoutListProps & React.HTMLAttributes<HTMLDivElement>>(
+const Screen = styled(
+    forwardRef<HTMLDivElement, ScreenProps & React.HTMLAttributes<HTMLDivElement>>(
         ({
              fullScreen,
              ...other
@@ -23,15 +24,15 @@ const LayoutList = styled(
         bottom: 0;
     `};
 
-    ${({ direction = LayoutListDirection.HORIZONTAL }) => {
-    return (direction === LayoutListDirection.VERTICAL) ? css`
+    ${({ direction = Direction.HORIZONTAL }) => {
+        return (direction === Direction.VERTICAL) ? css`
             flex-direction: column;
         ` : css`
             flex-direction: row;
         `
-}
-}`;
+    }
+    }`;
 
 export {
-    LayoutList
+    Screen
 }

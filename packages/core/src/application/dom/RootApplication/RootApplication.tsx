@@ -10,7 +10,9 @@ export const RootApplication: FunctionComponent<RootApplicationProps> = ({ stora
         Connector,
         props,
     } = useStorageConnector(storageType!, {})!;
+
     const defaultTheme = useDefaultTheme();
+
     const {
         context,
         Provider: ExtensionProvider,
@@ -18,7 +20,7 @@ export const RootApplication: FunctionComponent<RootApplicationProps> = ({ stora
 
 
     return <ExtensionProvider value={context}>
-        <ThemeProvider theme={defaultTheme.colors}>
+        <ThemeProvider theme={defaultTheme}>
             <Connector {...props}>
                 <RootArea/>
             </Connector>

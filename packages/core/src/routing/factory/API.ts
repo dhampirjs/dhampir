@@ -1,15 +1,25 @@
 import { RouteProps } from 'react-router';
 
 export enum RoutingArea {
-    HEADING = 'heading',
-    SUBHEADING = 'subheading',
-    BODY = 'body',
-    MAIN = 'center',
-    LEFT = 'left',
-    RIGHT = 'right',
-    FOOTER = 'footer',
-    FOOTER_LEFT = 'footer_left',
-    FOOTER_RIGHT = 'footer_right',
+    TOP         = 'top',
+    TOP_LEFT    = 'top_left',
+    TOP_CENTER  = 'top_center',
+    TOP_RIGHT   = 'top_right',
+
+    MENU = 'menu',
+    MENU_LEFT = 'menu_left',
+    MENU_CENTER = 'menu_center',
+    MENU_RIGHT = 'menu_right',
+
+    BODY        = 'body',
+    BODY_LEFT   = 'body_left',
+    BODY_MAIN   = 'body_center',
+    BODY_RIGHT  = 'body_right',
+
+    BOTTOM          = 'bottom',
+    BOTTOM_LEFT     = 'bottom_left',
+    BOTTOM_CENTER   = 'bottom_center',
+    BOTTOM_RIGHT    = 'bottom_right',
 }
 
 export interface RouteNavigationOptions {

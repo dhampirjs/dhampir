@@ -1,48 +1,36 @@
 import * as React from 'react';
-import { AppLayoutProps, BorderSide, Column, ColumnDecorator, LayoutList, LayoutListDirection, Row } from '../../../components';
+import { AppLayoutProps, Column, Screen, Row } from '../../../components';
 import { Area, isAreaVisible, RoutingArea } from '../../../routing';
+import { Direction } from '../../API';
 
-const AppLayout: React.FunctionComponent<AppLayoutProps> = ({ ...rest }) => {
-
+const AppLayout: React.FunctionComponent<AppLayoutProps> = (props) => {
     const {
         location,
-    } = rest;
+    } = props;
     return (
-        <LayoutList fullScreen={true} direction={LayoutListDirection.VERTICAL}>
-            {isAreaVisible(RoutingArea.HEADING, location.pathname) && <Row>
-                <ColumnDecorator borderPosition={[BorderSide.BOTTOM]}>
-                    <Area area={RoutingArea.HEADING} {...rest}/>
-                </ColumnDecorator>
+        <Screen fullScreen={true} direction={Direction.VERTICAL}>
+            {isAreaVisible(RoutingArea.TOP, location.pathname) && <Row>
+                <Area area={RoutingArea.TOP} {...props}/>
             </Row>}
-            {isAreaVisible(RoutingArea.SUBHEADING, location.pathname) && <Row>
-                <ColumnDecorator borderPosition={[BorderSide.BOTTOM]}>
-                    <Area area={RoutingArea.SUBHEADING} {...rest}/>
-                </ColumnDecorator>
+            {isAreaVisible(RoutingArea.MENU, location.pathname) && <Row>
+                <Area area={RoutingArea.MENU} {...props}/>
             </Row>}
             <Row greedy={true} asGrid={true}>
-                {isAreaVisible(RoutingArea.LEFT, location.pathname) &&
+                {isAreaVisible(RoutingArea.BODY_LEFT, location.pathname) &&
                 <Column>
-                    <ColumnDecorator borderPosition={[BorderSide.RIGHT]}>
-                        <Area area={RoutingArea.LEFT} {...rest}/>
-                    </ColumnDecorator>
+                    <Area area={RoutingArea.BODY_LEFT} {...props}/>
                 </Column>}
                 <Column greedy={true}>
-                    <ColumnDecorator>
-                        <Area area={RoutingArea.MAIN}/>
-                    </ColumnDecorator>
+                    <Area area={RoutingArea.BODY_MAIN}/>
                 </Column>
-                {isAreaVisible(RoutingArea.RIGHT, location.pathname) && <Column>
-                    <ColumnDecorator borderPosition={[BorderSide.LEFT]}>
-                        <Area area={RoutingArea.LEFT} {...rest}/>
-                    </ColumnDecorator>
+                {isAreaVisible(RoutingArea.BODY_RIGHT, location.pathname) && <Column>
+                    <Area area={RoutingArea.BODY_RIGHT} {...props}/>
                 </Column>}
             </Row>
-            {isAreaVisible(RoutingArea.FOOTER, location.pathname) && <Row>
-                <ColumnDecorator borderPosition={[BorderSide.TOP]}>
-                    <Area area={RoutingArea.FOOTER} {...rest}/>
-                </ColumnDecorator>
+            {isAreaVisible(RoutingArea.BOTTOM, location.pathname) && <Row>
+                <Area area={RoutingArea.BOTTOM} {...props}/>
             </Row>}
-        </LayoutList>
+        </Screen>
     );
 };
 

@@ -31,7 +31,6 @@ const Box = styled(Div)`
         box-sizing: border-box;
     }
     ${({ greedy }) => greedy && css`
-        flex-flow: column;
         flex-wrap: nowrap;
         flex: 1 auto;
     `};
