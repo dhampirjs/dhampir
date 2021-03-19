@@ -4,7 +4,7 @@ import { RouteProps } from 'react-router';
 import { ConnectedRouter } from 'connected-react-router';
 import { getRootRoutes } from '../../hooks';
 import { NOT_FOUND_PATH } from '../../constants';
-import { history } from '../../../routing';
+import { history } from '../../history';
 
 export const RootArea: FunctionComponent = () => {
     const routes = getRootRoutes();
