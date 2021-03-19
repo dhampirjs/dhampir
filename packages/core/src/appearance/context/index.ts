@@ -1,2 +1,2 @@
-export * from './ThemeContext';
-export * from './ThemeExtensionContext';
+export * from './SkinContext';
+export * from './SkinExtensionContext';
