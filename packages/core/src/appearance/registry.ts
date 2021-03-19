@@ -1,4 +1,5 @@
-import { colors } from './themes/default';
+import { colors as colorsDefault } from './themes/default';
+import { colors as colorsCustom } from './themes/custom';
 import { THEME_DEFAULT_ID, ThemeRegistry } from './API';
 
 export const registry: ThemeRegistry = {
@@ -7,7 +8,13 @@ export const registry: ThemeRegistry = {
         [THEME_DEFAULT_ID]: {
             title: 'Default',
             default: true,
-            colors
+            colors: colorsDefault
+        },
+        ['custom']: {
+            title: 'Custom',
+            default: true,
+            colors: colorsCustom
         }
+
     }
 };
