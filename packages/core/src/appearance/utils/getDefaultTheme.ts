@@ -1,13 +1,13 @@
-import { Theme, THEME_DEFAULT_ID } from '../API';
+import { Theme } from '../API';
 import { registry } from '../registry';
 
 export const getDefaultTheme: () => Theme = () => {
     const defaultId = registry.default;
 
-    const theme = registry.themes[defaultId] || registry[THEME_DEFAULT_ID];
+    const theme = registry.themes[defaultId];
 
     if(!theme) {
-        throw Error('No default theme! Please register at least one theme');
+        throw Error(`There is no theme with id '${defaultId}'! Please register it.`);
     }
 
     return theme;
