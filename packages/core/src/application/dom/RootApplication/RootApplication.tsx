@@ -1,29 +1,25 @@
-import React, { FunctionComponent, useEffect, useState } from 'react';
+import React, { FunctionComponent } from 'react';
 import { RootApplicationProps } from './API';
-import { useExtensionContext, useStorageConnector } from '../../../hooks';
+import { useExtensionContext } from '../../../hooks';
 import { RootArea } from '../../../routing';
-import { ThemeProvider } from 'styled-components';
-import { useDefaultTheme } from '../../../appearance/hooks/useDefaultTheme';
+import { ExtensionContext } from '../../../extensions';
+import { ThemeConnector, StorageConnector, SkinConnector } from '../../../appearance/dom';
+import { StorageType } from '../../../storage';
 
-export const RootApplication: FunctionComponent<RootApplicationProps> = ({ storageType }) => {
+export const RootApplication: FunctionComponent<RootApplicationProps> = ({ storageType = StorageType.REDUX }) => {
     const {
-        Connector,
-        props,
-    } = useStorageConnector(storageType!, {})!;
+        Provider: ExtensionProvider
+    } = ExtensionContext;
 
-    const defaultTheme = useDefaultTheme();
+    const extensionContext = useExtensionContext();
 
-    const {
-        context,
-        Provider: ExtensionProvider,
-    } = useExtensionContext();
-
-
-    return <ExtensionProvider value={context}>
-        <ThemeProvider theme={defaultTheme}>
-            <Connector {...props}>
-                <RootArea/>
-            </Connector>
-        </ThemeProvider>
+    return <ExtensionProvider value={extensionContext}>
+        <StorageConnector storageType={storageType}>
+            <SkinConnector>
+                <ThemeConnector>
+                    <RootArea/>
+                </ThemeConnector>
+            </SkinConnector>
+        </StorageConnector>
     </ExtensionProvider>
 };
