@@ -1,22 +1,22 @@
-import { useState, useEffect, useMemo, useContext } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Theme, THEME_DEFAULT_ID } from '../API';
-import { ThemeExtensionContext, ThemeExtensionContextValue } from '../context';
-import { getThemeById } from '../utils/getThemeById';
-import { getDefaultTheme } from '../utils/getDefaultTheme';
+import { getThemeById } from '../utils';
+import { SkinContext, SkinContextValue } from '../context';
 
 export const useDefaultTheme: () => Theme = () => {
-    const [theme, setTheme] = useState<Theme>(getDefaultTheme());
+    const { defaultThemeId } = useContext<SkinContextValue>(SkinContext)
 
-    const { changeCount } = useContext<ThemeExtensionContextValue>(ThemeExtensionContext);
+    const [theme, setTheme] = useState<Theme>(getThemeById(defaultThemeId));
 
     useEffect(() => {
-        const themeFromRegistry = getDefaultTheme();
-
+        //TODO: move logic to utility function
+        const currentTheme = getThemeById(defaultThemeId);
         const defaultTheme = getThemeById(THEME_DEFAULT_ID);
+
         // Falling back to general theme colors if some of the latter is missing
-        themeFromRegistry.colors = Object.assign({}, defaultTheme.colors, theme.colors);
-        setTheme(themeFromRegistry);
-    }, [changeCount]);
+        currentTheme.colors = Object.assign({}, defaultTheme.colors, currentTheme.colors);
+        setTheme(currentTheme);
+    }, [defaultThemeId]);
 
     return theme;
 }
