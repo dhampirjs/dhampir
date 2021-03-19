@@ -14,14 +14,14 @@ const calculateFill: (props: DecoratorProps) => string = (
         theme = undefined,
     }
 ) => {
-    return fill && (fillColor || theme?.colors?.[ColorScope.CONTAINER]?.[ColorScopeContainer.FILL_REGULAR]) || 'none';
+    return fill && (fillColor || theme?.colors?.[ColorScope.CONTAINER]?.[ColorScopeContainer.FILL_REGULAR]) || 'unset';
 };
 
 const calculateBorderColor: (props: DecoratorProps) => string = ({
     theme,
     borderColor,
 }) => {
-    return borderColor || theme?.colors?.[ColorScope.CONTAINER]?.[ColorScopeContainer.BORDER] || 'none'
+    return borderColor || theme?.colors?.[ColorScope.CONTAINER]?.[ColorScopeContainer.BORDER] || 'unset'
 };
 const calculateBorder: (props: DecoratorProps) => string = (
     {
