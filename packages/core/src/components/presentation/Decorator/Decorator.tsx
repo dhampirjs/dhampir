@@ -27,8 +27,12 @@ const calculateBorder: (props: DecoratorProps) => string = (
     {
         borderPosition = [],
         borderWidth = 0,
+        borderColor,
         units = 'px',
     }) => {
+    if (borderColor && !borderWidth) {
+        borderWidth = 1;
+    }
 
     if (borderPosition.includes(BorderSide.ALL_OVER)) {
         return `${borderWidth}${units}`;
@@ -47,6 +51,7 @@ const Decorator = styled(
     forwardRef<HTMLDivElement, DecoratorProps & React.HTMLAttributes<HTMLDivElement>>((
         {
             borderPosition,
+            borderColor,
             borderWidth,
             units,
             fillColor,
@@ -55,6 +60,7 @@ const Decorator = styled(
         }, ref) => {
         return <Box {...rest} ref={ref}/>
     }))`
+    position: relative;
     display: flex;
     flex: 1 1 auto;
     background-color: ${calculateFill};
