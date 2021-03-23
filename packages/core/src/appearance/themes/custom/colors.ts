@@ -10,7 +10,7 @@ import {
 } from '../../API';
 
 const {
-    GRAY, LIGHT_GRAY, RED_MUNSELL, CG_BLUE, INDIGO_DYE, MANTIS, BRIGHT_YELLOW_CRYOLA, BABY_POWDER, COBALT_BLUE, PRUSSIAN_BLUE, TEA_GREEN, GUN_METAL
+    POWDER_BLUE, MIDDLE_BLUE, GRAY, LIGHT_GRAY, RED_MUNSELL, CG_BLUE, INDIGO_DYE, MANTIS, BRIGHT_YELLOW_CRYOLA, BABY_POWDER, AIR_BLUE, PRUSSIAN_BLUE, TEA_GREEN, GUN_METAL
 } = PALETTE;
 
 export const colors: ColorScheme = {
@@ -20,8 +20,8 @@ export const colors: ColorScheme = {
     [ColorScope.TYPOGRAPHY]: {
         [ColorScopeTypography.TEXT_REGULAR]: GRAY,
         [ColorScopeTypography.TEXT_CONTRAST]: BABY_POWDER,
-        [ColorScopeTypography.LINK]: CG_BLUE,
-        [ColorScopeTypography.LINK_HOVER]: COBALT_BLUE,
+        [ColorScopeTypography.LINK]: POWDER_BLUE,
+        [ColorScopeTypography.LINK_HOVER]: PRUSSIAN_BLUE,
         [ColorScopeTypography.HEADING]: PRUSSIAN_BLUE,
     },
     [ColorScope.CONTAINER]: {
@@ -32,7 +32,7 @@ export const colors: ColorScheme = {
     [ColorScope.ACTIONS]: {
         [ColorScopeActions.ACTION]: MANTIS,
         [ColorScopeActions.DANGER]: RED_MUNSELL,
-        [ColorScopeActions.COMMON]: CG_BLUE,
+        [ColorScopeActions.COMMON]: MIDDLE_BLUE,
     },
     [ColorScope.MESSAGES]: {
         [ColorScopeMessages.WARNING]: BRIGHT_YELLOW_CRYOLA,
