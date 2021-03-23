@@ -1,11 +1,13 @@
-import React, { FunctionComponent, HTMLAttributes } from 'react';
+import React, { forwardRef } from 'react';
 
-import styles from './styles.less';
+import styled, { css } from 'styled-components';
+import { Box } from '../Box';
 export interface LabelProps {}
 
-export const Label: FunctionComponent<LabelProps & HTMLAttributes<HTMLSpanElement>> = ({ children }) => {
-    const {
-        label,
-    } = styles;
-    return <span className={label}>{children}</span>
-};
+export const Label = styled(
+    forwardRef<HTMLDivElement, LabelProps & React.HTMLAttributes<HTMLDivElement>>(({ ...other }, ref) => {
+        return <Box {...other} ref={ref}/>;
+    })
+)`
+    display: flex;
+`;

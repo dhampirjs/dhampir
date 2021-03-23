@@ -9,6 +9,7 @@ const Screen = styled(
     forwardRef<HTMLDivElement, ScreenProps & React.HTMLAttributes<HTMLDivElement>>(
         ({
              fullScreen,
+            direction,
              ...other
          }, ref: Ref<HTMLDivElement>) => {
             return <Box {...other} ref={ref}/>

@@ -6,5 +6,4 @@ export interface SpacerProps extends BoxProps {
     size?: number;
     space?: number;
     units?: Units;
-    justifyContent?: string;
 }

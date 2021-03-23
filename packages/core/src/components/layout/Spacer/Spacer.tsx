@@ -11,12 +11,6 @@ const defaults: Partial<SpacerProps> = {
     direction: Direction.HORIZONTAL
 }
 
-const createJustifyContent: (alignment?: string) => FlattenSimpleInterpolation = (alignment= 'normal') => {
-    return css`
-        justify-content: ${alignment};
-    `;
-};
-
 const createSize: (size?: number, units?: Units) => string = (size, units = defaults.units!) => {
     return size ? `${size}${units}` : 'auto';
 };
@@ -27,13 +21,11 @@ const Spacer = styled(forwardRef<HTMLDivElement, SpacerProps & React.HTMLAttribu
         units,
         direction,
         space,
-        justifyContent,
         ...rest
     }, ref) => {
     return <Box {...rest} ref={ref}/>
 }))`
     display: flex;
-    ${({justifyContent}) => createJustifyContent(justifyContent)}
     padding: ${({ units, space }) => createSize(space, units)};
     ${({
            size,
