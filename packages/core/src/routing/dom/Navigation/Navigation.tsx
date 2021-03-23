@@ -1,12 +1,9 @@
-import { NavLink } from 'react-router-dom';
 import React, { useContext } from 'react';
 import { RouteProps } from 'react-router';
-
-import cx from 'classnames';
-
-import styles from './styles.less';
 import { Label, NavigationContext } from '../../../components';
 import { NavigationNode } from '../../factory';
+import styled, { css } from 'styled-components';
+import { Link } from '../Link';
 
 export interface NavigationDataItem {
     to: string;
@@ -19,36 +16,54 @@ export interface NavigationProps extends RouteProps {
     onClick?: (data: NavigationNode, event: React.SyntheticEvent<HTMLLIElement>) => void
 }
 
-export const Navigation: React.FunctionComponent<NavigationProps> = ({
-                                                                         inline = true,
-                                                                         onClick,
-                                                                     }) => {
+export const NavigationItem = styled.li`
+    list-style: none;
+
+    ${Link} {
+        padding: 0.5em 0.75em;
+        text-decoration: none;
+    }
+`;
+
+const NavigationBusiness: React.FunctionComponent<NavigationProps & React.HTMLAttributes<HTMLUListElement>> = (
+    {
+        inline = true,
+        onClick,
+        className,
+    }
+) => {
 
     const { nodes = [] } = useContext(NavigationContext);
     const onClickHandler: (data: NavigationNode) => (event: React.SyntheticEvent<HTMLLIElement>) => void = React.useCallback((item) => {
-        return (event) => onClick && onClick(item, event);
+        return (event) => onClick?.(item, event);
     }, [onClick]);
-    const {
-        navigation,
-        horizontal,
-        item,
-    } = styles;
 
-    const className = cx({
-        [navigation]: true,
-        [horizontal]: inline,
-    });
     return <ul className={className}>
         {nodes.map((data) => {
             const { path, label } = data;
             let calculatedPath = Array.isArray(path) ? path[0] : path;
 
-            return <li
-                className={item}
+            return <NavigationItem
                 key={`${path}_${label}`}
                 onClick={onClickHandler(data)}>
-                <NavLink activeClassName={styles.active} className={styles.link} to={calculatedPath}><Label>{label}</Label></NavLink>
-            </li>;
+                <Link activeClassName={'active'} to={calculatedPath}><Label>{label}</Label></Link>
+            </NavigationItem>
         })}
     </ul>;
 };
+
+export const Navigation = styled(NavigationBusiness)`
+    padding: 0;
+    margin: 0;
+    font-size: 0.75em;
+
+    ${({ inline }) => css`
+        display: flex;
+        flex: 1 1 auto;
+        flex-flow: row;
+    `}
+    ${NavigationItem} {
+        display: flex;
+    }
+`;
+
