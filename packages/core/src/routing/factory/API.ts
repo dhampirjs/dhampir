@@ -6,14 +6,14 @@ export enum RoutingArea {
     TOP_CENTER  = 'top_center',
     TOP_RIGHT   = 'top_right',
 
-    MENU = 'menu',
-    MENU_LEFT = 'menu_left',
+    MENU        = 'menu',
+    MENU_LEFT   = 'menu_left',
     MENU_CENTER = 'menu_center',
-    MENU_RIGHT = 'menu_right',
+    MENU_RIGHT  = 'menu_right',
 
     BODY        = 'body',
     BODY_LEFT   = 'body_left',
-    BODY_MAIN   = 'body_center',
+    BODY_MAIN   = 'body_main',
     BODY_RIGHT  = 'body_right',
 
     BOTTOM          = 'bottom',
