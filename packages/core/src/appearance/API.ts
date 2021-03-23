@@ -22,6 +22,7 @@ export interface PresentationComponentProps {
 export type ThemeRegistryEntry = Theme;
 
 export interface Theme {
+    id: string,
     title: string,
     default: boolean;
     colors: ColorScheme;

@@ -6,13 +6,15 @@ export const registry: ThemeRegistry = {
     default: THEME_DEFAULT_ID,
     themes: {
         [THEME_DEFAULT_ID]: {
+            id: THEME_DEFAULT_ID,
             title: 'Default',
             default: true,
             colors: colorsDefault
         },
-        ['custom']: {
+        ['customTheme']: {
+            id: 'customTheme',
             title: 'Custom',
-            default: true,
+            default: false,
             colors: colorsCustom
         }
 
