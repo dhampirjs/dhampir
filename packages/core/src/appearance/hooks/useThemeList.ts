@@ -1,14 +1,15 @@
 import { useState, useEffect, useContext } from 'react';
 import { SkinExtensionContext, SkinExtensionContextValue } from '../context';
-import { getThemeIdList } from '../utils';
+import { getThemeList } from '../utils';
+import { ThemeRegistryEntry } from '../API';
 
-export const useThemeIdList: () => string[] = () => {
-    const [themeIds, setThemeIds] = useState<string[]>([]);
+export const useThemeList: () => ThemeRegistryEntry[] = () => {
+    const [themeIds, setThemeIds] = useState<ThemeRegistryEntry[]>([]);
 
     const { version } = useContext<SkinExtensionContextValue>(SkinExtensionContext);
 
     useEffect(() => {
-        setThemeIds(getThemeIdList());
+        setThemeIds(getThemeList());
     }, [version]);
 
     return themeIds;
