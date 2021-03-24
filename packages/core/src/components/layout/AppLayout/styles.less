@@ -1,0 +1,29 @@
+.flex-box {
+    display: flex;
+}
+.full-page {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+.row {
+    display: flex;
+    flex: 1 auto;
+    flex-flow: row nowrap;
+    .column {
+        flex: 1 auto;
+        flex-flow: column;
+        align-items: stretch;
+        &.left {
+            position: relative;
+        }
+        &.main {
+            flex-grow: 3;
+        }
+        &.right {
+            position: relative;
+        }
+    }
+}

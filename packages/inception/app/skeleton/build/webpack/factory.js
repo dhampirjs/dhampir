@@ -1,5 +1,4 @@
 import merge from "webpack-merge";
-import path from "path";
 import BUILD_MODES from "../common/constants";
 import webpack from "webpack";
 
@@ -45,7 +44,7 @@ export default function webpackConfigFactory(options) {
             vendors: [
                 "@babel/polyfill",
                 "react",
-                "react-dom"
+                "react-dom",
             ]
         },
         output: {
@@ -56,14 +55,12 @@ export default function webpackConfigFactory(options) {
             modules: [
                 projectDir,
                 source,
-                path.resolve(projectDir, "node_modules")
+                "node_modules",
             ],
-            // Add '.ts' and '.tsx' as resolvable extensions.
-            extensions: [".webpack.js", ".web.js", ".ts", ".tsx", ".js", ".jsx", ".css", ".less", ".dev.js"]
+            extensions: [".webpack.js", ".web.js", ".ts", ".tsx", ".js", ".jsx", ".css", ".less", ".dev.js"],
         },
         module: {
             rules: [
-                // All files with a '.ts' or '.tsx' extension will be handled by 'ts-loader'.
                 {
                     test: /\.(tsx|ts)$/,
                     use: [
@@ -83,7 +80,6 @@ export default function webpackConfigFactory(options) {
                 {
                     test: /\.less$/,
                     use: [
-                        // MiniCssExtractPlugin.loader,
                         {
                             loader: "style-loader"
                         },

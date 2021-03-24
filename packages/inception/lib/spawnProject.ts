@@ -9,7 +9,7 @@ export interface YarnProps {
     add?: boolean
 }
 
-export interface BangOptions {
+export interface SpawnProperties {
     profile: PROFILE,
     targetFolder: fs.PathLike,
     installDependencies: boolean,
@@ -17,16 +17,16 @@ export interface BangOptions {
     yarn?: YarnProps,
 }
 
-export const DEFAULT_BANG_OPTIONS: BangOptions = {
+export const DEFAULT_SPAWN_PROPERTIES: SpawnProperties = {
     profile: DEFAULT_PROFILE,
     installDependencies: false,
     targetFolder: '',
     yarn: {
         useYarn: true,
     },
-}
+};
 
-export function bang(options: BangOptions) {
+export function spawnProject(options: SpawnProperties) {
     const {
         projectName,
         profile,
@@ -36,11 +36,11 @@ export function bang(options: BangOptions) {
     } = options;
 
     if (!PROFILES.includes(profile)) {
-        throw new Error(`there is no such profile! Available profiles are "${PROFILES.join(", ")}".`);
+        throw new Error(chalk.red(`There is no such profile! Available profiles are "${PROFILES.join(", ")}".`));
     }
 
     if (fs.existsSync(targetFolder)) {
-        throw new Error(chalk.red(`directory with name "${chalk.white(projectName)}" exists in the target folder. Please, choose another name.`));
+        throw new Error(chalk.red(`Directory with name "${chalk.white(projectName)}" exists in the target folder. Please, choose another name.`));
     }
 
     try {
@@ -57,8 +57,8 @@ export function bang(options: BangOptions) {
         profile
     });
 
+
     if (installDependencies) {
         descriptor.installDependencies();
     }
-
 };

@@ -1,5 +1,5 @@
 {
-    "name": "@pulsar/ads",
+    "name": "dhampir",
     "description": "WEB Application Development System (ADS)",
     "workspaces": [
         "packages/cli",
@@ -7,19 +7,18 @@
     ],
     "repository": {
         "type": "git",
-        "url": "https://github.com/mborysenko/pulsar.git"
+        "url": "https://github.com/mborysenko/dhampir.git"
     },
     "contributors": [
         {
             "email": "borysenko.maksym@gmail.com",
             "name": "Maksym Borysenko",
-            "url": "http://mborysenko.github.io/"
+            "url": "https://dhampir.dev/"
         }
     ],
     "private": true,
-    "version": "0.0.1",
+    "version": "1.0.0",
     "author": "Maksym Borysenko",
-    "dependencies": {
-    },
+    "dependencies": {},
     "devDependencies": {}
 }
