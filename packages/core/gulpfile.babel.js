@@ -3,6 +3,7 @@ import gulp from 'gulp';
 import clean from 'gulp-clean';
 
 import jest from './build/gulp-tasks/jest';
+import eslint from './build/gulp-tasks/eslint';
 import { configuration } from './configuration';
 import library from './build/gulp-tasks/library';
 import progress from './build/gulp-tasks/progress';
@@ -41,7 +42,14 @@ gulp.task('test', (cb) => {
     jest(configuration)(cb);
 });
 
-gulp.task('dist', gulp.series('clean', 'library', 'copy', (cb) => cb()));
+gulp.task('eslint', (cb) => {
+    eslint(configuration)(cb);
+});
+gulp.task('eslint:fix', (cb) => {
+    eslint(configuration, true)(cb);
+});
+
+gulp.task('dist', gulp.series('clean', 'eslint', 'library', 'copy', (cb) => cb()));
 gulp.task('build:watch', gulp.series('clean', 'copy:es6', 'progress', (cb) => cb()));
 
 gulp.task('default', gulp.series('dist', (cb) => cb()));

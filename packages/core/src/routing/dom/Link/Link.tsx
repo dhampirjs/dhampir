@@ -4,7 +4,7 @@ import * as React from 'react';
 import { ColorScope, ColorScopeActions, ColorScopeTypography } from '../../../appearance';
 
 
-const createColor = (active:boolean = false) => (
+const createColor = (active = false) => (
     {
         theme
     }

@@ -9,7 +9,7 @@ export interface ColorMap {
 }
 
 export interface ThemeRegistry {
-    default: string;
+    defaultTheme: string;
     themes: {
         [themeName: string]: ThemeRegistryEntry
     };

@@ -1,6 +1,6 @@
 import { EnhancedRootRoute } from './API';
 
-let routingRegistry: EnhancedRootRoute[] = [];
+const routingRegistry: EnhancedRootRoute[] = [];
 
 export {
     routingRegistry,

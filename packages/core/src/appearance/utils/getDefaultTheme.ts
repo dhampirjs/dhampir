@@ -2,7 +2,7 @@ import { Theme } from '../API';
 import { registry } from '../registry';
 
 export const getDefaultTheme: () => Theme = () => {
-    const defaultId = registry.default;
+    const defaultId = registry.defaultTheme;
 
     const theme = registry.themes[defaultId];
 

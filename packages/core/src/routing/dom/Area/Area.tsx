@@ -19,7 +19,7 @@ const Area: React.FunctionComponent<AreaProps<RoutingArea> & RouteProps> = ({ ar
         throw new Error(`"location" property is undefined. Most probably you don't use React Router.`);
     }
 
-    const routes: EnhancedAreaRoute[] = useRoutesForArea(area, location?.pathname!);
+    const routes: EnhancedAreaRoute[] = useRoutesForArea(area, location?.pathname);
     return <Switch>
         {routes.map(({
                          path,
@@ -40,7 +40,7 @@ const Area: React.FunctionComponent<AreaProps<RoutingArea> & RouteProps> = ({ ar
             };
 
             const key = Array.isArray(path) ? path.join('_') : path
-            return <Route {...{ key, path, exact, ...props }} />
+            return <Route key={key} {...{ path, exact, ...props }} />
         })}
     </Switch>;
 };
