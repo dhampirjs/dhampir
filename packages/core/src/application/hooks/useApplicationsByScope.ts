@@ -1,15 +1,15 @@
 import { useContext, useEffect, useState } from 'react';
 import { ExtensionContext } from '../../extensions/context';
-import { ApplicationRegistry, applicationRegistry, ApplicationScope } from '../';
+import { ApplicationRegistry, applicationRegistry, ApplicationScope, RootApplicationProps } from '../';
 
-const getScopeApps = (scope: ApplicationScope): ApplicationRegistry<any> => {
+const getScopeApps = <P = RootApplicationProps>(scope: ApplicationScope): ApplicationRegistry<P> => {
     const ids = Object
         .keys(applicationRegistry)
         .filter(appId => applicationRegistry[appId]?.scope === scope)
 
     const appList = {};
 
-    ids.reduce<ApplicationRegistry<any>>((acc, appId) => {
+    ids.reduce<ApplicationRegistry<P>>((acc, appId) => {
         acc[appId] = applicationRegistry[appId];
         return acc;
     }, appList);
@@ -17,12 +17,12 @@ const getScopeApps = (scope: ApplicationScope): ApplicationRegistry<any> => {
     return appList || {};
 };
 
-export const useApplicationsByScope: (scope?: ApplicationScope) => ApplicationRegistry<any> = (scope = ApplicationScope.MULTIPLE) => {
+export const useApplicationsByScope: <P = RootApplicationProps>(scope?: ApplicationScope) => ApplicationRegistry<P> = <P>(scope = ApplicationScope.MULTIPLE) => {
     const { version } = useContext(ExtensionContext);
-    const [applications, setApplications] = useState(getScopeApps(scope));
+    const [applications, setApplications] = useState(getScopeApps<P>(scope));
 
     useEffect(() => {
-        setApplications(getScopeApps(scope));
+        setApplications(getScopeApps<P>(scope));
     }, [version, scope]);
 
     return applications;

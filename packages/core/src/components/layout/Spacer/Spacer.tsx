@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { forwardRef } from 'react';
 import { SpacerProps } from './API';
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { Box } from '../Box';
 import { Direction, Units } from '../../API';
@@ -11,7 +11,7 @@ const defaults: Partial<SpacerProps> = {
     direction: Direction.HORIZONTAL
 }
 
-const createSize: (size?: number, units?: Units) => string = (size, units = defaults.units!) => {
+const createSize: (size?: number, units?: Units) => string = (size, units = defaults.units) => {
     return size ? `${size}${units}` : 'auto';
 };
 

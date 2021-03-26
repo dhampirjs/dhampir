@@ -1,6 +1,4 @@
 import React, { FunctionComponent } from 'react';
-import { useDefaultTheme } from '../../hooks';
-import { ThemeProvider } from 'styled-components';
 import { useStorageConnector } from '../../../hooks';
 import { StorageType } from '../../../storage';
 
@@ -13,7 +11,7 @@ export const StorageConnector: FunctionComponent<{ storageType: StorageType }> =
     const {
         Connector,
         props,
-    } = useStorageConnector(storageType!, {})!;
+    } = useStorageConnector(storageType, {});
 
     return <Connector {...props}>
         {children}

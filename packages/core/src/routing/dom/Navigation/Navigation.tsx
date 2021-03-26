@@ -41,7 +41,7 @@ const NavigationBusiness: React.FunctionComponent<NavigationProps & React.HTMLAt
     return <ul className={className}>
         {nodes.map((data) => {
             const { path, label } = data;
-            let calculatedPath = Array.isArray(path) ? path[0] : path;
+            const calculatedPath = Array.isArray(path) ? path[0] : path;
 
             return <NavigationItem
                 key={`${path}_${label}`}
@@ -57,7 +57,7 @@ export const Navigation = styled(NavigationBusiness)`
     margin: 0;
     font-size: 0.75em;
 
-    ${({ inline }) => css`
+    ${({ inline }) => inline && css`
         display: flex;
         flex: 1 1 auto;
         flex-flow: row;

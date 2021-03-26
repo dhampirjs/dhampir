@@ -5,7 +5,7 @@ import { useDataProvider } from '../../../../hooks';
 const ReduxConnector: FunctionComponent = ({ children }) => {
     const store = useDataProvider();
 
-    return (store ? <Provider store={store as any}>{children}</Provider> : null);
+    return (store ? <Provider store={store}>{children}</Provider> : null);
 }
 
 export {
