@@ -1,10 +1,9 @@
 import { SkinContextValue } from '../context';
 import { useCallback, useState } from 'react';
-import { setDefaultTheme } from '../utils';
-import { THEME_DEFAULT_ID } from '../API';
+import { getDefaultThemeId, setDefaultTheme } from '../utils';
 
 export const useSkinContext: () => SkinContextValue = () => {
-    const [defaultThemeId, setDefaultThemeId] = useState<string>(THEME_DEFAULT_ID)
+    const [defaultThemeId, setDefaultThemeId] = useState<string>(getDefaultThemeId())
     const setTheme = useCallback((themeId: string) => {
         setDefaultTheme(themeId);
         setDefaultThemeId(themeId);
