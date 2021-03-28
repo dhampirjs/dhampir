@@ -1,6 +1,6 @@
 import { RouteWithChildren, routingRegistry } from '../factory';
 
-const registerRootRouting = (routing: RouteWithChildren[] = []) => {
+const registerRootRouting = (routing: RouteWithChildren[] = []): void => {
     routing.forEach(rootRoute => {
         const { id: rootRouteId } = rootRoute;
 

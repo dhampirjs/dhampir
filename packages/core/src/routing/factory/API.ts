@@ -22,7 +22,7 @@ export enum RoutingArea {
     BOTTOM_RIGHT    = 'bottom_right',
 }
 
-export interface RouteNavigationOptions<NAV_PARAMS extends { [K in keyof NAV_PARAMS]?: string } = {}> {
+export interface RouteNavigationOptions<NAV_PARAMS extends { [K in keyof NAV_PARAMS]?: string | number | boolean } = Record<string, string | number | boolean>> {
     label?: string;
     params?: NAV_PARAMS;
 }
