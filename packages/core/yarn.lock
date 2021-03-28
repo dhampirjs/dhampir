@@ -1652,7 +1652,7 @@
   dependencies:
     "@types/yargs-parser" "*"
 
-"@typescript-eslint/eslint-plugin@^4.19.0":
+"@typescript-eslint/eslint-plugin@4.19.0":
   version "4.19.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/eslint-plugin/-/eslint-plugin-4.19.0.tgz#56f8da9ee118fe9763af34d6a526967234f6a7f0"
   integrity sha512-CRQNQ0mC2Pa7VLwKFbrGVTArfdVDdefS+gTw0oC98vSI98IX5A8EVH4BzJ2FOB0YlCmm8Im36Elad/Jgtvveaw==
@@ -1704,7 +1704,7 @@
     eslint-scope "^5.0.0"
     eslint-utils "^2.0.0"
 
-"@typescript-eslint/parser@^4.19.0":
+"@typescript-eslint/parser@4.19.0":
   version "4.19.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/parser/-/parser-4.19.0.tgz#4ae77513b39f164f1751f21f348d2e6cb2d11128"
   integrity sha512-/uabZjo2ZZhm66rdAu21HA8nQebl3lAIDcybUoOxoI7VbZBYavLIwtOOmykKCJy+Xq6Vw6ugkiwn8Js7D6wieA==

@@ -1,10 +1,10 @@
 import { takeLast } from 'ramda';
-import { RoutingArea, useRoutesForArea } from '../../../routing';
+import { useRoutesForArea } from '../../hooks';
 
-export const isAreaVisible = (area: RoutingArea, currentPath: string): boolean => {
+export const isAreaVisible = <T extends string>(area: T, currentPath: string): boolean => {
     const takeLastOf = takeLast(1);
     const parts = currentPath.split('/');
-    const routes = useRoutesForArea(area, currentPath);
+    const routes = useRoutesForArea<T>(area, currentPath);
     const fr = routes.filter(({ path, exact }) => {
         let toFilterOut = false;
 
@@ -37,9 +37,5 @@ export const isAreaVisible = (area: RoutingArea, currentPath: string): boolean =
         return toFilterOut;
     });
 
-    if (fr.length === 0) {
-        return false;
-    }
-
-    return true;
+    return fr.length !== 0;
 }

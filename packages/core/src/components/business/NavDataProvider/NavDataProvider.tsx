@@ -23,7 +23,6 @@ export const NavDataProvider: React.FunctionComponent<NavDataProvideProps> = (
         isRoot = false,
     }
 ) => {
-
     const nodes = isRoot ? useRootNavigation(expand) : useNavigation(match?.path, expand);
 
     return <NavigationContext.Provider value={{ nodes }}>

@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { useContext, useMemo } from "react";
-import { ExtensionContext } from '../../extensions/context';
-import { EnhancedAreaRoute, getDescendantRoutes } from '../../routing';
+import { ExtensionContext } from '../../extensions';
+import { RouteWithChildren, getDescendantRoutes } from '../../routing';
 
-const useRoutesForPath: (path: string | string[], expand: boolean) => EnhancedAreaRoute[] = (path, expand) => {
-    const [routes, setRoutes] = React.useState<EnhancedAreaRoute[]>([]);
+const useRoutesForPath: (path: string | string[], expand: boolean) => RouteWithChildren[] = (path, expand) => {
+    const [routes, setRoutes] = React.useState<RouteWithChildren[]>([]);
 
     const { version } = useContext(ExtensionContext);
 

@@ -17,7 +17,7 @@ export const useRootNavigation = (expand = false): NavigationNode[] => {
                     label: navigation?.label,
                     params: navigation?.params,
                     path: calculatedPath ? calculatedPath!.replace(RegExp(`\\${PATH_SEPARATOR}+`, 'gi'), PATH_SEPARATOR) : '',
-                });
+                } as NavigationNode);
             }
             return acc;
         }, nodeList);

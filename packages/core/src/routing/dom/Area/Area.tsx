@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Route, Redirect, Switch, RouteProps, useLocation } from 'react-router';
-import { EnhancedAreaRoute, RoutingArea } from '../../factory';
 import { useRoutesForArea } from '../../hooks';
 
 interface AreaProps<T> {
@@ -13,13 +12,13 @@ const renderRedirect = (from: string, to: string) => {
     </Route>;
 }
 
-const Area: React.FunctionComponent<AreaProps<RoutingArea> & RouteProps> = ({ area}) => {
+const Area: React.FunctionComponent<AreaProps<string> & RouteProps> = ({ area}) => {
     const location = useLocation();
     if (!location) {
         throw new Error(`"location" property is undefined. Most probably you don't use React Router.`);
     }
 
-    const routes: EnhancedAreaRoute[] = useRoutesForArea(area, location?.pathname);
+    const routes = useRoutesForArea(area, location?.pathname);
     return <Switch>
         {routes.map(({
                          path,

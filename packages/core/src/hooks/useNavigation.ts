@@ -16,7 +16,7 @@ export const useNavigation = (path: string | string[] = '', expand = false): Nav
                 label: navigation?.label,
                 path: [path, routePath!].join(PATH_SEPARATOR).replace(RegExp(`\\${PATH_SEPARATOR}+`, 'gi'), PATH_SEPARATOR),
                 params: navigation?.params,
-            }
+            } as NavigationNode;
         }));
     }, [version, setNodes, routes]);
 
