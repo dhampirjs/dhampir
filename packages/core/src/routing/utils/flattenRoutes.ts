@@ -1,14 +1,14 @@
-import { EnhancedAreaRoute, PATH_SEPARATOR, RouteWithChildren, RoutingArea } from '../../routing';
+import { PATH_SEPARATOR, RouteWithChildren } from '../../routing';
 
-const flattenRoutes = (
+const flattenRoutes = <AREA extends string>(
     routes: RouteWithChildren[] = [],
-    area: RoutingArea,
+    area: AREA,
     currentPath: string,
     rootRoute?: RouteWithChildren,
-): EnhancedAreaRoute[] => {
-    let result: EnhancedAreaRoute[] = [];
+): RouteWithChildren[] => {
+    let result: RouteWithChildren[] = [];
     routes.forEach(route => {
-        let childrenRoutes: EnhancedAreaRoute[] = [];
+        let childrenRoutes: RouteWithChildren[] = [];
         const sealed = Object.assign({}, route);
         const { rendering } = sealed;
         const firstPart = rootRoute?.path || '';

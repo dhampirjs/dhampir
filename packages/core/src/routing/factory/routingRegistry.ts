@@ -1,6 +1,6 @@
-import { EnhancedRootRoute } from './API';
+import { RouteWithChildren } from './API';
 
-const routingRegistry: EnhancedRootRoute[] = [];
+const routingRegistry: RouteWithChildren[] = [];
 
 export {
     routingRegistry,

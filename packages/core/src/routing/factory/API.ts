@@ -22,35 +22,27 @@ export enum RoutingArea {
     BOTTOM_RIGHT    = 'bottom_right',
 }
 
-export interface RouteNavigationOptions {
+export interface RouteNavigationOptions<NAV_PARAMS extends { [K in keyof NAV_PARAMS]?: string } = {}> {
     label?: string;
-    params?: any;
+    params?: NAV_PARAMS;
 }
 
 export interface NavigationNode extends RouteNavigationOptions {
     path: string | string[];
 }
 
-export interface RouteWithNavigation<OPTIONS> {
-    navigation?: OPTIONS;
+export interface RouteWithNavigation {
+    navigation?: RouteNavigationOptions;
     redirect?: string;
 }
 
-export interface AreaRouteRendering extends Pick<RouteProps, 'component' | 'render' | 'children' | 'exact'> {
-    area: RoutingArea;
+export interface AreaRouteRendering<AREA extends string = string> extends Pick<RouteProps, 'component' | 'render' | 'children' | 'exact'> {
+    area: AREA;
 }
 
-export interface RouteWithChildren extends RouteProps, RouteWithNavigation<RouteNavigationOptions> {
-    routes?: EnhancedAreaRoute[];
+export interface RouteWithChildren extends RouteProps, RouteWithNavigation {
+    id?: string;
+    routes?: RouteWithChildren[];
     rendering?: AreaRouteRendering[];
 }
 
-export interface EnhancedRouteWithId {
-    id: string;
-}
-
-export interface EnhancedRootRoute extends EnhancedRouteWithId, RouteWithChildren {
-}
-
-export interface EnhancedAreaRoute extends RouteWithChildren {
-}

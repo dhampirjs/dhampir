@@ -1,6 +1,6 @@
-import { EnhancedRootRoute, routingRegistry } from '../factory';
+import { RouteWithChildren, routingRegistry } from '../factory';
 
-const registerRootRouting: (routes: EnhancedRootRoute[]) => void = (routing = []) => {
+const registerRootRouting = (routing: RouteWithChildren[] = []) => {
     routing.forEach(rootRoute => {
         const { id: rootRouteId } = rootRoute;
 

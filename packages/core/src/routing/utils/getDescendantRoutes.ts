@@ -1,9 +1,9 @@
-import { EnhancedAreaRoute, getRootRoutes, PATH_SEPARATOR } from '../../routing';
+import { RouteWithChildren, getRootRoutes, PATH_SEPARATOR } from '../../routing';
 
 const getDescendantRoutes = (
     parentPath: string | string[],
     expand = false,
-): EnhancedAreaRoute[] => {
+): RouteWithChildren[] => {
     if (Array.isArray(parentPath)) {
         parentPath = parentPath[0]
     }
@@ -24,11 +24,11 @@ export const normalizePath = (path: string): string => {
     return `${PATH_SEPARATOR}${path}`.replace(RegExp(`\\${PATH_SEPARATOR}+`, 'gi'), PATH_SEPARATOR);
 }
 
-const createPathFinder = (path: string) => (route: EnhancedAreaRoute) => {
+const createPathFinder = (path: string) => (route: RouteWithChildren) => {
     return Array.isArray(route.path) ? route.path.includes(path) : normalizePath(route.path!) === path;
 }
 
-const retrieveRoutes = (routes: EnhancedAreaRoute[] = [], parts: string[] = [], prefix = ''): EnhancedAreaRoute[] => {
+const retrieveRoutes = (routes: RouteWithChildren[] = [], parts: string[] = [], prefix = ''): RouteWithChildren[] => {
     if(routes.length === 0) {
         return [];
     }
