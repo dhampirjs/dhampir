@@ -15,8 +15,17 @@ Introduces several new concept such as Root Routing, Descendant Routing, Routing
 **Area Rendering** is a part of the Routing Rule that contains identifier or name of the Area and function or component that Routing Feature will render to that Area.
 
 ## Extensibility
+
 In progress.
 
 ## Appearance
 
+This feature allows user registering custom Color Themes, develop custom components that use Color Theme, additional API to work with Themes.
+
 ## Storage
+
+Allows user to configure which data storage to use. Supports Redux and React Query.
+
+## Feature Toggling
+In progress.
+
