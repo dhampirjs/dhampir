@@ -1,6 +1,12 @@
 # Dhampir Core
 
-Javascript library that includes features needed for building Web applications. Such as Enhanced Routing, Extensibility, Appearance, Storage
+Javascript library that includes features needed for building Web applications. Such as:
+* Enhanced Routing
+* Extensibility
+* Appearance
+* Components Library
+* Storage
+* Feature Toggling
 
 ## Enhanced Routing Feature
 Introduces several new concept such as *Root Route*, *Descendant Route*, *Routing Area*, *Area Rendering*.
