@@ -11,7 +11,7 @@ Javascript library that includes features needed for building Web applications. 
 ## Enhanced Routing Feature
 Introduces several new concept such as *Root Route*, *Descendant Route*, *Routing Area*, *Area Rendering*.
 
-**Root Route** is a *Routing Rule* that describes top level of the route, literally route that is a first part of the `path`.
+**Root Route** is a *Routing Rule* that describes top level of the route, literally route that is a first part of the path.
 
 **Descendant Route** is a Routing Rule that is a child of Root Route or another *Descendant Route*. Path of the child route will be included in resulting route url.
 For example if *Root Route* path is `/store`, and it has Descendant Route path `/checkout` then resulting path is `/store/checkout`.
