@@ -1,4 +1,4 @@
-import React, { FunctionComponent, ReactNode, useCallback, useState } from 'react';
+import { FunctionComponent, ReactNode, useCallback, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { CSSTransition } from 'react-transition-group';
