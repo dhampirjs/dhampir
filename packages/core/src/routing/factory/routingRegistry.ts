@@ -1,6 +1,6 @@
 import { RouteWithChildren } from './API';
 
-const routingRegistry: RouteWithChildren[] = [];
+let routingRegistry: RouteWithChildren[] = [];
 
 export {
     routingRegistry,
