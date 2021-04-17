@@ -3,7 +3,7 @@ import { retrieveRoute } from './retrieveRoute';
 import { assoc } from 'ramda';
 import { updateRoute } from './updateRoute';
 
-export const extendRoute = (parts: string[], route: RouteWithChildren) => {
+export const extendRoute = (parts: string[], route: RouteWithChildren): void => {
     const parentRoute = retrieveRoute([...parts]);
 
     if (parentRoute) {
