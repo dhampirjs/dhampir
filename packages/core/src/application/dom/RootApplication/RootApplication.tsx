@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import { FunctionComponent } from 'react';
 import { RootApplicationProps } from './API';
 import { useExtensionContext } from '../../../hooks';
 import { RootArea } from '../../../routing';

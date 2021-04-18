@@ -1,4 +1,4 @@
-import React, { createContext } from 'react';
+import { createContext } from 'react';
 import { RouteChildrenProps } from 'react-router';
 
 import { useNavigation, useRootNavigation } from '../../../hooks';

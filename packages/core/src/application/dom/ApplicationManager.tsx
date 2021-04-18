@@ -1,4 +1,4 @@
-import React, { FunctionComponent, ReactElement, useCallback, useEffect, useState } from 'react';
+import { FunctionComponent, ReactElement, useCallback, useEffect, useState } from 'react';
 import {
     ApplicationScope,
     AppNavigation,

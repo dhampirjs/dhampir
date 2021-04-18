@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import { FunctionComponent } from 'react'
 import { QueryClient, QueryClientProvider } from 'react-query';
 
 export const ReactQueryConnector: FunctionComponent = ({ children }) => {

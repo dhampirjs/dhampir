@@ -1,4 +1,3 @@
-import React from 'react';
 import { RouteWithChildren, routingRegistry } from '../factory';
 
 const getRootRoutes: () => RouteWithChildren[] = () => {
