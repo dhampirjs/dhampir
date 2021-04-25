@@ -27,7 +27,10 @@ For example:
 
 1. When registering Root Route.
 
-```typescript
+```typescript jsx
+import { registerRootRouting, RoutingArea } from '@dhampir/core';
+import { Header, Body, Layout, MainMenu } from '@components/layout';
+
 registerRootRouting({
     id: 'manage',
     path: "/manage",
@@ -57,7 +60,10 @@ name `Routing.TOP_CENTER`.
 
 2. When registering Root Route, within Descendant Route.
 
-```typescript
+```typescript jsx
+import { registerRootRouting, RoutingArea } from '@dhampir/core';
+import { LeftBar, Nav, Page } from '@components/widgets';
+
 registerRootRouting({
     id: 'manage',
     path: "/manage",
@@ -92,6 +98,7 @@ name `Routing.BODY_MAIN`.
 3. When extending Descendant Route.
 
 ```typescript jsx
+import { extendRoute, RoutingArea } from '@dhampir/core';
 extendRoute(['/manage', '/products'], {
     path: '/list',
     rendering: [
@@ -114,13 +121,14 @@ extendRoute(['/manage', '/products'], {
 `Layout` component contains Rendering Areas represented with `Area` component. Implementation may be different.
 
 ```typescript jsx
-import * as React from 'react';
+import { FunctionComponent } from 'react';
+import { useLocation } from 'react-router';
+
 import { AppLayoutProps, Column, Screen, Row } from '../../../components';
 import { Area, isAreaVisible, RoutingArea } from '../../../routing';
 import { Direction } from '../../API';
-import { useLocation } from 'react-router';
 
-const Layout: React.FunctionComponent<AppLayoutProps> = () => {
+const Layout: FunctionComponent<AppLayoutProps> = () => {
     const location = useLocation();
     return (
         <Screen fullScreen={true} direction={Direction.VERTICAL}>
@@ -159,7 +167,7 @@ Routing Feature* will render to that Area.
 
 ## Extensibility
 
-In progress.
+At this moment extensibility is achieved by extending routes.
 
 ## Appearance
 
@@ -168,7 +176,7 @@ This feature allows user to do the following:
 * register custom *Color Themes*;
 * inject theme colors to individual component;
 * develop custom components that use *Color Theme*;
-* use additional API to work with *Themes*, use them, edit them, select between them;
+* use additional API to work with *Themes*, use them, edit them, switch between them;
 
 ## Components Library
 
@@ -183,4 +191,3 @@ Allows user to configure which data storage to use. *Dhampir Core* supports Redu
 
 In progress.
 
-## Getting Started
