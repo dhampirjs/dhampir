@@ -1,4 +1,4 @@
-import React, { createContext } from 'react';
+import { createContext } from 'react';
 import { RouteChildrenProps } from 'react-router';
 
 import { useNavigation, useRootNavigation } from '../../../hooks';
@@ -23,8 +23,7 @@ export const NavDataProvider: React.FunctionComponent<NavDataProvideProps> = (
         isRoot = false,
     }
 ) => {
-
-    const nodes = isRoot ? useRootNavigation(expand) : useNavigation(match?.path!, expand);
+    const nodes = isRoot ? useRootNavigation(expand) : useNavigation(match?.path, expand);
 
     return <NavigationContext.Provider value={{ nodes }}>
         {children}

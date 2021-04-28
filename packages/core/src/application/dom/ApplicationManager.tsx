@@ -1,10 +1,10 @@
-import React, { FunctionComponent, ReactElement, useCallback, useEffect, useState } from 'react';
+import { FunctionComponent, ReactElement, useCallback, useEffect, useState } from 'react';
 import {
     ApplicationScope,
     AppNavigation,
     AppNavigationItem,
     useApplicationsByScope,
-    useApplicationsById
+    useApplicationsById, RootApplicationProps
 } from '../index';
 
 export interface ApplicationManagerProps {
@@ -20,7 +20,7 @@ export const ApplicationManager: FunctionComponent<ApplicationManagerProps> = (
     const [navigation, setNavigation] = useState<{ [appId: string]: { name: string } }>({});
     const [currentAppId, setCurrentAppId] = useState<string>();
 
-    const currentApp = useApplicationsById(currentAppId!);
+    const currentApp = useApplicationsById<RootApplicationProps>(currentAppId);
 
     useEffect(() => {
         const result =
@@ -50,7 +50,7 @@ export const ApplicationManager: FunctionComponent<ApplicationManagerProps> = (
             })}
         </AppNavigation>}
         <>
-            {!!currentApp && <currentApp.Component {...currentApp.props} />}
+            {currentApp && <currentApp.Component {...currentApp.props} />}
         </>
     </>
 }

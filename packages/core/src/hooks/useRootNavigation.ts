@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from 'react';
-import { ExtensionContext } from '../extensions/context';
+import { ExtensionContext } from '../extensions';
 import { getRootRoutes, NavigationNode, PATH_SEPARATOR } from '../routing';
 
-export const useRootNavigation = (expand: boolean = false) => {
+export const useRootNavigation = (expand = false): NavigationNode[] => {
     const { version } = useContext(ExtensionContext);
     const [nodes, setNodes] = useState<NavigationNode[]>([]);
 
@@ -11,13 +11,13 @@ export const useRootNavigation = (expand: boolean = false) => {
     useEffect(() => {
         const nodeList = [];
         routes.reduce<NavigationNode[]>((acc, { path, navigation }) => {
-            if(!!navigation) {
+            if(navigation) {
                 const calculatedPath = Array.isArray(path) ? path[0] : path;
                 acc.push({
                     label: navigation?.label,
                     params: navigation?.params,
                     path: calculatedPath ? calculatedPath!.replace(RegExp(`\\${PATH_SEPARATOR}+`, 'gi'), PATH_SEPARATOR) : '',
-                });
+                } as NavigationNode);
             }
             return acc;
         }, nodeList);

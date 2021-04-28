@@ -14,7 +14,7 @@ const calculateFill: (props: DecoratorProps) => string = (
         theme = undefined,
     }
 ) => {
-    return fill && (fillColor || theme?.colors?.[ColorScope.CONTAINER]?.[ColorScopeContainer.FILL_REGULAR]) || 'unset';
+    return fill && (fillColor || theme?.colors?.[ColorScope.CONTAINER]?.[ColorScopeContainer.BG]) || 'unset';
 };
 
 const calculateBorderColor: (props: DecoratorProps) => string = ({

@@ -14,7 +14,7 @@ export default ({
         noImplicitAny: false,
         target: "es6",
         lib: ["ES2016", "es6", "dom"],
-        jsx: "react",
+        jsx: "react-jsx",
         moduleResolution: "node",
         typeRoots: [
             "node_modules/@types"

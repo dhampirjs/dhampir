@@ -2,11 +2,11 @@ import { StorageConnectorConfig } from '../hooks';
 import { StorageType } from './API';
 import { ReduxConnector } from './redux';
 import { ReactQueryConnector } from './react-query';
-export type ConnectorsRegistry = {
-    [connectorId: string]: StorageConnectorConfig
+export type ConnectorsRegistry<P> = {
+    [connectorId: string]: StorageConnectorConfig<P>
 };
 
-export const connectorsRegistry: ConnectorsRegistry = {
+export const connectorsRegistry: ConnectorsRegistry<any> = {
     [StorageType.REDUX]: {
         Connector: ReduxConnector,
         props: {},
@@ -27,7 +27,7 @@ export const registerConnector = <P, S extends string>(type: S, connector: Stora
     }
 };
 
-export const getConnector = <P, S extends string>(type: StorageType = StorageType.REDUX, props?: P): StorageConnectorConfig<P> => {
+export const getConnector = <P>(type: StorageType = StorageType.REDUX, props?: P): StorageConnectorConfig<P> => {
     const connector = connectorsRegistry[type];
 
     if (!connector) {

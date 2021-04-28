@@ -1,9 +1,9 @@
-import { EnhancedAreaRoute, getRootRoutes, PATH_SEPARATOR } from '../../routing';
+import { RouteWithChildren, getRootRoutes, PATH_SEPARATOR } from '../../routing';
 
 const getDescendantRoutes = (
     parentPath: string | string[],
-    expand: boolean = false,
-): EnhancedAreaRoute[] => {
+    expand = false,
+): RouteWithChildren[] => {
     if (Array.isArray(parentPath)) {
         parentPath = parentPath[0]
     }
@@ -16,7 +16,7 @@ const getDescendantRoutes = (
     return retrieveRoutes(getRootRoutes(), parts);
 };
 
-export const normalizePath = (path) => {
+export const normalizePath = (path: string): string => {
     if(!path) {
         return path;
     }
@@ -24,22 +24,20 @@ export const normalizePath = (path) => {
     return `${PATH_SEPARATOR}${path}`.replace(RegExp(`\\${PATH_SEPARATOR}+`, 'gi'), PATH_SEPARATOR);
 }
 
-const createPathFinder = (path: string) => (route: EnhancedAreaRoute) => {
-    return Array.isArray(route.path) ? route.path.includes(path) : normalizePath(route.path) === path;
+const createPathFinder = (path: string) => (route: RouteWithChildren) => {
+    return Array.isArray(route.path) ? route.path.includes(path) : normalizePath(route.path!) === path;
 }
 
-const retrieveRoutes = (routes: EnhancedAreaRoute[] = [], parts: string[] = [], prefix: string = ''): EnhancedAreaRoute[] => {
-    let result = [];
-
+const retrieveRoutes = (routes: RouteWithChildren[] = [], parts: string[] = [], prefix = ''): RouteWithChildren[] => {
     if(routes.length === 0) {
-        return result;
+        return [];
     }
 
     const head = parts.shift();
     const route = routes.find(createPathFinder(head!))
 
     if (route === undefined) {
-        return result;
+        return [];
     }
 
     if(parts.length === 0) {

@@ -8,4 +8,4 @@ export enum Units {
     EM = 'em',
     REM = 'rem',
     PERCENT = 'percent'
-};
+}

@@ -1,8 +1,8 @@
-import React from 'react';
+import { createContext } from 'react';
 export interface SkinExtensionContextValue {
     version: number,
 }
 
-export const SkinExtensionContext = React.createContext<SkinExtensionContextValue>({
+export const SkinExtensionContext = createContext<SkinExtensionContextValue>({
     version: 0,
 });

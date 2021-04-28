@@ -1,10 +1,10 @@
-import { storeRegistry, StoreRegistryEntry } from '../../storage/redux/store';
+import { storeRegistry, StoreRegistryEntry } from '../../storage';
 
-export const registerStore = (extensionId: string, entry: StoreRegistryEntry) => {
+export const registerStore = (extensionId: string, entry: StoreRegistryEntry): void => {
     if (!extensionId) {
         throw Error(`Extension ID cannot be empty.`);
     }
-    if (storeRegistry.hasOwnProperty(extensionId)) {
+    if (storeRegistry[extensionId]) {
         throw Error(`Extension ID ${extensionId} has already been used, please choose another one.`);
     }
 

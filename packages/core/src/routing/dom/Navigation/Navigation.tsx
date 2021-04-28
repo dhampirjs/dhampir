@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import { useContext, SyntheticEvent, FunctionComponent, HTMLAttributes, useCallback } from 'react';
 import { RouteProps } from 'react-router';
 import { Label, NavigationContext } from '../../../components';
 import { NavigationNode } from '../../factory';
@@ -13,7 +13,7 @@ export interface NavigationDataItem {
 export interface NavigationProps extends RouteProps {
     items?: NavigationDataItem[];
     inline?: boolean;
-    onClick?: (data: NavigationNode, event: React.SyntheticEvent<HTMLLIElement>) => void
+    onClick?: (data: NavigationNode, event: SyntheticEvent<HTMLLIElement>) => void
 }
 
 export const NavigationItem = styled.li`
@@ -25,7 +25,7 @@ export const NavigationItem = styled.li`
     }
 `;
 
-const NavigationBusiness: React.FunctionComponent<NavigationProps & React.HTMLAttributes<HTMLUListElement>> = (
+const NavigationBusiness: FunctionComponent<NavigationProps & HTMLAttributes<HTMLUListElement>> = (
     {
         inline = true,
         onClick,
@@ -34,14 +34,14 @@ const NavigationBusiness: React.FunctionComponent<NavigationProps & React.HTMLAt
 ) => {
 
     const { nodes = [] } = useContext(NavigationContext);
-    const onClickHandler: (data: NavigationNode) => (event: React.SyntheticEvent<HTMLLIElement>) => void = React.useCallback((item) => {
+    const onClickHandler: (data: NavigationNode) => (event: SyntheticEvent<HTMLLIElement>) => void = useCallback((item) => {
         return (event) => onClick?.(item, event);
     }, [onClick]);
 
     return <ul className={className}>
         {nodes.map((data) => {
             const { path, label } = data;
-            let calculatedPath = Array.isArray(path) ? path[0] : path;
+            const calculatedPath = Array.isArray(path) ? path[0] : path;
 
             return <NavigationItem
                 key={`${path}_${label}`}
@@ -57,7 +57,7 @@ export const Navigation = styled(NavigationBusiness)`
     margin: 0;
     font-size: 0.75em;
 
-    ${({ inline }) => css`
+    ${({ inline }) => inline && css`
         display: flex;
         flex: 1 1 auto;
         flex-flow: row;

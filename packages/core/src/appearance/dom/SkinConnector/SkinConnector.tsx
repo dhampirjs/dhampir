@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import { FunctionComponent } from 'react';
 import { useSkinContext } from '../../hooks';
 import { ThemeProvider } from 'styled-components';
 import { SkinContext } from '../../context';

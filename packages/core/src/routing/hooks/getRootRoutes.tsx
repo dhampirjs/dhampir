@@ -1,8 +1,7 @@
-import * as React from 'react';
-import { EnhancedRootRoute, routingRegistry } from '../factory';
+import { RouteWithChildren, routingRegistry } from '../factory';
 
-const getRootRoutes: () => EnhancedRootRoute[] = () => {
-    return routingRegistry;
+const getRootRoutes: () => RouteWithChildren[] = () => {
+    return routingRegistry as RouteWithChildren[];
 };
 
 export { getRootRoutes }

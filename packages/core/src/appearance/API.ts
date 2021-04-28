@@ -1,15 +1,15 @@
 export const THEME_DEFAULT_ID = 'defaultTheme';
 
-export interface ColorScheme {
-    [colorScope: string]: ColorMap;
+export type ColorScheme = {
+    [key in ColorScope]: ColorMap;
 }
 
-export interface ColorMap {
-    [colorId: string]: string;
+export type ColorMap = {
+    [key in ColorScopes]: string;
 }
 
 export interface ThemeRegistry {
-    default: string;
+    defaultTheme: string;
     themes: {
         [themeName: string]: ThemeRegistryEntry
     };
@@ -37,32 +37,55 @@ export enum ColorScope {
 }
 
 export enum ColorScopeApplication {
-    BG_REGULAR = 'bg_regular',
-    BG_CONTRAST = 'bg_contrast',
+    BG = 'bg',
+    FG = 'fg',
 }
+
 export enum ColorScopeTypography {
     LINK = 'link',
     LINK_HOVER = 'link_hover',
     TEXT_REGULAR = 'text_regular',
-    TEXT_CONTRAST = 'text_contrast',
+    TEXT_DARK = 'text_dark',
     HEADING = 'heading',
+    ACCENT = 'accent',
 }
 
 export enum ColorScopeContainer {
     BORDER = 'border',
-    FILL_REGULAR = 'fill_regular',
-    FILL_CONTRAST = 'fill_contrast',
+    BG = 'bg',
+    FG = 'fg',
 }
 
 export enum ColorScopeActions {
     DANGER = 'danger',
+    DANGER_HOVERED = 'danger_hovered',
+    DANGER_DISABLED = 'danger_disabled',
     ACTION = 'action',
+    ACTION_HOVERED = 'action_hovered',
+    ACTION_DISABLED = 'action_disabled',
     COMMON = 'common',
+    COMMON_HOVERED = 'common_hovered',
+    COMMON_DISABLED = 'common_disabled',
 }
 
 export enum ColorScopeMessages {
-    INFO = 'info',
-    WARNING = 'warning',
-    ERROR = 'error',
-    SUCCESS = 'success',
+    INFO_BG = 'info_bg',
+    INFO_FG = 'info_fg',
+    INFO_BORDER = 'info_border',
+    WARNING_BG = 'warning_bg',
+    WARNING_FG = 'warning_fg',
+    WARNING_BORDER = 'warning_border',
+    ERROR_BG = 'error_bg',
+    ERROR_FG = 'error_fg',
+    ERROR_BORDER = 'error_border',
+    SUCCESS_BG = 'success_bg',
+    SUCCESS_FG = 'success_fg',
+    SUCCESS_BORDER = 'success_border',
 }
+
+export type ColorScopes =
+    ColorScopeApplication
+    & ColorScopeTypography
+    & ColorScopeContainer
+    & ColorScopeActions
+    & ColorScopeMessages;

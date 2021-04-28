@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import { FunctionComponent } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import { RouteProps } from 'react-router';
 import { ConnectedRouter } from 'connected-react-router';

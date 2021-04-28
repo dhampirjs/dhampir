@@ -1,4 +1,4 @@
-import React from 'react';
+import { FunctionComponent, ComponentClass } from 'react';
 import { RootApplicationProps } from './dom';
 
 export enum ApplicationScope {
@@ -6,7 +6,7 @@ export enum ApplicationScope {
     MULTIPLE,
 }
 export type ApplicationRegistryEntry<P extends RootApplicationProps> = {
-    Component: React.FunctionComponent<P> | React.ComponentClass<P>;
+    Component: FunctionComponent<P> | ComponentClass<P>;
     props: P;
     scope: ApplicationScope;
     name: string;
