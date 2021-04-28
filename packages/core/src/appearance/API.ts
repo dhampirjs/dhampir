@@ -1,3 +1,5 @@
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
+
 export const THEME_DEFAULT_ID = 'defaultTheme';
 
 export type ColorScheme = {
@@ -26,6 +28,7 @@ export interface Theme {
     title: string,
     default: boolean;
     colors: ColorScheme;
+    icon?: IconProp;
 }
 
 export enum ColorScope {
