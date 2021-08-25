@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
-import { RouteProps } from 'react-router';
+import { RouteProps } from 'react-router-dom';
 import { ConnectedRouter } from 'connected-react-router';
 import { getRootRoutes } from '../../hooks';
 import { NOT_FOUND_PATH } from '../../constants';
