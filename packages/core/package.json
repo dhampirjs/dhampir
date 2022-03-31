@@ -1,7 +1,7 @@
 {
     "name": "@dhampir/core",
     "repository": "https://github.com/mborysenko/dhampir.git",
-    "version": "1.0.0-beta.15",
+    "version": "1.0.0-beta.16",
     "description": "Project contains framework that allows you to start writing web apps with using Typescript, React, Redux, Rect Router v5, webpack(HMR), express and gulp",
     "main": "dist/commonjs/index.js",
     "module": "dist/es6/index.js",
@@ -33,7 +33,6 @@
         "react-dom": "17.0.2",
         "react-is": "17.0.2",
         "react-jsx": "1.0.0",
-        "react-query": "3.21.0",
         "react-redux": "7.2.4",
         "react-router": "5.2.0",
         "react-router-dom": "5.2.0",
@@ -136,5 +135,8 @@
         "webpack-sources": "3.2.0",
         "webpack-typings-for-css": "0.7.0",
         "yargs": "17.1.1"
+    },
+    "peerDependencies": {
+        "react-query": "3.34.19"
     }
 }
