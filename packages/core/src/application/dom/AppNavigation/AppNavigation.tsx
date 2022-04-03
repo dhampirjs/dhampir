@@ -1,6 +1,7 @@
-import { FunctionComponent, ReactNode, useCallback, useState } from 'react';
+import {FunctionComponent, ReactNode, useCallback, useState} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faTimes } from '@fortawesome/free-solid-svg-icons/faTimes';
+import { faBars } from '@fortawesome/free-solid-svg-icons/faBars';
 import { CSSTransition } from 'react-transition-group';
 import classnames from 'classnames';
 
@@ -24,7 +25,6 @@ export const AppNavigationItem: FunctionComponent<AppNavigationItemProps> = (pro
 
     const onClickInner = useCallback(() => {
         onClick?.(id);
-
     }, [id]);
 
     return <li className={styles.item} onClick={onClickInner}>{label}</li>;
@@ -35,8 +35,8 @@ export interface AppNavigationProps {
     onSelect?: (id: string) => void;
 }
 
-export const AppNavigation: FunctionComponent<AppNavigationProps> = (props) => {
-    const { children } = props;
+export const AppNavigation: FunctionComponent<AppNavigationProps & JSX.IntrinsicAttributes> = (props) => {
+    const { children, key } = props;
 
     const [showPanel, setShowPanel] = useState(false);
     const [isVisible, setIsVisible] = useState(false);
@@ -56,12 +56,11 @@ export const AppNavigation: FunctionComponent<AppNavigationProps> = (props) => {
         [styles.open]: showPanel,
         [appNav]: true,
     })
-    return <div className={panelClasses}>
+    return <div className={panelClasses} key={key}>
         <div className={caller} onClick={onCall}>
             <FontAwesomeIcon icon={isVisible ? faTimes : faBars} size={'2x'}/>
         </div>
         <CSSTransition
-            key={"dkfjgsdkfjh"}
             unmountOnExit
             timeout={{ enter: 500, exit: 200 }}
             in={showPanel}
