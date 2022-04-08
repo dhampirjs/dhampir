@@ -2,10 +2,15 @@
 # See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
 
+orbs:
+    node: circleci/node@5.0.0
+
+
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
-  say-hello:
+  build-core-dist:
+      working_directory: ~/project/packages/core
     # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
     # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
     docker:
@@ -13,14 +18,33 @@ jobs:
     # Add steps to the job
     # See: https://circleci.com/docs/2.0/configuration-reference/#steps
     steps:
-      - checkout
-      - run:
-          name: "Say hello"
-          command: "echo Hello, World!"
+        - checkout
+        - node/install:
+              install-yarn: true
+              node-version: "16.14"
+        - run: yarn install --frozen-lockfile
+        - run: yarn run build:dist
+
+    test-core:
+        working_directory: ~/project/packages/core
+        # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
+        # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
+        docker:
+          - image: cimg/base:stable
+        # Add steps to the job
+        # See: https://circleci.com/docs/2.0/configuration-reference/#steps
+        steps:
+            - checkout
+            - node/install:
+                  install-yarn: true
+                  node-version: "16.14"
+            - run: yarn install --frozen-lockfile
+            - run: yarn run test
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
-  say-hello-workflow:
+  -dhampir-core:
     jobs:
-      - say-hello
+      - build-core-dist
+      - test-core
