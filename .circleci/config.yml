@@ -23,7 +23,6 @@ jobs:
             - node/install:
                 install-yarn: true
                 node-version: "16.14"
-            -   run: cd ./packages/core
             -   run: yarn install --frozen-lockfile
             -   run: yarn run build:dist
 
