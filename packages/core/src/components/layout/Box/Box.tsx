@@ -21,7 +21,7 @@ const Div = forwardRef<HTMLDivElement, BoxProps & React.HTMLAttributes<HTMLDivEl
     }
 );
 
-const createAlignItems: (alignment?: string) => FlattenSimpleInterpolation = (alignment= 'normal') => {
+const createAlignItems: (alignment?: string) => FlattenSimpleInterpolation = (alignment = 'normal') => {
     return css`
         align-items: ${alignment};
     `;

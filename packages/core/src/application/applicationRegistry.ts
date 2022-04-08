@@ -30,5 +30,5 @@ registerRootApplication(ROOT_APPLICATION_ID, {
         storageType: StorageType.REDUX
     },
     scope: ApplicationScope.STANDALONE,
-    name: "Entry Point Application"
+    name: "Entry Point Application",
 })
