@@ -1,7 +1,7 @@
 {
     "name": "@dhampir/core",
     "repository": "https://github.com/mborysenko/dhampir.git",
-    "version": "1.0.0-beta.13",
+    "version": "1.0.0-beta.16",
     "description": "Project contains framework that allows you to start writing web apps with using Typescript, React, Redux, Rect Router v5, webpack(HMR), express and gulp",
     "main": "dist/commonjs/index.js",
     "module": "dist/es6/index.js",
@@ -27,18 +27,15 @@
         "@fortawesome/fontawesome-svg-core": "1.2.36",
         "@fortawesome/free-solid-svg-icons": "5.15.4",
         "@fortawesome/react-fontawesome": "0.1.15",
-        "connected-react-router": "6.9.1",
         "history": "4.10.1",
         "ramda": "0.27.1",
         "react": "17.0.2",
         "react-dom": "17.0.2",
         "react-is": "17.0.2",
         "react-jsx": "1.0.0",
-        "react-query": "3.21.0",
         "react-redux": "7.2.4",
         "react-router": "5.2.0",
         "react-router-dom": "5.2.0",
-        "react-router-redux": "4.0.8",
         "react-transition-group": "4.4.2",
         "redux": "4.1.1",
         "redux-devtools-extension": "2.13.9",
@@ -138,5 +135,8 @@
         "webpack-sources": "3.2.0",
         "webpack-typings-for-css": "0.7.0",
         "yargs": "17.1.1"
+    },
+    "peerDependencies": {
+        "react-query": "3.34.19"
     }
 }

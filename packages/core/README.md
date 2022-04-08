@@ -13,7 +13,7 @@ Javascript library that includes features needed for building Web applications. 
 
 Introduces several new concepts such as *Root Route*, *Descendant Route*, *Routing Area*, *Area Rendering*.
 
-**Root Route** is a *Routing Rule* that describes the top level route, literally route that is a first part of the path.
+**Root Route** is a *Routing Rule* that describes the top level route, literally route that is a first section of the path. Eg
 
 **Descendant Route** is a Routing Rule that is a child of the *Root Route* or another *Descendant Route*. Path of the child route
 will be included in resulting route url. For example if *Root Route* path is `/store`, and it has Descendant Route
@@ -183,7 +183,7 @@ This feature allows user to do the following:
 Contains components that are a generic layout building blocks. They may be used for building more complex components. Support
 using *Color Themes*.
 
-## Storage
+## State Management
 
 Allows user to configure which data storage to use. *Dhampir Core* supports Redux and React Query OOTB.
 

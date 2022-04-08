@@ -12,7 +12,7 @@ export default function (
     return (cb) => {
         const outputFolder = resolve(dist, 'es6')
         const tsc = spawn(
-            resolve(projectDir, 'node_modules/.bin/tsc.cmd'),
+            resolve(projectDir, 'node_modules/.bin/tsc'),
             [
                 '--outDir', outputFolder,
                 '--declaration', true,

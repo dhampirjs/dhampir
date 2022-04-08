@@ -1,7 +1,5 @@
-import { history } from '../../../routing';
-import { connectRouter, routerMiddleware } from 'connected-react-router';
 import { ROOT_APPLICATION_ID } from '../../../application';
-import { Middleware, Reducer, ReducersMapObject } from 'redux';
+import { Middleware, ReducersMapObject } from 'redux';
 
 export interface StoreRegistry {
     [extensionId: string]: StoreRegistryEntry;
@@ -14,10 +12,8 @@ export interface StoreRegistryEntry {
 
 export const storeRegistry: StoreRegistry = {
     [ROOT_APPLICATION_ID]: {
-        reducer: {
-            router: connectRouter(history) as Reducer,
-        },
-        middleware: [routerMiddleware(history)]
+        reducer: {},
+        middleware: []
     },
 }
 
