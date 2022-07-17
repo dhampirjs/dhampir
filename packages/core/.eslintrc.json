@@ -7,7 +7,7 @@
     ],
     "settings": {
         "react": {
-            "version": "latest"
+            "version": "detect"
         },
         "import/extensions": [".js", ".jsx", ".ts", ".tsx"],
         "import/parsers": {
