@@ -10,7 +10,7 @@ const config: Config.InitialOptions = {
     collectCoverage: true,
     collectCoverageFrom: [
         "<rootDir>/src/app.tsx",
-        "<rootDir>/src/extensions/explorer/**/*.{ts,tsx}",
+        "<rootDir>/src/**/*.{ts,tsx}",
     ],
     coveragePathIgnorePatterns: [
         "<rootDir>/node_modules/",
@@ -35,7 +35,6 @@ const config: Config.InitialOptions = {
     moduleFileExtensions: ["js", "json", "less", "ts", "tsx"],
     setupFiles: ["<rootDir>/jest/scripts/setupFiles.ts"],
     setupFilesAfterEnv: [
-        "<rootDir>/jest/scripts/configureEnzyme.ts"
     ],
     snapshotSerializers: ["enzyme-to-json/serializer"],
     moduleNameMapper: {
