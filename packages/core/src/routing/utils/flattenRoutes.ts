@@ -11,13 +11,9 @@ const flattenRoutes = <AREA extends string>(
         let childrenRoutes: RouteWithChildren[] = [];
         const sealed = Object.assign({}, route);
         const { rendering } = sealed;
-        const firstPart = rootRoute?.path || '';
-
-        const routePath = [firstPart, sealed.path].join(PATH_SEPARATOR).replace(/\/{2,}/gi, PATH_SEPARATOR);
-        sealed.path = routePath;
 
         const areaRendering = rendering && rendering.find(item => {
-            return item.exact ? (routePath === currentPath && item.area === area) : item.area === area;
+            return item.area === area;
         });
 
         if (areaRendering) {

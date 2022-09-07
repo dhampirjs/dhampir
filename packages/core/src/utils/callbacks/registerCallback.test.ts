@@ -1,7 +1,13 @@
-import { callbackRegistry, CallbackScope, ScopeCallback } from '../../callbacks';
+import {registerCallback} from './registerCallback';
+import {callbackRegistry, CallbackScope} from "../../callbacks";
 
-export const registerCallback = (scope: CallbackScope, ...cb: ScopeCallback[]): void => {
-    const callbacks = callbackRegistry[scope] || [];
 
-    callbackRegistry[scope] = [...callbacks, ...cb];
-};
+describe('registerCallback function', () => {
+    it('must add callback to the registry', () => {
+        const callBackMock = jest.fn();
+
+        registerCallback(CallbackScope.STORE, callBackMock);
+
+        expect(callbackRegistry[CallbackScope.STORE].includes(callBackMock));
+    })
+});

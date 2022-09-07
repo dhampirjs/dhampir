@@ -2,30 +2,39 @@ import { Config } from '@jest/types';
 
 const config: Config.InitialOptions = {
     runner: "jest-runner",
+    transform: {
+        '^.+\\.ts?$': 'ts-jest'
+    },
     displayName: "test:unit",
     rootDir: "../..",
     verbose: true,
     notify: true,
     bail: false,
     collectCoverage: true,
+    coverageDirectory: "<rootDir>/coverage",
     collectCoverageFrom: [
-        "<rootDir>/src/app.tsx",
-        "<rootDir>/src/**/*.{ts,tsx}",
+        "<rootDir>/src/**/*.ts",
+        "<rootDir>/src/**/*.tsx",
     ],
     coveragePathIgnorePatterns: [
         "<rootDir>/node_modules/",
         "<rootDir>/build/",
         "<rootDir>/coverage/",
         "<rootDir>/dist/",
-        "<rootDir>/src/index.tsx",
-        "<rootDir>/src/index.dev.tsx",
     ],
     coverageThreshold: {
         "global": {
-            "branches": 1,
-            "functions": 1,
-            "lines": 1,
-            "statements": 1
+            "branches": 70,
+            "functions": 70,
+            "lines": 70,
+            "statements": -10
+        },
+        "./src": {
+            "branches": 70,
+            "functions": 70,
+            "lines": 70,
+            "statements": -10
+
         }
     },
     modulePaths: [
@@ -36,7 +45,6 @@ const config: Config.InitialOptions = {
     setupFiles: ["<rootDir>/jest/scripts/setupFiles.ts"],
     setupFilesAfterEnv: [
     ],
-    snapshotSerializers: ["enzyme-to-json/serializer"],
     moduleNameMapper: {
         "\\.(less|m.less)$": "identity-obj-proxy",
         "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
@@ -47,8 +55,6 @@ const config: Config.InitialOptions = {
         "<rootDir>/build/",
         "<rootDir>/coverage/",
         "<rootDir>/dist/",
-        "<rootDir>/src/index.tsx",
-        "<rootDir>/src/index.dev.tsx",
     ],
 }
 

@@ -1,8 +1,7 @@
-import {FunctionComponent, ReactNode, useCallback, useState} from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes } from '@fortawesome/free-solid-svg-icons/faTimes';
-import { faBars } from '@fortawesome/free-solid-svg-icons/faBars';
-import { CSSTransition } from 'react-transition-group';
+import {FunctionComponent, PropsWithChildren, ReactNode, useCallback, useState} from 'react';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faTimes} from '@fortawesome/free-solid-svg-icons/faTimes';
+import {faBars} from '@fortawesome/free-solid-svg-icons/faBars';
 import classnames from 'classnames';
 
 import styles from './styles.less';
@@ -16,7 +15,7 @@ export interface AppNavigationItemProps {
     onClick: (id: string) => void;
 }
 
-export const AppNavigationItem: FunctionComponent<AppNavigationItemProps> = (props) => {
+export const AppNavigationItem: FunctionComponent<PropsWithChildren<AppNavigationItemProps>> = (props) => {
     const {
         id,
         label,
@@ -35,8 +34,8 @@ export interface AppNavigationProps {
     onSelect?: (id: string) => void;
 }
 
-export const AppNavigation: FunctionComponent<AppNavigationProps & JSX.IntrinsicAttributes> = (props) => {
-    const { children, key } = props;
+export const AppNavigation: FunctionComponent<PropsWithChildren<AppNavigationProps> & JSX.IntrinsicAttributes> = (props) => {
+    const {children, key} = props;
 
     const [showPanel, setShowPanel] = useState(false);
     const [isVisible, setIsVisible] = useState(false);
@@ -60,19 +59,8 @@ export const AppNavigation: FunctionComponent<AppNavigationProps & JSX.Intrinsic
         <div className={caller} onClick={onCall}>
             <FontAwesomeIcon icon={isVisible ? faTimes : faBars} size={'2x'}/>
         </div>
-        <CSSTransition
-            unmountOnExit
-            timeout={{ enter: 500, exit: 200 }}
-            in={showPanel}
-            classNames={{
-                enter: styles.appNavEnter,
-                enterActive: styles.appNavEnterActive,
-                exitActive: styles.appNavExitActive,
-                exitDone: styles.appNavExit,
-            }}>
-            <ul className={appMenu}>
-                {children}
-            </ul>
-        </CSSTransition>
+        <ul className={appMenu}>
+            {children}
+        </ul>
     </div>;
 };

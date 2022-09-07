@@ -1,12 +1,15 @@
-import { FunctionComponent } from 'react';
-import { useDefaultTheme } from '../../hooks';
-import { ThemeProvider } from 'styled-components';
+import {FunctionComponent, PropsWithChildren} from 'react';
+import {useDefaultTheme} from '../../hooks';
+import {ThemeProvider as ThemeProviderBase} from 'styled-components';
 
-export const ThemeConnector: FunctionComponent = ({ children }) => {
+// TODO: remove this when styled-components fix the typings. Right now
+const CastedTeamProvider = ThemeProviderBase as any;
+
+export const ThemeConnector: FunctionComponent<PropsWithChildren> = ({children}) => {
 
     const defaultTheme = useDefaultTheme();
 
-    return <ThemeProvider theme={defaultTheme}>
-            {children}
-        </ThemeProvider>;
+    return <CastedTeamProvider theme={defaultTheme}>
+        {children}
+    </CastedTeamProvider>;
 }

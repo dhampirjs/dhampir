@@ -7,13 +7,12 @@ import {run} from 'jest-cli';
  */
 export default function (options) {
     const {jest} = options;
-    return (cb) => {
-        run([], jest.configFile)
-            .then(() => {
-                cb && cb();
-            })
-            .catch((error) => {
-                cb && cb(error);
-            });
+    return async (cb) => {
+        try {
+            await run([], jest.configFile);
+            cb && cb();
+        } catch (e) {
+            cb && cb(error);
+        }
     }
 };

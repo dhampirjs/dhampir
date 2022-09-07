@@ -5,16 +5,17 @@ export const isAreaVisible = <T extends string>(area: T, currentPath: string): b
     const takeLastOf = takeLast(1);
     const parts = currentPath.split('/');
     const routes = useRoutesForArea<T>(area, currentPath);
-    const fr = routes.filter(({ path, exact }) => {
-        let toFilterOut = false;
-
+    const filteredRoutes = routes.filter(({ path }) => {
         if (Array.isArray(path)) {
+            let toFilterOut = false;
+
             path.forEach(c => {
                 if (takeLastOf(c.split('/')) === takeLastOf(parts)) {
                     toFilterOut = true;
                     return;
                 }
-            })
+            });
+            return toFilterOut;
         } else {
             if(currentPath === path!) {
                 return true;
@@ -25,7 +26,7 @@ export const isAreaVisible = <T extends string>(area: T, currentPath: string): b
                 const left = takeLastOf(parts);
                 const right = takeLastOf(path!.split('/'));
                 if(left[0] !== right[0]) {
-                    return !exact;
+                    return false;
                 } else {
                     return true;
                 }
@@ -33,9 +34,7 @@ export const isAreaVisible = <T extends string>(area: T, currentPath: string): b
 
             return false;
         }
-
-        return toFilterOut;
     });
 
-    return fr.length !== 0;
+    return filteredRoutes.length !== 0;
 }

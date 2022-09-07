@@ -14,7 +14,7 @@ gulp.task('clean', () => {
     console.log(`Removing ${dist} folder...`);
     fs.removeSync(dist);
 
-    return gulp.src(filesToClean)
+    return gulp.src(filesToClean, { allowEmpty: true })
         .pipe(clean());
 });
 

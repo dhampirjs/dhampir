@@ -1,8 +1,8 @@
-import { FunctionComponent } from 'react';
+import {FunctionComponent, PropsWithChildren} from 'react';
 import { useStorageConnector } from '../../../hooks';
 import { StorageType } from '../../../storage';
 
-export const StorageConnector: FunctionComponent<{ storageType: StorageType }> = (
+export const StorageConnector: FunctionComponent<PropsWithChildren<{ storageType: StorageType }>> = (
     {
         storageType,
         children

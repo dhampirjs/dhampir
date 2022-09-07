@@ -13,13 +13,14 @@ export const configuration = {
     },
     eslint: {
         configFile: join(resolve(__dirname), '.eslintrc.json'),
-        pattern: 'src/**/*.{ts,tsx}',
+        pattern: ['src/**/*.ts','src/**/*.tsx'],
     },
     filesToCopy: [
         'src/**/*.less',
     ],
     filesToClean: [
         'src/**/*.d.ts',
+        'src/coverage'
     ],
     server: {
         host: 'localhost',

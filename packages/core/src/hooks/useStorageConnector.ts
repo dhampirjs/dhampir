@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { useContext, useEffect, useState } from 'react';
+import {PropsWithChildren, useContext, useEffect, useState} from 'react';
 import { ExtensionContext } from '../extensions';
 import { getConnector, StorageType } from '../storage';
 import { RootApplicationProps } from '../application';
 
 export interface StorageConnectorConfig<P extends RootApplicationProps> {
-    Connector: React.FunctionComponent<P> | React.ComponentClass<P>;
+    Connector: React.FunctionComponent<PropsWithChildren<P>> | React.ComponentClass<PropsWithChildren<P>>;
     props?: P;
 }
 

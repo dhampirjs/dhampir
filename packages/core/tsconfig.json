@@ -27,11 +27,14 @@
     },
     "exclude": [
         "node_modules",
-        "dist"
+        "dist",
+        "jest",
+        "**/*.js",
+        "**/*.jsx"
     ],
     "include": [
         "./src/**/*.ts",
-        "./src/**/*.tsx"
+        "./src/**/*.tsx",
     ],
     "files": [
         "./build/types/less.d.ts"

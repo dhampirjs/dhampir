@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Route, Redirect, Switch, RouteProps, useLocation } from 'react-router';
+import { Route, Navigate, Routes, RouteProps, useLocation } from 'react-router';
 import { useRoutesForArea } from '../../hooks';
 
 interface AreaProps<T> {
@@ -7,9 +7,7 @@ interface AreaProps<T> {
 }
 
 const renderRedirect = (from: string, to: string) => {
-    return <Route key={`${from}-${to}`} path={from}>
-        <Redirect exact={true} to={to}/>
-    </Route>;
+    return <Route key={`${from}-${to}`} path={from} element={<Navigate to={to}/>} />
 }
 
 const Area: React.FunctionComponent<AreaProps<string> & RouteProps> = ({ area}) => {
@@ -19,29 +17,24 @@ const Area: React.FunctionComponent<AreaProps<string> & RouteProps> = ({ area}) 
     }
 
     const routes = useRoutesForArea(area, location?.pathname);
-    return <Switch>
+    return routes.length > 0 ? <Routes>
         {routes.map(({
-                         path,
-                         exact,
-                         rendering = [],
-                         redirect
-                     }) => {
-
+             path,
+             rendering = [],
+         }) => {
             if (rendering?.length === 0) {
                 return;
             }
 
-            const { component, render, children } = rendering[0];
+            const { element } = rendering[0];
             const props: RouteProps = {
-                component,
-                render,
-                children,
+                element,
             };
 
             const key = Array.isArray(path) ? path.join('_') : path
-            return <Route key={key} {...{ path, exact, ...props }} />
+            return <Route key={key} {...{ path, ...props }} />
         })}
-    </Switch>;
+    </Routes> : null;
 };
 
 export { Area };

@@ -28,7 +28,7 @@ export const Link = styled(NavLink)`
     align-items: center;
     color: ${createColor()};
 
-    &.${({ activeClassName }) => activeClassName} {
+    &.active {
         background-color: ${createActiveBgColor};
         color: ${createColor(true)};
     }

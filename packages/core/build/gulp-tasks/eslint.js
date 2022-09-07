@@ -16,16 +16,16 @@ export default function (options, fix = false) {
             fix
         })
 
-        const fileList = glob.sync(eslint.pattern, {
-            cwd: projectDir,
-        });
+        cli.lintFiles(eslint.pattern)
+            .then(async (results) => {
+                try {
+                    const formatter = await cli.loadFormatter('stylish');
+                    console.log(formatter.format(results))
+                    cb && cb();
+                } catch (e) {
+                    cb && cb(e);
+                }
 
-        cli.lintFiles(fileList)
-            .then((results) => {
-                const formatter = cli.loadFormatter('stylish').then((formatter) => {
-                    console.log(formatter.format(results));
-                });
-                cb && cb();
             })
             .catch((error) => {
                 cb && cb(error);
