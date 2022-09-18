@@ -27,17 +27,20 @@ const Spacer = styled(forwardRef<HTMLDivElement, SpacerProps & React.HTMLAttribu
 }))`
     display: flex;
     padding: ${({ units, space }) => createSize(space, units)};
+    align-items: stretch;
+    justify-content: space-between;
+    flex: 1 1 auto;
     ${({
            size,
            units = defaults.units,
            direction = defaults.direction
        }) => direction === Direction.HORIZONTAL
         ? css`
-            flex-direction: column;
+            flex-direction: row;
             width: ${createSize(size, units)};
         `
         : css`
-            flex-direction: row;
+            flex-direction: column;
             height: ${createSize(size, units)};
         `
     };
