@@ -3,7 +3,7 @@ import { Config } from '@jest/types';
 const config: Config.InitialOptions = {
     runner: "jest-runner",
     transform: {
-        '^.+\\.ts?$': 'ts-jest'
+        '^.+\\.(ts|tsx)?$': 'ts-jest'
     },
     displayName: "test:unit",
     rootDir: "../..",
@@ -46,7 +46,7 @@ const config: Config.InitialOptions = {
     setupFilesAfterEnv: [
     ],
     moduleNameMapper: {
-        "\\.(less|m.less)$": "identity-obj-proxy",
+        "\\.(less|m.less)$": "<rootDir>/jest/scripts/mocks/stylesMock.ts",
         "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
             "<rootDir>/__mocks__/fileMock.js"
     },
