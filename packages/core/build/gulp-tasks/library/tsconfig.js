@@ -7,6 +7,16 @@ export default ({
                     cwd,
                 }) => ({
     compilerOptions: {
+        plugins: [
+            [
+                {
+                    "transform": "typescript-plugin-styled-components",
+                    "type": "config",
+                    "minify": false,
+                    "ssr": false
+                }
+            ]
+        ],
         srcDir: source,
         outDir: destination,
         module: moduleType,

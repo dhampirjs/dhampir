@@ -16,6 +16,10 @@
         "react-hot-loader/babel",
         ["@babel/transform-runtime", {
             "regenerator": true
+        }],
+        ["babel-plugin-styled-components", {
+            "displayName": true,
+            "fileName": false
         }]
     ]
 }
