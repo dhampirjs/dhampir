@@ -1,10 +1,16 @@
 {
     "name": "dhampir",
     "description": "WEB Application Development System (ADS)",
-    "workspaces": [
-        "packages/cli",
-        "packages/inception"
-    ],
+    "workspaces": {
+        "packages": [
+            "packages/core",
+            "packages/cli",
+            "packages/inception"
+        ],
+        "nohoist": [
+            "**"
+        ]
+    },
     "repository": {
         "type": "git",
         "url": "https://github.com/mborysenko/dhampir.git"
@@ -19,6 +25,5 @@
     "private": true,
     "version": "1.0.0",
     "author": "Maksym Borysenko",
-    "dependencies": {},
-    "devDependencies": {}
+    "packageManager": "yarn@1.22.19"
 }
