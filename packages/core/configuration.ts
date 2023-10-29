@@ -1,6 +1,5 @@
 import { resolve, join }  from "path";
 import BUILD_MODES from "./build/common/constants";
-
 export const configuration = {
     mode: process.env.NODE_ENV !== undefined ? process.env.NODE_ENV : BUILD_MODES.PROD, //Production mode is the default
     mountPoint: "application",
@@ -19,11 +18,15 @@ export const configuration = {
         'src/**/*.less',
     ],
     filesToClean: [
+        'dist',
         'src/**/*.d.ts',
         'src/coverage'
     ],
     server: {
         host: 'localhost',
-        port: 9090
-    }
+        port: 9090,
+    },
+    modules: ['es6', 'commonjs']
 }
+
+export type Configuration = typeof configuration;
