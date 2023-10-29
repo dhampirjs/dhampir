@@ -1,6 +1,4 @@
-import { Config } from '@jest/types';
-
-const config: Config.InitialOptions = {
+export default {
     runner: "jest-runner",
     transform: {
         '^.+\\.(ts|tsx)?$': 'ts-jest'
@@ -56,9 +54,4 @@ const config: Config.InitialOptions = {
         "<rootDir>/coverage/",
         "<rootDir>/dist/",
     ],
-}
-
-
-export {
-    config as default,
 }

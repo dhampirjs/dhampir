@@ -15,8 +15,6 @@
     ],
     "version": "1.0.0",
     "author": "Maksym Borysenko",
-    "dependencies": {
-    },
     "devDependencies": {
         "typescript": "4.1.5"
     },
