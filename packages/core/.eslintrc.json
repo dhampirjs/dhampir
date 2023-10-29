@@ -5,6 +5,7 @@
         "plugin:@typescript-eslint/recommended",
         "plugin:react/recommended"
     ],
+    "plugins": ["unused-imports"],
     "settings": {
         "react": {
             "version": "detect"
@@ -30,9 +31,20 @@
                 "allow": ["warn", "error"]
             }
         ],
+        "unused-imports/no-unused-imports": "error",
+        "unused-imports/no-unused-vars": [
+            "warn",
+            {
+                "vars": "all",
+                "varsIgnorePattern": "^_",
+                "args": "after-used",
+                "argsIgnorePattern": "^_"
+            }
+        ],
         "no-debugger": "error",
         "no-alert": "error",
         "no-empty": "error",
+        "no-multiple-empty-lines": "error",
         "no-extra-semi": "error",
         "no-promise-executor-return": "error",
         "no-unreachable-loop": "error",
