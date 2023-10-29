@@ -1,11 +1,13 @@
 import {resolve} from 'path';
 
-export default ({
-                    source,
-                    destination,
-                    moduleType,
-                    cwd,
-                }) => ({
+export default (
+    {
+        source,
+        destination,
+        moduleType,
+        cwd,
+    }
+) => ({
     compilerOptions: {
         plugins: [
             [
