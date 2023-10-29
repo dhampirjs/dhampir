@@ -10,7 +10,7 @@ export interface NavigationDataItem {
     label: string;
 }
 
-export interface NavigationProps extends RouteProps {
+export type NavigationProps = RouteProps & {
     items?: NavigationDataItem[];
     inline?: boolean;
     onClick?: (data: NavigationNode, event: SyntheticEvent<HTMLLIElement>) => void

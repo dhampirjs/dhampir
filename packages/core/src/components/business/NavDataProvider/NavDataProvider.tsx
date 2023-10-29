@@ -1,4 +1,4 @@
-import {createContext, FunctionComponent, PropsWithChildren} from 'react';
+import { createContext, FunctionComponent, PropsWithChildren } from 'react';
 import { RouteProps } from 'react-router';
 
 import { useNavigation, useRootNavigation } from '../../../hooks';
@@ -8,7 +8,7 @@ export interface NavigationContent {
     nodes: NavigationNode[];
 }
 
-export interface NavDataProvideProps extends RouteProps {
+export type NavDataProvideProps = RouteProps & {
     expand?: boolean,
     isRoot?: boolean,
 }
@@ -25,7 +25,9 @@ export const NavDataProvider: FunctionComponent<PropsWithChildren<NavDataProvide
 ) => {
     const nodes = isRoot ? useRootNavigation(expand) : useNavigation(path, expand);
 
-    return <NavigationContext.Provider value={{ nodes }}>
-        {children}
-    </NavigationContext.Provider>;
+    return <>
+        <NavigationContext.Provider value={{ nodes }}>
+            {children}
+        </NavigationContext.Provider>
+    </>;
 };

@@ -1,20 +1,28 @@
-import { ApplicationRegistry, ApplicationRegistryEntry, ApplicationScope, ROOT_APPLICATION_ID } from './API';
-import { RootApplication, RootApplicationProps } from './dom';
-import { StorageType } from '../storage';
+import {ApplicationRegistry, ApplicationRegistryEntry, ApplicationScope, ROOT_APPLICATION_ID} from './API';
+import {RootApplication, RootApplicationProps} from './dom';
 
-export const applicationRegistry: ApplicationRegistry<any> = {};
+export const applicationRegistry: ApplicationRegistry = {
+    [ROOT_APPLICATION_ID]: {
+        Component: RootApplication,
+        props: {
+            storageType: 'query',
+        },
+        scope: ApplicationScope.STANDALONE,
+        name: "Entry Point Application",
+    }
+};
 
-export const getRootApplication = <P extends RootApplicationProps>(id: string = ROOT_APPLICATION_ID): ApplicationRegistryEntry<P> => {
+export const getRootApplication = (id: string = ROOT_APPLICATION_ID) => {
     const application = applicationRegistry[id];
 
     if (!application) {
         throw Error(`No root application with ID: ${id}`);
     }
 
-    return application as ApplicationRegistryEntry<P>;
+    return application;
 }
 
-export const registerRootApplication = <P>(id: string, entry: ApplicationRegistryEntry<P>): void => {
+export const registerRootApplication = <P extends RootApplicationProps>(id: string, entry: ApplicationRegistryEntry<P>): void => {
     const application = applicationRegistry[id];
 
     if (application) {
@@ -23,12 +31,3 @@ export const registerRootApplication = <P>(id: string, entry: ApplicationRegistr
 
     applicationRegistry[id] = entry;
 }
-
-registerRootApplication(ROOT_APPLICATION_ID, {
-    Component: RootApplication,
-    props: {
-        storageType: StorageType.REDUX
-    },
-    scope: ApplicationScope.STANDALONE,
-    name: "Entry Point Application",
-})

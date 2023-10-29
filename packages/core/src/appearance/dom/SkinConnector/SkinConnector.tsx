@@ -3,7 +3,7 @@ import { useSkinContext } from '../../hooks';
 import { ThemeProvider } from 'styled-components';
 import { SkinContext } from '../../context';
 
-export const SkinConnector: FunctionComponent<PropsWithChildren> = ({ children }) => {
+export const SkinConnector: FunctionComponent<PropsWithChildren<unknown>> = ({ children }) => {
     const {
         Provider: ThemeProvider,
     } = SkinContext;

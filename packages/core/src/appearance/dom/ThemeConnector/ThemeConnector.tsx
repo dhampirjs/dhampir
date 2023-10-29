@@ -5,7 +5,7 @@ import {ThemeProvider as ThemeProviderBase} from 'styled-components';
 // TODO: remove this when styled-components fix the typings. Right now
 const CastedTeamProvider = ThemeProviderBase as any;
 
-export const ThemeConnector: FunctionComponent<PropsWithChildren> = ({children}) => {
+export const ThemeConnector: FunctionComponent<PropsWithChildren<unknown>> = ({children}) => {
 
     const defaultTheme = useDefaultTheme();
 

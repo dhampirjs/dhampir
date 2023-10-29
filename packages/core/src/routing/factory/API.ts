@@ -1,5 +1,4 @@
 import { RouteProps } from 'react-router-dom';
-import {ReactNode} from "react";
 
 export enum RoutingArea {
     TOP         = 'top',
@@ -37,11 +36,18 @@ export interface RouteWithNavigation {
     redirect?: string;
 }
 
-export interface AreaRouteRendering<AREA extends string = string> extends Pick<RouteProps, 'element' | 'children' | 'caseSensitive'> {
+export type FlattenRendering = {
+    isRootRoute: boolean,
+    path: string,
+    rendering: AreaRouteRendering[],
+    area: string,
+};
+
+export interface AreaRouteRendering<AREA extends string = string> extends Pick<RouteProps, 'element' | 'caseSensitive'> {
     area: AREA;
 }
 
-export interface RouteWithChildren extends RouteProps, RouteWithNavigation {
+export type RouteWithChildren = RouteProps &  RouteWithNavigation & {
     id?: string;
     routes?: RouteWithChildren[];
     rendering?: AreaRouteRendering[];

@@ -1,6 +1,3 @@
-export enum StorageType {
-    QUERY = 'query',
-    REDUX = 'redux',
-}
+export type StorageType = 'query' | 'redux';
 
 

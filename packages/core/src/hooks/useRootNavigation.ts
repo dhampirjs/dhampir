@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 import { ExtensionContext } from '../extensions';
-import { getRootRoutes, NavigationNode, PATH_SEPARATOR } from '../routing';
+import { getRootRoutes, NavigationNode } from '../routing';
 import {cleanRoutePath} from "../utils/routing/cleanRoutePath";
 
 export const useRootNavigation = (expand = false): NavigationNode[] => {

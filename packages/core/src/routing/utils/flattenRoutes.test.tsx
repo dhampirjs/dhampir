@@ -7,10 +7,6 @@ describe("[flattenRoute] function", () => {
             path: 'store/*',
             rendering: [
                 {
-                    area: RoutingArea.TOP,
-                    element: <div>Header</div>
-                },
-                {
                     area: RoutingArea.TOP_LEFT,
                     element: null,
                 },
@@ -37,6 +33,10 @@ describe("[flattenRoute] function", () => {
                         path: 'products',
                         rendering: [
                             {
+                                area: RoutingArea.TOP_LEFT,
+                                element: <div>Products</div>,
+                            },
+                            {
                                 area: RoutingArea.TOP,
                                 element: <div>Products</div>,
                             },
@@ -44,7 +44,7 @@ describe("[flattenRoute] function", () => {
                         routes: [
                             {
                                 id: "route:details",
-                                path: ':productId/*',
+                                path: ':productId',
                                 rendering: [
                                     {
                                         area: RoutingArea.TOP,
@@ -56,10 +56,6 @@ describe("[flattenRoute] function", () => {
                     }
                 ],
                 rendering: [
-                    {
-                        area: RoutingArea.TOP,
-                        element: <div>Header</div>
-                    },
                     {
                         area: RoutingArea.TOP_LEFT,
                         element: null,

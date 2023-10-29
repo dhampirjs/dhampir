@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 import { ExtensionContext } from '../extensions';
-import { NavigationNode, PATH_SEPARATOR, useRoutesForPath } from '../routing';
+import { NavigationNode, useRoutesForPath } from '../routing';
 import {cleanRoutePath} from "../utils/routing/cleanRoutePath";
 
 export type NavigationLevel = number;
