@@ -1,10 +1,9 @@
 {
-    "name": "@dhampir/cli",
+    "name": "@dhampirjs/cli",
     "description": "Pulsar CLI is a tool that helps user to start new project with the least moves.",
     "bin": {
         "pul": "bin/index.js"
     },
-    "private": false,
     "repository": {
         "type": "git",
         "url": "https://github.com/mborysenko/dhampir.git"
@@ -36,8 +35,8 @@
         "@babel/plugin-proposal-object-rest-spread": "~7.12.13",
         "@babel/preset-env": "7.12.17",
         "@types/cross-spawn": "6.0.2",
-        "@types/yargs": "16.0.0",
         "@types/ramda": "0.27.38",
+        "@types/yargs": "16.0.0",
         "typescript": "4.1.5"
     },
     "scripts": {
