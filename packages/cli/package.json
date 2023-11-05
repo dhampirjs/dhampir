@@ -1,5 +1,5 @@
 {
-    "name": "@dhampir/cli",
+    "name": "@dhampirjs/cli",
     "description": "Pulsar CLI is a tool that helps user to start new project with the least moves.",
     "bin": {
         "pul": "bin/index.js"

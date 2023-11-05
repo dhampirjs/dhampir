@@ -1,5 +1,5 @@
 {
-    "name": "@dhampir/inception",
+    "name": "@dhampirjs/inception",
     "description": "Project generation utils",
     "main": "index.js",
     "repository": {
@@ -10,7 +10,7 @@
         {
             "email": "borysenko.maksym@gmail.com",
             "name": "Maksym Borysenko",
-            "url": "http://dhampir.dev/"
+            "url": "https://dhampirjs.dev/"
         }
     ],
     "version": "1.0.0",
