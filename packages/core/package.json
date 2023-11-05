@@ -2,7 +2,7 @@
     "name": "@dhampir/core",
     "repository": "https://github.com/mborysenko/dhampir.git",
     "version": "1.0.0-beta.18",
-    "description": "Project contains framework that allows you to start writing web apps with using Typescript, React, Redux, Rect Router v6",
+    "description": "Project contains framework that allows you to start writing web apps with using Typescript, React, Redux, React Router v6",
     "main": "dist/commonjs/index.js",
     "module": "dist/es6/index.js",
     "files": [
@@ -122,6 +122,8 @@
     "resolutions": {
         "@types/react": "^18.2.0",
         "@types/react-dom": "^18.2.0",
-        "@leviafan/boilerplate": "portal:/Users/mborysenko/projects/boilerplate"
+    },
+    "publishConfig": {
+        "@YOUR-USERNAME:registry": "https://npm.pkg.github.com"
     }
 }
