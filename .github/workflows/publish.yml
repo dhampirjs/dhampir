@@ -42,5 +42,6 @@ jobs:
                     dir: packages/core
             -   name: Publish
                 run: npm publish
+                working-directory: ./packages/core
                 env:
                     NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
