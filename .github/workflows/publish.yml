@@ -45,4 +45,4 @@ jobs:
                 run: npm publish
                 working-directory: ./packages/core
                 env:
-                    NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+                    NODE_AUTH_TOKEN: ${{secrets.NODE_PUBLISH}}

@@ -1,5 +1,5 @@
 {
-    "name": "dhampirjs",
+    "name": "dhampir",
     "description": "WEB Application Development System (ADS)",
     "workspaces": {
         "packages": [
