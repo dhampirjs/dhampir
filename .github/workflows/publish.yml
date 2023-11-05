@@ -13,11 +13,16 @@ jobs:
             -   uses: actions/setup-node@v3
                 with:
                     node-version: 18
-            -   name: Build
-                run: |
-                    yarn install
-                    yarn build:dist
-                working-directory: packages/core
+            -   name: Install Packages
+                uses: borales/actions-yarn@v4
+                with:
+                    cmd: install
+                    dir: packages/core
+            -   name: Build Library
+                uses: borales/actions-yarn@v4
+                with:
+                    cmd: build:dist
+                    dir: packages/core
     publish:
         needs: build
         runs-on: ubuntu-latest
