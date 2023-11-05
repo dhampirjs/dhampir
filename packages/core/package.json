@@ -1,5 +1,5 @@
 {
-    "name": "@dhampir/core",
+    "name": "@mborysenko/core",
     "repository": "https://github.com/mborysenko/dhampir.git",
     "version": "1.0.0-beta.19",
     "description": "Project contains framework that allows you to start writing web apps with using Typescript, React, Redux, React Router v6",
