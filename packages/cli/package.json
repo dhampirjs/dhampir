@@ -6,7 +6,8 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/mborysenko/dhampir.git"
+    "url": "https://github.com/dhampirjs/dhampir.git",
+        "directory": "packages/cli"
     },
     "contributors": [
         {
