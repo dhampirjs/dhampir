@@ -1,2 +1,2 @@
 export * from './useApplicationsByScope';
-export * from './useApplicationsById';
+export * from './useApplicationById';

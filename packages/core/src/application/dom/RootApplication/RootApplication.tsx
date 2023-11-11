@@ -1,12 +1,10 @@
-import {FunctionComponent} from 'react';
-import {RootApplicationProps} from './API';
+import { RootApplicationComponent, RootApplicationProps } from './API';
 import {useExtensionContext} from '../../../hooks';
 import {RootArea} from '../../../routing';
 import {ExtensionContext} from '../../../extensions';
 import {ThemeConnector, StorageConnector, SkinConnector} from '../../../appearance/dom';
-import {StorageType} from '../../../storage';
 
-export const RootApplication: FunctionComponent<RootApplicationProps> = ({storageType = StorageType.REDUX}) => {
+export const RootApplication: RootApplicationComponent<RootApplicationProps> = ({ storageType = 'query'}) => {
     const {
         Provider: ExtensionProvider
     } = ExtensionContext;

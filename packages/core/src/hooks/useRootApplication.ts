@@ -1,8 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
-import { getRootApplication, } from '../application/applicationRegistry';
-import { ApplicationRegistryEntry, ROOT_APPLICATION_ID } from '../application/API';
-import { RootApplicationProps } from '../application/dom/RootApplication';
-import { ExtensionContext } from '../extensions/context/ExtensionContext';
+import { RootApplicationProps, getRootApplication, ApplicationRegistryEntry, ROOT_APPLICATION_ID } from '../application';
+import { ExtensionContext } from '../extensions';
 
 export type RootApplicationHook = (props: RootApplicationProps) => ApplicationRegistryEntry<RootApplicationProps> | undefined;
 
@@ -12,7 +10,7 @@ export const useRootApplication: RootApplicationHook = ({ storageType }) => {
     const { version } = useContext(ExtensionContext);
 
     useEffect(() => {
-        setApplication(getRootApplication<RootApplicationProps>(ROOT_APPLICATION_ID));
+        setApplication(getRootApplication(ROOT_APPLICATION_ID));
     }, [version])
 
     return application;

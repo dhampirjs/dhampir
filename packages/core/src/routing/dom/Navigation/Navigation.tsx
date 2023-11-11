@@ -10,7 +10,7 @@ export interface NavigationDataItem {
     label: string;
 }
 
-export interface NavigationProps extends RouteProps {
+export type NavigationProps = RouteProps & {
     items?: NavigationDataItem[];
     inline?: boolean;
     onClick?: (data: NavigationNode, event: SyntheticEvent<HTMLLIElement>) => void
@@ -46,7 +46,7 @@ const NavigationBusiness: FunctionComponent<NavigationProps & HTMLAttributes<HTM
             return <NavigationItem
                 key={`${path}_${label}`}
                 onClick={onClickHandler(data)}>
-                <Link activeClassName={'active'} to={calculatedPath}><Label>{label}</Label></Link>
+                <Link to={calculatedPath}><Label>{label}</Label></Link>
             </NavigationItem>
         })}
     </ul>;

@@ -4,7 +4,7 @@
         "outDir": "./dist/",
         "sourceMap": true,
         "noImplicitAny": false,
-        "module": "es6",
+        "module": "commonjs",
         "target": "es6",
         "lib": ["es6", "dom"],
         "jsx": "react-jsx",
@@ -27,11 +27,14 @@
     },
     "exclude": [
         "node_modules",
-        "dist"
+        "dist",
+        "jest",
+        "**/*.js",
+        "**/*.jsx"
     ],
     "include": [
         "./src/**/*.ts",
-        "./src/**/*.tsx"
+        "./src/**/*.tsx",
     ],
     "files": [
         "./build/types/less.d.ts"

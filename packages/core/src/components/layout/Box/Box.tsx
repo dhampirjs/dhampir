@@ -1,11 +1,11 @@
-import * as React from 'react';
+import React, {PropsWithChildren} from 'react';
 
 import { BoxProps } from './API';
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components';
+import styled, {css} from 'styled-components';
 
 import { forwardRef, Ref } from 'react';
 
-const Div = forwardRef<HTMLDivElement, BoxProps & React.HTMLAttributes<HTMLDivElement>>((
+const Div = forwardRef<HTMLDivElement, PropsWithChildren<BoxProps>>((
     {
         children,
         greedy,
@@ -21,7 +21,7 @@ const Div = forwardRef<HTMLDivElement, BoxProps & React.HTMLAttributes<HTMLDivEl
     }
 );
 
-const createAlignItems: (alignment?: string) => FlattenSimpleInterpolation = (alignment = 'normal') => {
+const createAlignItems = (alignment = 'normal') => {
     return css`
         align-items: ${alignment};
     `;

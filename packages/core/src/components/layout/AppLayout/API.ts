@@ -1,4 +1,2 @@
-import { RouteComponentProps } from 'react-router';
-
-export interface AppLayoutProps extends RouteComponentProps {
+export interface AppLayoutProps {
 }

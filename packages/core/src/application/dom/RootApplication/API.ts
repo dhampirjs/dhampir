@@ -1,6 +1,7 @@
-import { RouteProps } from 'react-router';
 import { StorageType } from '../../../storage';
 
-export interface RootApplicationProps extends RouteProps {
+export type RootApplicationProps = {
     storageType?: StorageType;
 }
+
+export type RootApplicationComponent<P extends RootApplicationProps> = (props: P) => JSX.Element

@@ -1,10 +1,11 @@
 import { useContext, useEffect, useState } from 'react';
 import { ExtensionContext } from '../extensions';
-import { NavigationNode, PATH_SEPARATOR, useRoutesForPath } from '../routing';
+import { NavigationNode, useRoutesForPath } from '../routing';
+import {cleanRoutePath} from "../utils/routing/cleanRoutePath";
 
 export type NavigationLevel = number;
 
-export const useNavigation = (path: string | string[] = '', expand = false): NavigationNode[] => {
+export const useNavigation = (path = '', expand = false): NavigationNode[] => {
     const { version } = useContext(ExtensionContext);
     const [nodes, setNodes] = useState<NavigationNode[]>([]);
 
@@ -14,7 +15,7 @@ export const useNavigation = (path: string | string[] = '', expand = false): Nav
         setNodes(routes.map(({ path: routePath, navigation}) => {
             return {
                 label: navigation?.label,
-                path: [path, routePath!].join(PATH_SEPARATOR).replace(RegExp(`\\${PATH_SEPARATOR}+`, 'gi'), PATH_SEPARATOR),
+                path: cleanRoutePath(path),
                 params: navigation?.params,
             } as NavigationNode;
         }));

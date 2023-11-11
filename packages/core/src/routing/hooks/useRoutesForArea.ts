@@ -1,11 +1,13 @@
-import { getRootRoutes } from './getRootRoutes';
+import {FlattenRendering, flattenRoutes, getRootRouteByPath} from '../../routing';
 
-import { flattenRoutes, RouteWithChildren } from '../../routing';
+const useRoutesForArea: <AREA extends string = string>(area: AREA, currentPath: string) => FlattenRendering[] = <AREA extends string = string>(
+    area,
+    currentPath
+) => {
+    const rootRoute = getRootRouteByPath(currentPath);
 
-const useRoutesForArea: <AREA extends string = string>(area: AREA, currentPath: string) => RouteWithChildren[] = <AREA extends string = string>(area, currentPath) => {
-    const rootRoutes = getRootRoutes();
-
-    return flattenRoutes<AREA>(rootRoutes, area, currentPath);
+    const result = rootRoute ? flattenRoutes<AREA>(rootRoute, area, currentPath) : [];
+    return result;
 };
 
 export {

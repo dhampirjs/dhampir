@@ -1,0 +1,48 @@
+name: Publish Dhampir Core
+
+on:
+    push:
+        branches:
+            - 'feature/**'
+            - 'fix/**'
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            -   uses: actions/checkout@v4
+            -   uses: actions/setup-node@v3
+                with:
+                    node-version: 18
+            -   name: Install Packages
+                uses: borales/actions-yarn@v4
+                with:
+                    cmd: install
+                    dir: packages/core
+            -   name: Build Library
+                uses: borales/actions-yarn@v4
+                with:
+                    cmd: build:dist
+                    dir: packages/core
+    publish:
+        needs: build
+        runs-on: ubuntu-latest
+        permissions:
+            packages: write
+            contents: read
+        steps:
+            -   uses: actions/checkout@v4
+            -   uses: actions/setup-node@v3
+                with:
+                    node-version: 18
+                    registry-url: https://npm.pkg.github.com/
+                    scope: '@dhampirjs'
+            -   name: Install
+                uses: borales/actions-yarn@v4
+                with:
+                    cmd: install
+                    dir: packages/core
+            -   name: Publish
+                run: npm publish
+                working-directory: ./packages/core
+                env:
+                    NODE_AUTH_TOKEN: ${{secrets.NODE_PUBLISH}}

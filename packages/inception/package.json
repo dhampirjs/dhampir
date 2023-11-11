@@ -1,22 +1,21 @@
 {
-    "name": "@dhampir/inception",
+    "name": "@dhampirjs/inception",
     "description": "Project generation utils",
     "main": "index.js",
     "repository": {
         "type": "git",
-        "url": "https://github.com/mborysenko/dhampir.git"
+        "url": "https://github.com/dhampirjs/dhampir.git",
+        "directory": "packages/inception"
     },
     "contributors": [
         {
             "email": "borysenko.maksym@gmail.com",
             "name": "Maksym Borysenko",
-            "url": "http://dhampir.dev/"
+            "url": "https://dhampirjs.dev/"
         }
     ],
     "version": "1.0.0",
     "author": "Maksym Borysenko",
-    "dependencies": {
-    },
     "devDependencies": {
         "typescript": "4.1.5"
     },

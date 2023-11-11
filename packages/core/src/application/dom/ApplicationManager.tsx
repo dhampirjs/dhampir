@@ -4,7 +4,7 @@ import {
     AppNavigation,
     AppNavigationItem,
     useApplicationsByScope,
-    useApplicationsById, RootApplicationProps
+    useApplicationById, RootApplicationProps
 } from '../index';
 
 export interface ApplicationManagerProps {
@@ -20,7 +20,7 @@ export const ApplicationManager: FunctionComponent<ApplicationManagerProps> = (
     const [navigation, setNavigation] = useState<{ [appId: string]: { name: string } }>({});
     const [currentAppId, setCurrentAppId] = useState<string>();
 
-    const currentApp = useApplicationsById<RootApplicationProps>(currentAppId);
+    const currentApp = useApplicationById<RootApplicationProps>(currentAppId);
 
     useEffect(() => {
         const result =

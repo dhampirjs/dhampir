@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 import { ExtensionContext } from '../extensions';
-import { createStore } from '../utils';
+import { createStore } from '../utils/store/createStore';
 import { ApplicationRootState } from '../storage';
 import { Store } from 'redux';
 

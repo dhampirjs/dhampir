@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ScrollerProps } from './API';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { forwardRef, Ref } from 'react';
 import { Column } from '../Column';
 

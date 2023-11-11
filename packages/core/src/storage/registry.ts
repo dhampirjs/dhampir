@@ -2,22 +2,23 @@ import { StorageConnectorConfig } from '../hooks';
 import { StorageType } from './API';
 import { ReduxConnector } from './redux';
 import { ReactQueryConnector } from './react-query';
-export type ConnectorsRegistry<P> = {
+import {RootApplicationProps} from "../application";
+export type ConnectorsRegistry<P extends RootApplicationProps> = {
     [connectorId: string]: StorageConnectorConfig<P>
 };
 
 export const connectorsRegistry: ConnectorsRegistry<any> = {
-    [StorageType.REDUX]: {
+    redux: {
         Connector: ReduxConnector,
         props: {},
     },
-    [StorageType.QUERY]: {
+    query: {
         Connector: ReactQueryConnector,
         props: {},
     },
 };
 
-export const registerConnector = <P, S extends string>(type: S, connector: StorageConnectorConfig<P>): void => {
+export const registerConnector = <P extends RootApplicationProps, S extends string>(type: S, connector: StorageConnectorConfig<P>): void => {
     const exists = !!connectorsRegistry[type];
 
     if (exists) {
@@ -27,7 +28,7 @@ export const registerConnector = <P, S extends string>(type: S, connector: Stora
     }
 };
 
-export const getConnector = <P>(type: StorageType = StorageType.REDUX, props?: P): StorageConnectorConfig<P> => {
+export const getConnector = <P>(type: StorageType = 'query', props?: P): StorageConnectorConfig<P> => {
     const connector = connectorsRegistry[type];
 
     if (!connector) {

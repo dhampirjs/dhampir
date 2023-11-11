@@ -1,6 +1,5 @@
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-import * as React from 'react';
 import { ColorScope, ColorScopeActions, ColorScopeTypography } from '../../../appearance';
 
 
@@ -28,7 +27,7 @@ export const Link = styled(NavLink)`
     align-items: center;
     color: ${createColor()};
 
-    &.${({ activeClassName }) => activeClassName} {
+    &.active {
         background-color: ${createActiveBgColor};
         color: ${createColor(true)};
     }
