@@ -3,25 +3,33 @@ name: Publish Dhampir Core
 on:
     push:
         branches:
-            - 'feature/**'
-            - 'fix/**'
+            - 'develop'
+
 jobs:
-    build:
+    test:
         runs-on: ubuntu-latest
         steps:
             -   uses: actions/checkout@v4
             -   uses: actions/setup-node@v3
                 with:
                     node-version: 18
-            -   name: Install Packages
+
+            -   name: "[Core] Install Packages"
                 uses: borales/actions-yarn@v4
                 with:
-                    cmd: install
+                    cmd: install --immutable
                     dir: packages/core
-            -   name: Build Library
+
+            -   name: "[Core] Build Library"
                 uses: borales/actions-yarn@v4
                 with:
                     cmd: build:dist
+                    dir: packages/core
+
+            -   name: "[Core] Test"
+                uses: borales/actions-yarn@v4
+                with:
+                    cmd: test:unit
                     dir: packages/core
     publish:
         needs: build
@@ -36,12 +44,23 @@ jobs:
                     node-version: 18
                     registry-url: https://npm.pkg.github.com/
                     scope: '@dhampirjs'
-            -   name: Install
+            -   name: "[Core] Install"
+                run: ls -la
+                working-directory: ./packages/core
+
+            -   name: "[Core] Install"
                 uses: borales/actions-yarn@v4
                 with:
-                    cmd: install
+                    cmd: install --immutable
                     dir: packages/core
-            -   name: Publish
+
+            -   name: "[Core] Build Distributive Files"
+                uses: borales/actions-yarn@v4
+                with:
+                    cmd: build:dist
+                    dir: packages/core
+
+            -   name: "[Core] Publish Preview Package"
                 run: npm publish
                 working-directory: ./packages/core
                 env:

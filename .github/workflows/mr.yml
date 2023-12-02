@@ -1,0 +1,35 @@
+name: Build
+
+on:
+    pull_request:
+        branches:
+            - "develop"
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            -   uses: actions/checkout@v4
+            -   uses: actions/setup-node@v3
+                with:
+                    node-version: 18
+
+            -   name: "[Core] Install Packages"
+                uses: borales/actions-yarn@v4
+                with:
+                    cmd: install --immutable
+                    dir: ./packages/core
+
+            -   name: "[Core] Build"
+                uses: borales/actions-yarn@v4
+                with:
+                    cmd: build:dist
+                    dir: ./packages/core
+
+            -   name: "[Core] Run Unit Tests"
+                uses: borales/actions-yarn@v4
+                with:
+                    cmd: test:unit
+                    dir: ./packages/core
+
+
