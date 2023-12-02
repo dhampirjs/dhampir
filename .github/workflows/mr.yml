@@ -17,6 +17,12 @@ jobs:
                 with:
                     node-version: 18
 
+            -   name: "[Core] Set Yarn Version"
+                uses: borales/actions-yarn@v4
+                with:
+                    cmd: set version berry
+                    dir: ./packages/core
+
             -   name: "[Core] Install Packages"
                 uses: borales/actions-yarn@v4
                 with:
