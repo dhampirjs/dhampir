@@ -32,7 +32,7 @@ jobs:
                     cmd: test:unit
                     dir: packages/core
     publish:
-        needs: build
+        needs: test
         runs-on: ubuntu-latest
         permissions:
             packages: write
