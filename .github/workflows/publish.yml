@@ -14,19 +14,19 @@ jobs:
                 with:
                     node-version: 18
 
-            -   name: [Core] Install Packages
+            -   name: "[Core] Install Packages"
                 uses: borales/actions-yarn@v4
                 with:
                     cmd: install --immutable
                     dir: packages/core
 
-            -   name: [Core] Build Library
+            -   name: "[Core] Build Library"
                 uses: borales/actions-yarn@v4
                 with:
                     cmd: build:dist
                     dir: packages/core
 
-            -   name: [Core] Test
+            -   name: "[Core] Test"
                 uses: borales/actions-yarn@v4
                 with:
                     cmd: test:unit
@@ -44,23 +44,23 @@ jobs:
                     node-version: 18
                     registry-url: https://npm.pkg.github.com/
                     scope: '@dhampirjs'
-            -   name: Install
+            -   name: "[Core] Install"
                 run: ls -la
                 working-directory: ./packages/core
 
-            -   name: Install
+            -   name: "[Core] Install"
                 uses: borales/actions-yarn@v4
                 with:
                     cmd: install --immutable
                     dir: packages/core
 
-            -   name: Build Distributive Files
+            -   name: "[Core] Build Distributive Files"
                 uses: borales/actions-yarn@v4
                 with:
                     cmd: build:dist
                     dir: packages/core
 
-            -   name: Publish
+            -   name: "[Core] Publish Preview Package"
                 run: npm publish
                 working-directory: ./packages/core
                 env:
