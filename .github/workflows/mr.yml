@@ -3,11 +3,11 @@ name: Build
 on:
     pull_request:
         branches:
-            - 'develop'
+            - "develop"
     push:
         branches:
-            - 'fix/**'
-            - 'feature/**'
+            - "fix/**"
+            - "feature/**"
 jobs:
     build:
         runs-on: ubuntu-latest
@@ -17,19 +17,19 @@ jobs:
                 with:
                     node-version: 18
 
-            -   name: [Core] Install Packages
+            -   name: "[Core] Install Packages"
                 uses: borales/actions-yarn@v4
                 with:
                     cmd: install --immutable
                     dir: ./packages/core
 
-            -   name: [Core] Build
+            -   name: "[Core] Build"
                 uses: borales/actions-yarn@v4
                 with:
-                    cmd: build
+                    cmd: build:dist
                     dir: ./packages/core
 
-            -   name: [Core] Run Unit Tests
+            -   name: "[Core] Run Unit Tests"
                 uses: borales/actions-yarn@v4
                 with:
                     cmd: test:unit
