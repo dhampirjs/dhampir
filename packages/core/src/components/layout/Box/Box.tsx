@@ -1,4 +1,4 @@
-import React, {PropsWithChildren} from 'react';
+import React, { PropsWithChildren } from 'react';
 
 import { BoxProps } from './API';
 import styled, {css} from 'styled-components';
