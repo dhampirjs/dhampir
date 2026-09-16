@@ -1,6 +1,9 @@
+/**
+ * @jest-environment jsdom
+ */
 import * as React from 'react';
 import { render, screen } from '@testing-library/react';
-import { MemoryRouter } from 'react-router';
+import { MemoryRouter, Route, Routes } from 'react-router';
 import { Area } from './Area';
 import { RoutingArea } from '../../factory';
 import { registerRootRouting } from '../../utils';
@@ -32,7 +35,9 @@ describe('[Area] component', () => {
     test('renders matched area rendering for a splat root', () => {
         render(
             <MemoryRouter initialEntries={['/manage/products']}>
-                <Area area={RoutingArea.BODY_MAIN} />
+                <Routes>
+                    <Route path="/manage/*" element={<Area area={RoutingArea.BODY_MAIN} />} />
+                </Routes>
             </MemoryRouter>
         );
 
