@@ -1,6 +1,6 @@
 import {FlattenRendering, flattenRoutes, getRootRouteByPath} from '../../routing';
 
-const useRoutesForArea: <AREA extends string = string>(area: AREA, currentPath: string) => FlattenRendering[] = <AREA extends string = string>(
+const resolveAreaRendering: <AREA extends string = string>(area: AREA, currentPath: string) => FlattenRendering[] = <AREA extends string = string>(
     area,
     currentPath
 ) => {
@@ -11,5 +11,5 @@ const useRoutesForArea: <AREA extends string = string>(area: AREA, currentPath: 
 };
 
 export {
-    useRoutesForArea,
+    resolveAreaRendering,
 }

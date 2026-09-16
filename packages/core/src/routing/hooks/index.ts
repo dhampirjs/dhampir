@@ -1,5 +1,5 @@
 export * from './useCurrentRoute';
 export * from './getRootRoutes';
-export * from './useRoutesForArea';
+export * from './resolveAreaRendering';
 export * from './useRoutesForPath';
 export * from './getRootRouteByPath';

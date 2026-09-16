@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {Route, Routes, RouteProps, useLocation} from 'react-router';
-import {useRoutesForArea} from '../../hooks';
+import {resolveAreaRendering} from '../../hooks';
 import {FunctionComponent, useMemo} from "react";
 import {FlattenRendering} from "../../factory";
 
@@ -37,7 +37,9 @@ const Area: React.FunctionComponent<AreaProps<string> & RouteProps> = ({area}) =
         throw new Error(`"location" property is undefined. Most probably you don't use React Router.`);
     }
 
-    const areaRendering = useMemo(() => useRoutesForArea(area, location.pathname), [area, location.pathname]);
+    const areaRendering = useMemo(() => resolveAreaRendering(area, location.pathname), [area, location.pathname]);
+
+    if (areaRendering.length === 0) return null;
 
     const [root, ...rest] = areaRendering;
     return <>
