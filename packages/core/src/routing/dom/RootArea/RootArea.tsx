@@ -1,15 +1,10 @@
-import {BrowserRouter, BrowserRouterProps, RouteProps, Navigate} from 'react-router-dom';
-import {Route, Routes} from 'react-router';
+import {BrowserRouter, Route, RouteProps, Routes, Navigate} from 'react-router';
 import {getRootRoutes} from '../../hooks';
 
-export interface RootAreaProps {
-    future?: BrowserRouterProps['future'];
-}
-
-export const RootArea = ({future}: RootAreaProps = {}) => {
+export const RootArea = () => {
     const routes = getRootRoutes();
 
-    return <BrowserRouter future={{v7_startTransition: true, v7_relativeSplatPath: true, ...future}}>
+    return <BrowserRouter>
         <Routes>
             {routes.map(({path, redirect, element}) => {
                 const relevant: RouteProps = {

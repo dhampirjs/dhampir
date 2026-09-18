@@ -82,9 +82,9 @@ describe('[Area] component', () => {
         )).not.toThrow();
     });
 
-    test('resolves a deeply nested splat root under v7_relativeSplatPath', () => {
+    test('resolves a deeply nested splat root', () => {
         render(
-            <MemoryRouter initialEntries={['/store/products/42']} future={{ v7_relativeSplatPath: true }}>
+            <MemoryRouter initialEntries={['/store/products/42']}>
                 <Routes>
                     <Route path="/store/*" element={<Area area={RoutingArea.BODY_MAIN} />} />
                 </Routes>
