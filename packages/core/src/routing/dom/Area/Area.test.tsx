@@ -29,6 +29,28 @@ registerRootRouting([
         id: 'route:root:non-splat',
         path: '/settings',
     },
+    {
+        id: 'route:root:store',
+        path: '/store/*',
+        routes: [
+            {
+                id: 'route:store:products',
+                path: 'products/*',
+                routes: [
+                    {
+                        id: 'route:store:product',
+                        path: ':productId',
+                        rendering: [
+                            {
+                                area: RoutingArea.BODY_MAIN,
+                                element: <div>Product Detail</div>,
+                            },
+                        ],
+                    },
+                ],
+            },
+        ],
+    },
 ]);
 
 describe('[Area] component', () => {
@@ -58,5 +80,17 @@ describe('[Area] component', () => {
                 <Area area={RoutingArea.BODY_MAIN} />
             </MemoryRouter>
         )).not.toThrow();
+    });
+
+    test('resolves a deeply nested splat root under v7_relativeSplatPath', () => {
+        render(
+            <MemoryRouter initialEntries={['/store/products/42']} future={{ v7_relativeSplatPath: true }}>
+                <Routes>
+                    <Route path="/store/*" element={<Area area={RoutingArea.BODY_MAIN} />} />
+                </Routes>
+            </MemoryRouter>
+        );
+
+        expect(screen.getByText('Product Detail')).toBeTruthy();
     });
 });
