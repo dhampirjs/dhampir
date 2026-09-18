@@ -1,4 +1,4 @@
-import { RouteProps } from 'react-router-dom';
+import { RouteProps } from 'react-router';
 
 export enum RoutingArea {
     TOP         = 'top',
