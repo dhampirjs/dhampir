@@ -9,7 +9,7 @@ export interface RootAreaProps {
 export const RootArea = ({future}: RootAreaProps = {}) => {
     const routes = getRootRoutes();
 
-    return <BrowserRouter future={{v7_startTransition: true, ...future}}>
+    return <BrowserRouter future={{v7_startTransition: true, v7_relativeSplatPath: true, ...future}}>
         <Routes>
             {routes.map(({path, redirect, element}) => {
                 const relevant: RouteProps = {

@@ -21,15 +21,15 @@ const Leaf: FunctionComponent<{ routes: FlattenRendering[] }> = (
 
     const [route, ...restRoutes] = routes;
 
-    const rendering = route && route.rendering?.length > 0 ? route.rendering[0] : undefined;
-    return (route && rendering) ? <>
-        <Routes>
-            <Route path={route?.path} caseSensitive={rendering.caseSensitive} element={<>
-                {rendering.element}
-                {renderRoutes(restRoutes)}
-            </>} />
-        </Routes>
-    </> : null;
+    if (!route) return null;
+
+    const rendering = route.rendering?.length > 0 ? route.rendering[0] : undefined;
+    return <Routes>
+        <Route path={route.path} caseSensitive={rendering?.caseSensitive} element={<>
+            {rendering?.element}
+            {renderRoutes(restRoutes)}
+        </>} />
+    </Routes>;
 }
 const Area: React.FunctionComponent<AreaProps<string> & RouteProps> = ({area}) => {
     const location = useLocation();

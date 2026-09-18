@@ -21,7 +21,7 @@ const getRootRouteByPath: (currentPath: string) => RouteWithChildren | undefined
     if(rootRoutes.length === 1) {
         const root = rootRoutes[0];
         const parts = currentPath.split(PATH_SEPARATOR).filter(Boolean);
-        return (root && root.routes?.find(createFindRouteRule(parts[0]))) ? root : undefined;
+        return (root && createFindRouteRule(parts[0])(root)) ? root : undefined;
     } else {
         const parts = currentPath.split(PATH_SEPARATOR).filter(Boolean);
         const first = rootRoutes.find(createFindRouteRule(parts[0]));
