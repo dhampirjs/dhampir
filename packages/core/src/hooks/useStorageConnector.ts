@@ -1,4 +1,4 @@
-import { PropsWithChildren, useContext, useEffect, useState } from 'react';
+import { JSX, PropsWithChildren, useContext, useEffect, useState } from 'react';
 import { ExtensionContext } from '../extensions';
 import { getConnector, StorageType } from '../storage';
 
