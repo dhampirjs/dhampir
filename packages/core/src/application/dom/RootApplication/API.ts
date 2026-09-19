@@ -1,3 +1,4 @@
+import { JSX } from 'react';
 import { StorageType } from '../../../storage';
 
 export type RootApplicationProps = {
