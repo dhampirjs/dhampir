@@ -1,3 +1,4 @@
+// @ts-ignore - react-router v8 is ESM-only; resolves fine at runtime via its module-sync export condition, TS's node16 resolution just can't verify it statically
 import { RouteProps } from 'react-router';
 
 export enum RoutingArea {

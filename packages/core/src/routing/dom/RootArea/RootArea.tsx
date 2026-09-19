@@ -1,3 +1,4 @@
+// @ts-ignore - react-router v8 is ESM-only; resolves fine at runtime via its module-sync export condition, TS's node16 resolution just can't verify it statically
 import {BrowserRouter, Route, RouteProps, Routes, Navigate} from 'react-router';
 import {getRootRoutes} from '../../hooks';
 

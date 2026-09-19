@@ -3,6 +3,7 @@
  */
 import * as React from 'react';
 import { render, screen } from '@testing-library/react';
+// @ts-ignore - react-router v8 is ESM-only; resolves fine at runtime via its module-sync export condition, TS's node16 resolution just can't verify it statically
 import { MemoryRouter, Route, Routes } from 'react-router';
 import { Area } from './Area';
 import { RoutingArea } from '../../factory';

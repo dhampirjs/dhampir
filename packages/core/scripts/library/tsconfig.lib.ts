@@ -21,13 +21,13 @@ export default (
         ],
         srcDir: source,
         outDir: destination,
-        module: moduleType,
+        module: moduleType === "commonjs" ? "node16" : moduleType,
         sourceMap: true,
         noImplicitAny: false,
         target: "es6",
         lib: ["ES2016", "es6", "dom"],
         jsx: "react-jsx",
-        moduleResolution: "node",
+        moduleResolution: moduleType === "commonjs" ? "node16" : "bundler",
         typeRoots: [
             "node_modules/@types"
         ],
