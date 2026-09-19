@@ -27,7 +27,7 @@ export default (
         target: "es6",
         lib: ["ES2016", "es6", "dom"],
         jsx: "react-jsx",
-        moduleResolution: "node",
+        moduleResolution: "bundler",
         typeRoots: [
             "node_modules/@types"
         ],

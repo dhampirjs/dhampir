@@ -1,8 +1,12 @@
 export default {
     runner: "jest-runner",
     transform: {
+        'node_modules/(react-router|@remix-run/route-pattern|cookie-es)/.+\\.m?js$': '<rootDir>/jest/scripts/esmDependencyTransform.js',
         '^.+\\.(ts|tsx)?$': 'ts-jest'
     },
+    transformIgnorePatterns: [
+        '/node_modules/(?!(react-router|@remix-run/route-pattern|cookie-es)/)'
+    ],
     displayName: "test:unit",
     rootDir: "../..",
     coverageDirectory: "<rootDir>/coverage",
