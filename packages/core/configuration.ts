@@ -26,7 +26,7 @@ export const configuration = {
         host: 'localhost',
         port: 9090,
     },
-    modules: ['es6', 'commonjs']
+    modules: ['es6']
 }
 
 export type Configuration = typeof configuration;

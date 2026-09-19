@@ -4,11 +4,11 @@
         "outDir": "./dist/",
         "sourceMap": true,
         "noImplicitAny": false,
-        "module": "node16",
+        "module": "esnext",
         "target": "es6",
         "lib": ["es6", "dom"],
         "jsx": "react-jsx",
-        "moduleResolution": "node16",
+        "moduleResolution": "bundler",
         "esModuleInterop": true,
         "allowSyntheticDefaultImports": true,
         "declaration": true,
@@ -36,5 +36,11 @@
     ],
     "files": [
         "./build/types/less.d.ts"
-    ]
+    ],
+    "ts-node": {
+        "compilerOptions": {
+            "module": "commonjs",
+            "moduleResolution": "node"
+        }
+    }
 }

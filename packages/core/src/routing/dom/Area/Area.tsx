@@ -1,5 +1,4 @@
 import * as React from 'react';
-// @ts-ignore - react-router v8 is ESM-only; resolves fine at runtime via its module-sync export condition, TS's node16 resolution just can't verify it statically
 import {Route, Routes, RouteProps, useLocation} from 'react-router';
 import {resolveAreaRendering} from '../../hooks';
 import {FunctionComponent, useMemo} from "react";

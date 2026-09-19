@@ -6,17 +6,18 @@
         "directory": "packages/core"
     },
     "version": "1.0.0-beta.22",
-    "description": "Project contains framework that allows you to start writing web apps with using Typescript, React, Redux, React Router v6",
-    "main": "dist/commonjs/index.js",
+    "description": "Project contains framework that allows you to start writing web apps with using Typescript, React, Redux, React Router v8",
+    "main": "dist/es6/index.js",
     "module": "dist/es6/index.js",
     "files": [
+        "dist/package.json",
         "dist/**/*.js",
         "dist/**/*.d.ts",
         "dist/**/*.less"
     ],
     "scripts": {
         "clean": "ts-node ./scripts/clean.ts",
-        "build:dist": "ts-node ./scripts/library.ts && ts-node ./scripts/copy.ts",
+        "build:dist": "ts-node ./scripts/library.ts && ts-node ./scripts/fixEsmExtensions.ts && ts-node ./scripts/copy.ts",
         "build:watch": "ts-node ./scripts/progress.ts",
         "eslint": "ts-node ./scripts/eslint.ts",
         "eslint:fix": "ts-node ./scripts/eslint.ts --fix",

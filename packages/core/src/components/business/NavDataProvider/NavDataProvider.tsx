@@ -1,7 +1,4 @@
 import { createContext, FunctionComponent, PropsWithChildren } from 'react';
-// @ts-ignore - react-router v8 is ESM-only; TS's node16 resolution can't verify this
-// CJS import even though Node's module-sync export condition resolves it fine at runtime
-// (verified: `node -e "require('react-router')"` resolves every symbol used here).
 import { RouteProps } from 'react-router';
 
 import { useNavigation, useRootNavigation } from '../../../hooks';
