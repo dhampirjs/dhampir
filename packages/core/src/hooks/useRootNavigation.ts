@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import { ExtensionContext } from '../extensions';
 import { getRootRoutes, NavigationNode } from '../routing';
 import {cleanRoutePath} from "../utils/routing/cleanRoutePath";
+import {normalizePath} from "../routing/utils/getDescendantRoutes";
 
 export const useRootNavigation = (expand = false): NavigationNode[] => {
     const { version } = useContext(ExtensionContext);
@@ -16,7 +17,7 @@ export const useRootNavigation = (expand = false): NavigationNode[] => {
                 acc.push({
                     label: navigation?.label,
                     params: navigation?.params,
-                    path: cleanRoutePath(path!),
+                    path: normalizePath(cleanRoutePath(path!)),
                 } as NavigationNode);
             }
             return acc;
