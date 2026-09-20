@@ -24,8 +24,12 @@ export const normalizePath = (path: string): string => {
     return `${PATH_SEPARATOR}${path}`.replace(RegExp(`\\${PATH_SEPARATOR}+`, 'gi'), PATH_SEPARATOR);
 }
 
+const stripTrailingWildcard = (path: string): string => path.replace(/\/\*$/, '');
+
 const createPathFinder = (path: string) => (route: RouteWithChildren) => {
-    return Array.isArray(route.path) ? route.path.includes(path) : normalizePath(route.path!) === path;
+    return Array.isArray(route.path)
+        ? route.path.includes(path)
+        : normalizePath(stripTrailingWildcard(route.path!)) === path;
 }
 
 const retrieveRoutes = (routes: RouteWithChildren[] = [], parts: string[] = [], prefix = ''): RouteWithChildren[] => {
