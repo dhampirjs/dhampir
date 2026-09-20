@@ -25,10 +25,21 @@ export enum RoutingArea {
 export interface RouteNavigationOptions<NAV_PARAMS extends { [K in keyof NAV_PARAMS]?: string | number | boolean } = Record<string, string | number | boolean>> {
     label?: string;
     params?: NAV_PARAMS;
+    /**
+     * Computes this route's display label from its matched URL params (e.g. resolving a
+     * real product name for `:productId`), for routes whose real value isn't known
+     * statically. Only consumed by useBreadcrumbs; useNavigation/useRootNavigation read
+     * `label` only. Falls back to `label` while pending or on rejection.
+     */
+    resolveLabel?: (params: Record<string, string>) => string | Promise<string>;
 }
 
 export interface NavigationNode extends RouteNavigationOptions {
     path: string | string[];
+}
+
+export interface BreadcrumbNode extends NavigationNode {
+    isLoading?: boolean;
 }
 
 export interface RouteWithNavigation {

@@ -4,3 +4,4 @@ export * from './useStorageConnector';
 export * from './useExtensionContext';
 export * from './useRootNavigation';
 export * from './useNavigation';
+export * from './useBreadcrumbs';
