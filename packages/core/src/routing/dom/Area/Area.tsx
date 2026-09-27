@@ -1,51 +1,21 @@
 import * as React from 'react';
-import {Route, Routes, RouteProps, useLocation} from 'react-router';
-import {resolveAreaRendering} from '../../hooks';
-import {FunctionComponent, useMemo} from "react";
-import {FlattenRendering} from "../../factory";
+import { useMatches, UIMatch } from 'react-router';
+import { DhampirRouteHandle } from '../../factory';
 
 interface AreaProps<T> {
     area: T;
 }
 
-const renderRoutes = (routes: FlattenRendering[] = [], isRoot = false) => {
-    if (routes.length === 0) return null;
-    return <Leaf routes={routes} />;
-}
+const Area: React.FunctionComponent<AreaProps<string>> = ({ area }) => {
+    const matches = useMatches() as UIMatch<unknown, DhampirRouteHandle>[];
 
-const Leaf: FunctionComponent<{ routes: FlattenRendering[] }> = (
-    {
-        routes = []
-    }
-) => {
+    const elements = matches
+        .map(match => match.handle?.rendering?.find(entry => entry.area === area)?.element)
+        .filter(element => element !== undefined);
 
-    const [route, ...restRoutes] = routes;
+    if (elements.length === 0) return null;
 
-    if (!route) return null;
-
-    const rendering = route.rendering?.length > 0 ? route.rendering[0] : undefined;
-    return <Routes>
-        <Route path={route.path} caseSensitive={rendering?.caseSensitive} element={<>
-            {rendering?.element}
-            {renderRoutes(restRoutes)}
-        </>} />
-    </Routes>;
-}
-const Area: React.FunctionComponent<AreaProps<string> & RouteProps> = ({area}) => {
-    const location = useLocation();
-    if (!location) {
-        throw new Error(`"location" property is undefined. Most probably you don't use React Router.`);
-    }
-
-    const areaRendering = useMemo(() => resolveAreaRendering(area, location.pathname), [area, location.pathname]);
-
-    if (areaRendering.length === 0) return null;
-
-    const [root, ...rest] = areaRendering;
-    return <>
-        {root.rendering?.length > 0 && root.rendering[0].element}
-        {renderRoutes(rest, true)}
-    </>;
+    return <>{elements.map((element, index) => <React.Fragment key={index}>{element}</React.Fragment>)}</>;
 };
 
-export {Area};
+export { Area };

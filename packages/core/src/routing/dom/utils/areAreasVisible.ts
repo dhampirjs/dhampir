@@ -1,17 +1,8 @@
-import { isAreaVisible, RoutingArea } from '../../../routing';
+import { useIsAreaVisible } from './isAreaVisible';
+import { RoutingArea } from '../../../routing';
 
-export const areAreasVisible = (areas: RoutingArea[] = [], currentPath: string): boolean => {
-    if (!areas || areas.length === 0) {
-        return false;
-    }
-
-    for (const area of areas) {
-        if(isAreaVisible(area as RoutingArea, currentPath)) {
-            return true;
-        } else {
-            continue;
-        }
-    }
-
-    return false;
+export const useAreAreasVisible = (areas: RoutingArea[] = []): boolean => {
+    // `areas` is always a fixed literal array at each call site, so the number of
+    // hook calls per render stays stable here.
+    return areas.some(area => useIsAreaVisible(area));
 }

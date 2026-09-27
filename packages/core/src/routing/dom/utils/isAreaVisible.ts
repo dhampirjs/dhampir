@@ -1,7 +1,8 @@
-import { resolveAreaRendering } from '../../hooks';
+import { useMatches, UIMatch } from 'react-router';
+import { DhampirRouteHandle } from '../../factory';
 
-export const isAreaVisible = <T extends string>(area: T, currentPath: string): boolean => {
-    const renderingList = resolveAreaRendering<T>(area, currentPath);
+export const useIsAreaVisible = <T extends string>(area: T): boolean => {
+    const matches = useMatches() as UIMatch<unknown, DhampirRouteHandle>[];
 
-    return renderingList.length !== 0;
+    return matches.some(match => match.handle?.rendering?.some(entry => entry.area === area));
 }

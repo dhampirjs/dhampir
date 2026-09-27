@@ -42,14 +42,7 @@ export interface BreadcrumbNode extends NavigationNode {
     isLoading?: boolean;
 }
 
-export type FlattenRendering = {
-    isRootRoute: boolean,
-    path: string,
-    rendering: AreaRouteRendering[],
-    area: string,
-};
-
-export interface AreaRouteRendering<AREA extends string = string> extends Pick<RouteProps, 'element' | 'caseSensitive'> {
+export interface AreaRouteRendering<AREA extends string = string> extends Pick<RouteProps, 'element'> {
     area: AREA;
 }
 
