@@ -13,13 +13,13 @@ export const useNavigation = (path = '', expand = false): NavigationNode[] => {
     const routes = useRoutesForPath(path, expand);
 
     useEffect(() => {
-        setNodes(routes.map(({ path: routePath, navigation}) => {
+        setNodes(routes.map(({ path: routePath, handle }) => {
             const childPath = Array.isArray(routePath) ? routePath[0] : routePath;
 
             return {
-                label: navigation?.label,
+                label: handle?.navigation?.label,
                 path: normalizePath(cleanRoutePath([path, childPath].filter(Boolean).join('/'))),
-                params: navigation?.params,
+                params: handle?.navigation?.params,
             } as NavigationNode;
         }));
     }, [version, setNodes, routes]);

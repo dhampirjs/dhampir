@@ -45,10 +45,10 @@ const retrieveRoutes = (routes: RouteWithChildren[] = [], parts: string[] = [], 
     }
 
     if(parts.length === 0) {
-        return route.routes || [];
+        return route.children || [];
     } else {
         const fullPath = normalizePath([prefix, head].join(PATH_SEPARATOR));
-        return retrieveRoutes(route.routes!, parts, fullPath);
+        return retrieveRoutes(route.children!, parts, fullPath);
     }
 }
 

@@ -7,7 +7,7 @@ export const retrieveRoute = (parts: string[] = [], routes = routingRegistry): R
         const nextRule = routes.find(route => route.path === part);
 
         if (nextRule) {
-            return retrieveRoute(parts, nextRule.routes);
+            return retrieveRoute(parts, nextRule.children);
         } else {
             // TODO: add logger
             console.warn(`Routing rule that corresponds to path ${part} has not been found! Processing stopped`);

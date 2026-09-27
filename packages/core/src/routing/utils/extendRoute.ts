@@ -7,13 +7,13 @@ export const extendRoute = (parts: string[], route: RouteWithChildren): void => 
     const parentRoute = retrieveRoute([...parts]);
 
     if (parentRoute) {
-        const routes = parentRoute.routes || [];
+        const children = parentRoute.children || [];
 
-        if(routes.some(r => r.path === route.path)) {
+        if(children.some(r => r.path === route.path)) {
             throw new Error(`Route with path ${route.path} already exists, please choose correct one.`)
         }
 
-        const newRoute = assoc('routes', [...routes!, route], parentRoute) as RouteWithChildren;
+        const newRoute = assoc('children', [...children!, route], parentRoute) as RouteWithChildren;
 
         updateRoute(parts, newRoute);
     } else {

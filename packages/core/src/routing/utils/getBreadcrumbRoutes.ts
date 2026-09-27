@@ -32,10 +32,10 @@ const getBreadcrumbRoutes = (currentPath: string): BreadcrumbRouteMatch[] => {
         { route: rootRoute, path: matchedPath, params: { ...params } },
     ];
 
-    while (remaining.length > 0 && currentRoute.routes && currentRoute.routes.length > 0) {
+    while (remaining.length > 0 && currentRoute.children && currentRoute.children.length > 0) {
         const [segment, ...rest] = remaining;
 
-        const nextRoute = currentRoute.routes.find(route => {
+        const nextRoute = currentRoute.children.find(route => {
             const cleanPath = stripPath(firstPath(route.path!));
             return cleanPath === segment || isRouteDynamic(cleanPath);
         });

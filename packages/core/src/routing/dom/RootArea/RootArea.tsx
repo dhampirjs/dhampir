@@ -1,21 +1,9 @@
-import {BrowserRouter, Route, RouteProps, Routes, Navigate} from 'react-router';
-import {getRootRoutes} from '../../hooks';
+import { createBrowserRouter, RouterProvider } from 'react-router';
+import { useMemo } from 'react';
+import { getRootRoutes } from '../../hooks';
 
 export const RootArea = () => {
-    const routes = getRootRoutes();
+    const router = useMemo(() => createBrowserRouter(getRootRoutes()), []);
 
-    return <BrowserRouter>
-        <Routes>
-            {routes.map(({path, redirect, element}) => {
-                const relevant: RouteProps = {
-                    element,
-                };
-                const id = Array.isArray(path) ? path.join('_') : path;
-
-                return redirect
-                    ? <Route key={id} path={path} element={<Navigate to={redirect!}/>}/>
-                    : <Route key={id} path={path} {...relevant} />
-            })}
-        </Routes>
-    </BrowserRouter>
+    return <RouterProvider router={router} />;
 }

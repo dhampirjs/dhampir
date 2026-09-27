@@ -1,4 +1,4 @@
-import { RouteProps } from 'react-router';
+import { NonIndexRouteObject, RouteProps } from 'react-router';
 
 export enum RoutingArea {
     TOP         = 'top',
@@ -42,11 +42,6 @@ export interface BreadcrumbNode extends NavigationNode {
     isLoading?: boolean;
 }
 
-export interface RouteWithNavigation {
-    navigation?: RouteNavigationOptions;
-    redirect?: string;
-}
-
 export type FlattenRendering = {
     isRootRoute: boolean,
     path: string,
@@ -58,9 +53,13 @@ export interface AreaRouteRendering<AREA extends string = string> extends Pick<R
     area: AREA;
 }
 
-export type RouteWithChildren = RouteProps &  RouteWithNavigation & {
-    id?: string;
-    routes?: RouteWithChildren[];
+export interface DhampirRouteHandle {
+    navigation?: RouteNavigationOptions;
     rendering?: AreaRouteRendering[];
+}
+
+export type RouteWithChildren = Omit<NonIndexRouteObject, 'children' | 'handle'> & {
+    handle?: DhampirRouteHandle;
+    children?: RouteWithChildren[];
 }
 

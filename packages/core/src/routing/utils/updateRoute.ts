@@ -11,7 +11,7 @@ export const updateRoute = (parts: string[] = [], route: RouteWithChildren, rout
         const nextRule = routes.find(route => route.path === part);
 
         if (nextRule) {
-            return updateRoute(parts, route, nextRule.routes);
+            return updateRoute(parts, route, nextRule.children);
         } else {
             // TODO: add logger
             console.warn(`Routing rule that corresponds to path ${part} has not been found! Processing stopped`);

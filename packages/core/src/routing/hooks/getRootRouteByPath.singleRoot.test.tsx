@@ -6,16 +6,18 @@ registerRootRouting([
     {
         id: 'route:root:only',
         path: '/store/*',
-        routes: [
+        children: [
             {
                 id: 'route:store:products',
                 path: 'products/*',
-                rendering: [
-                    {
-                        area: RoutingArea.BODY_MAIN,
-                        element: <div>Products</div>,
-                    },
-                ],
+                handle: {
+                    rendering: [
+                        {
+                            area: RoutingArea.BODY_MAIN,
+                            element: <div>Products</div>,
+                        },
+                    ],
+                },
             },
         ],
     },

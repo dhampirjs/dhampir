@@ -8,26 +8,26 @@ import { registerRootRouting } from '../routing/utils';
 registerRootRouting([
     {
         id: 'route:root:management',
-        path: 'manage/*',
-        routes: [
+        path: 'manage',
+        handle: {
+            navigation: { label: 'Control Panel' },
+        },
+        children: [
             {
                 id: 'route:manage:products',
                 path: 'products',
-                navigation: {
-                    label: 'Manage Products',
+                handle: {
+                    navigation: { label: 'Manage Products' },
                 },
             },
             {
                 id: 'route:manage:brands',
                 path: 'brands',
-                navigation: {
-                    label: 'Manage Brands',
+                handle: {
+                    navigation: { label: 'Manage Brands' },
                 },
             },
         ],
-        navigation: {
-            label: 'Control Panel',
-        },
     },
 ]);
 

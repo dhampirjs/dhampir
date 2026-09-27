@@ -10,75 +10,83 @@ import { registerRootRouting } from '../routing/utils';
 registerRootRouting([
     {
         id: 'route:root:management',
-        path: 'manage/*',
-        navigation: {label: 'Control Panel'},
-        routes: [
+        path: 'manage',
+        handle: { navigation: { label: 'Control Panel' } },
+        children: [
             {
                 id: 'route:manage:products',
                 path: 'products',
-                navigation: {label: 'Manage Products'},
+                handle: { navigation: { label: 'Manage Products' } },
             },
         ],
     },
     {
         id: 'route:root:with-fallback',
-        path: 'with-fallback/*',
-        navigation: {label: 'With Fallback'},
-        routes: [
+        path: 'with-fallback',
+        handle: { navigation: { label: 'With Fallback' } },
+        children: [
             {
                 id: 'route:with-fallback:item',
                 path: ':itemId',
-                navigation: {
-                    label: 'Loading item...',
-                    resolveLabel: () => new Promise(resolve => {
-                        setTimeout(() => resolve('Resolved Item'), 5)
-                    }),
+                handle: {
+                    navigation: {
+                        label: 'Loading item...',
+                        resolveLabel: () => new Promise<string>(resolve => {
+                            setTimeout(() => resolve('Resolved Item'), 5);
+                        }),
+                    },
                 },
             },
         ],
     },
     {
         id: 'route:root:no-fallback',
-        path: 'no-fallback/*',
-        routes: [
+        path: 'no-fallback',
+        children: [
             {
                 id: 'route:no-fallback:item',
                 path: ':itemId',
-                navigation: {
-                    resolveLabel: (params) => new Promise<string>(resolve => {
-                        setTimeout(() => resolve(`Item ${params.itemId}`), 5);
-                    }),
+                handle: {
+                    navigation: {
+                        resolveLabel: (params) => new Promise<string>(resolve => {
+                            setTimeout(() => resolve(`Item ${params.itemId}`), 5);
+                        }),
+                    },
                 },
             },
         ],
     },
     {
         id: 'route:root:reject-with-fallback',
-        path: 'reject-with-fallback/*',
-        routes: [
+        path: 'reject-with-fallback',
+        children: [
             {
                 id: 'route:reject-with-fallback:item',
                 path: ':itemId',
-                navigation: {
-                    label: 'Fallback Label',
-                    resolveLabel: () => new Promise<string>((_, reject) => {
-                        setTimeout(() => reject(new Error('boom')), 5);
-                    }),
+                handle: {
+                    navigation: {
+                        label: 'Fallback Label',
+                        resolveLabel: () => new Promise<string>((_, reject) => {
+                            setTimeout(() => reject(new Error('boom')), 5);
+                        }),
+                    },
                 },
             },
         ],
     },
     {
         id: 'route:root:reject-no-fallback',
-        path: 'reject-no-fallback/*',
-        routes: [
+        path: 'reject-no-fallback',
+        children: [
             {
                 id: 'route:reject-no-fallback:item',
                 path: ':itemId',
-                navigation: {
-                    resolveLabel: () => new Promise<string>((_, reject) => {
-                        setTimeout(() => reject(new Error('boom')), 5);
-                    }),
+                handle: {
+                    navigation: {
+                        resolveLabel: () => new Promise<string>((_, reject) => {
+                            setTimeout(() => reject(new Error('boom')), 5);
+                        }),
+                    },
                 },
             },
         ],
