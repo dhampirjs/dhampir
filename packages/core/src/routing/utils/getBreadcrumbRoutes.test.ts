@@ -4,26 +4,26 @@ import { registerRootRouting } from "./registerRootRouting";
 registerRootRouting([
     {
         id: 'route:root:management',
-        path: 'manage/*',
-        navigation: { label: 'Control Panel' },
-        routes: [
+        path: 'manage',
+        handle: { navigation: { label: 'Control Panel' } },
+        children: [
             {
                 id: 'route:manage:products',
                 path: 'products',
-                navigation: { label: 'Manage Products' },
+                handle: { navigation: { label: 'Manage Products' } },
             },
         ],
     },
     {
         id: 'route:root:store',
-        path: 'store/*',
-        navigation: { label: 'Store' },
-        routes: [
+        path: 'store',
+        handle: { navigation: { label: 'Store' } },
+        children: [
             {
                 id: 'route:store:products',
-                path: 'products/*',
-                navigation: { label: 'Products' },
-                routes: [
+                path: 'products',
+                handle: { navigation: { label: 'Products' } },
+                children: [
                     {
                         id: 'route:store:product',
                         path: ':productId',

@@ -10,17 +10,17 @@ export const useBreadcrumbs = (): BreadcrumbNode[] => {
 
     useEffect(() => {
         const matches = getBreadcrumbRoutes(location.pathname)
-            .filter(({ route }) => route.navigation?.label || route.navigation?.resolveLabel);
+            .filter(({ route }) => route.handle?.navigation?.label || route.handle?.navigation?.resolveLabel);
 
         setNodes(matches.map(({ route, path }) => ({
             path,
-            label: route.navigation?.label,
-            params: route.navigation?.params,
-            isLoading: !!route.navigation?.resolveLabel && !route.navigation?.label,
+            label: route.handle?.navigation?.label,
+            params: route.handle?.navigation?.params,
+            isLoading: !!route.handle?.navigation?.resolveLabel && !route.handle?.navigation?.label,
         } as BreadcrumbNode)));
 
         matches.forEach(({ route, path, params }) => {
-            const resolveLabel = route.navigation?.resolveLabel;
+            const resolveLabel = route.handle?.navigation?.resolveLabel;
 
             if (!resolveLabel) {
                 return;
@@ -34,7 +34,7 @@ export const useBreadcrumbs = (): BreadcrumbNode[] => {
                 })
                 .catch(() => {
                     setNodes(current => {
-                        const fallbackLabel = route.navigation?.label;
+                        const fallbackLabel = route.handle?.navigation?.label;
 
                         if (fallbackLabel) {
                             return current.map(node =>

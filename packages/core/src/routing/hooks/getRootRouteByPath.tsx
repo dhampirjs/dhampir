@@ -33,7 +33,7 @@ const getRootRouteByPath: (currentPath: string) => RouteWithChildren | undefined
                 return path === PATH_SEPARATOR || path === [PATH_SEPARATOR, "*"].join('');
             });
 
-            return (root && root.routes?.find(createFindRouteRule(parts[0]))) ? root : undefined;
+            return (root && root.children?.find(createFindRouteRule(parts[0]))) ? root : undefined;
         }
     }
 

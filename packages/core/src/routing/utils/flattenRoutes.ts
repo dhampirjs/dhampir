@@ -37,9 +37,9 @@ const processRoute = ({
 }): FlattenRendering[] => {
     if (pathSections.length === 0) return []
 
-    const {rendering, path, routes = []} = route
+    const {handle, path, children = []} = route
 
-    const relevantRendering = rendering?.filter(item => {
+    const relevantRendering = handle?.rendering?.filter(item => {
         return item.area === area
     })
 
@@ -57,8 +57,8 @@ const processRoute = ({
         )
         return [
             ...searchedRoute,
-            ...(routes !== undefined && routes.length > 0
-                ? routes.reduce<FlattenRendering[]>((acc, route) => {
+            ...(children !== undefined && children.length > 0
+                ? children.reduce<FlattenRendering[]>((acc, route) => {
                     return [
                         ...acc,
                         ...processRoute({

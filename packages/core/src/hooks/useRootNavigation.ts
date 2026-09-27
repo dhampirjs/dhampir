@@ -12,11 +12,11 @@ export const useRootNavigation = (expand = false): NavigationNode[] => {
 
     useEffect(() => {
         const nodeList = [];
-        routes.reduce<NavigationNode[]>((acc, { path, navigation }) => {
-            if(navigation) {
+        routes.reduce<NavigationNode[]>((acc, { path, handle }) => {
+            if(handle?.navigation) {
                 acc.push({
-                    label: navigation?.label,
-                    params: navigation?.params,
+                    label: handle.navigation.label,
+                    params: handle.navigation.params,
                     path: normalizePath(cleanRoutePath(path!)),
                 } as NavigationNode);
             }

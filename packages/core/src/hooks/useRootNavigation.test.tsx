@@ -9,15 +9,15 @@ registerRootRouting([
     {
         id: 'route:root:about',
         path: 'about',
-        navigation: {
-            label: 'About',
+        handle: {
+            navigation: { label: 'About' },
         },
     },
     {
         id: 'route:root:store',
-        path: 'store/*',
-        navigation: {
-            label: 'Store',
+        path: 'store',
+        handle: {
+            navigation: { label: 'Store' },
         },
     },
 ]);

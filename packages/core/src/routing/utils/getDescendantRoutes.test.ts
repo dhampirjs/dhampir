@@ -4,20 +4,20 @@ import { registerRootRouting } from "./registerRootRouting";
 registerRootRouting([
     {
         id: 'route:root:management',
-        path: 'manage/*',
-        routes: [
+        path: 'manage',
+        children: [
             {
                 id: 'route:manage:products',
                 path: 'products',
-                navigation: {
-                    label: 'Manage Products',
+                handle: {
+                    navigation: { label: 'Manage Products' },
                 },
             },
             {
                 id: 'route:manage:brands',
                 path: 'brands',
-                navigation: {
-                    label: 'Manage Brands',
+                handle: {
+                    navigation: { label: 'Manage Brands' },
                 },
             },
         ],
@@ -29,7 +29,7 @@ registerRootRouting([
 ]);
 
 describe("[getDescendantRoutes] function", () => {
-    test("resolves children of a wildcard-suffixed root route by its bare name", () => {
+    test("resolves children of a root route by its name", () => {
         const routes = getDescendantRoutes('manage');
 
         expect(routes.map(({ id }) => id)).toEqual([
@@ -38,7 +38,7 @@ describe("[getDescendantRoutes] function", () => {
         ]);
     });
 
-    test("returns no children for a leaf root route without a wildcard", () => {
+    test("returns no children for a leaf root route", () => {
         expect(getDescendantRoutes('about')).toEqual([]);
     });
 

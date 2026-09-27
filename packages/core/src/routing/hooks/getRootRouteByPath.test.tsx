@@ -10,37 +10,41 @@ registerRootRouting([
     {
         id: "route:root:default",
         path: '/*',
-        routes: [
+        children: [
             {
                 id: 'route:wallmart',
                 path: 'wallmart/*',
-                rendering: [
-                    {
-                        area: RoutingArea.TOP,
-                        element: <div></div>,
-                    },
-                    {
-                        area: RoutingArea.BODY,
-                        element: <div>Welcome to Angler Online Store!</div>,
-                    }
-                ],
-                routes: [{
-                    id: 'route:products',
-                    path: 'products',
+                handle: {
                     rendering: [
                         {
                             area: RoutingArea.TOP,
-                            element: <div>Product List Top Panel</div>
+                            element: <div></div>,
                         },
                         {
                             area: RoutingArea.BODY,
-                            element: <div>Welcome to Product List!</div>,
+                            element: <div>Welcome to Angler Online Store!</div>,
                         }
                     ],
-                }],
-                navigation: {
-                    label: 'Online Store'
+                    navigation: {
+                        label: 'Online Store'
+                    },
                 },
+                children: [{
+                    id: 'route:products',
+                    path: 'products',
+                    handle: {
+                        rendering: [
+                            {
+                                area: RoutingArea.TOP,
+                                element: <div>Product List Top Panel</div>
+                            },
+                            {
+                                area: RoutingArea.BODY,
+                                element: <div>Welcome to Product List!</div>,
+                            }
+                        ],
+                    },
+                }],
             }
         ],
     },
@@ -54,7 +58,7 @@ describe("[getRootRouteByPath] function", () => {
 
         const wallmartRoute = getRootRouteByPath("/wallmart");
         expect(wallmartRoute?.path).toEqual("/*");
-        expect(wallmartRoute?.routes?.length).toBe(1);
+        expect(wallmartRoute?.children?.length).toBe(1);
 
     });
 
@@ -62,4 +66,3 @@ describe("[getRootRouteByPath] function", () => {
         expect(getRootRouteByPath("/wallmart/products/33231")?.path).toEqual("/*");
     });
 })
-

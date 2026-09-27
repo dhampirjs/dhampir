@@ -12,16 +12,18 @@ registerRootRouting([
     {
         id: 'route:root:splat',
         path: '/manage/*',
-        routes: [
+        children: [
             {
                 id: 'route:products',
                 path: 'products',
-                rendering: [
-                    {
-                        area: RoutingArea.BODY_MAIN,
-                        element: <div>Products</div>,
-                    },
-                ],
+                handle: {
+                    rendering: [
+                        {
+                            area: RoutingArea.BODY_MAIN,
+                            element: <div>Products</div>,
+                        },
+                    ],
+                },
             },
         ],
     },
@@ -32,20 +34,22 @@ registerRootRouting([
     {
         id: 'route:root:store',
         path: '/store/*',
-        routes: [
+        children: [
             {
                 id: 'route:store:products',
                 path: 'products/*',
-                routes: [
+                children: [
                     {
                         id: 'route:store:product',
                         path: ':productId',
-                        rendering: [
-                            {
-                                area: RoutingArea.BODY_MAIN,
-                                element: <div>Product Detail</div>,
-                            },
-                        ],
+                        handle: {
+                            rendering: [
+                                {
+                                    area: RoutingArea.BODY_MAIN,
+                                    element: <div>Product Detail</div>,
+                                },
+                            ],
+                        },
                     },
                 ],
             },
