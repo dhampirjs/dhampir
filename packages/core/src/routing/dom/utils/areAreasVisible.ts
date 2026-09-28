@@ -1,17 +1,11 @@
-import { isAreaVisible, RoutingArea } from '../../../routing';
+import { UIMatch } from 'react-router';
+import { isAreaVisible } from './isAreaVisible';
+import { RoutingArea, DhampirRouteHandle } from '../../../routing';
 
-export const areAreasVisible = (areas: RoutingArea[] = [], currentPath: string): boolean => {
+export const areAreasVisible = (areas: RoutingArea[] = [], matches: UIMatch<unknown, DhampirRouteHandle>[]): boolean => {
     if (!areas || areas.length === 0) {
         return false;
     }
 
-    for (const area of areas) {
-        if(isAreaVisible(area as RoutingArea, currentPath)) {
-            return true;
-        } else {
-            continue;
-        }
-    }
-
-    return false;
+    return areas.some(area => isAreaVisible(area, matches));
 }
